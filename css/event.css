@@ -1,0 +1,249 @@
+/* Shared styles for Event Pages (Nav & Content Sections) */
+
+/* Layout & Structure */
+.event-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.event-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1rem 0 0 0; /* space for title then tabs */
+}
+
+.event-title {
+  text-align: center;
+  font-size: clamp(1.2rem, 5vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+}
+
+/* Tab Navigation */
+.tab-nav {
+  display: flex;
+  overflow-x: auto; /* enable horizontal scroll on mobile */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.tab-nav::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 80px;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 0.8rem 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.05);
+}
+
+.tab-btn.active {
+  color: #fff;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px 3px 0 0;
+  animation: slideIn 0.3s ease;
+}
+
+/* Page Content Area */
+.content-container {
+  flex-grow: 1;
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeInPane 0.4s ease forwards;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+@keyframes slideIn {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes fadeInPane {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Specific Shared Styles */
+h3.section-title {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(255,255,255,0.2);
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* News Section */
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.news-item {
+  background: rgba(0,0,0,0.4);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid rgba(255,255,255,0.3);
+}
+
+.news-date {
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+/* About Section */
+.about-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #ddd;
+}
+.about-text p { margin-bottom: 1rem; }
+
+/* Timetable */
+.timetable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.timetable th, .timetable td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  text-align: left;
+}
+
+.timetable th {
+  background: rgba(0,0,0,0.5);
+  width: 100px;
+  color: #aaa;
+}
+
+/* Artist Grid */
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .artist-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+}
+
+.artist-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.artist-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #222; /* Placeholder */
+  object-fit: cover;
+}
+
+.artist-info {
+  padding: 1rem;
+}
+
+.artist-name {
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.artist-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.link-btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.2s;
+}
+
+.link-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* Goods Section */
+.goods-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.goods-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.goods-card h4 { margin-bottom: 1rem; font-size: 1.2rem; }
+
+.goods-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.goods-link {
+  padding: 0.5rem 1rem;
+  background: #333;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.goods-link:hover {
+  background: #555;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI紅白歌合戦 | AI Event Collection</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/event.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+<body id="kohaku-theme">
+  <div class="bg-layer">
+    <div class="kohaku-wave"></div>
+    <div class="kohaku-wave-white"></div>
+  </div>
+  
+  <div class="event-wrapper">
+    <header class="event-header">
+      <h1 class="event-title" style="color:#fff;">AI紅白歌合戦</h1>
+      
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-target="news">News</button>
+        <button class="tab-btn" data-target="about">About</button>
+        <button class="tab-btn" data-target="timetable">Timetable</button>
+        <button class="tab-btn" data-target="artist">Artist</button>
+        <button class="tab-btn" data-target="goods">Goods</button>
+      </nav>
+    </header>
+    
+    <main class="content-container">
+      
+      <!-- NEWS SECTION -->
+      <section id="news" class="tab-pane active">
+        <h3 class="section-title">News</h3>
+        <div class="news-list">
+          <div class="news-item">
+            <div class="news-date">2026.12.01</div>
+            <div class="news-title">出場歌手および楽曲発表！</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="tab-pane">
+        <h3 class="section-title">About</h3>
+        <div class="about-text">
+          <p>一年の締めくくりは、史上最高のボーカル・ショーダウン。「AI紅白歌合戦」。</p>
+          <p>紅組と白組、それぞれのAIアーティストが誇る最高のパフォーマンスが交差する、究極の歌の祭典です。</p>
+        </div>
+      </section>
+
+      <!-- TIMETABLE SECTION -->
+      <section id="timetable" class="tab-pane">
+        <h3 class="section-title">Timetable</h3>
+        <table class="timetable">
+          <tbody>
+            <tr>
+              <th>19:00</th>
+              <td>Opening Ceremony</td>
+            </tr>
+            <tr>
+              <th>19:30</th>
+              <td>紅組: AI Diva / 白組: Vocaloid Max</td>
+            </tr>
+            <tr>
+              <th>23:00</th>
+              <td>Grand Finale</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ARTIST SECTION -->
+      <section id="artist" class="tab-pane">
+        <h3 class="section-title">Artist</h3>
+        <div class="artist-grid">
+          
+          <div class="artist-card">
+            <img src="https://ui-avatars.com/api/?name=AD&background=cc0000&color=fff&size=200" alt="AI Diva (紅組)" class="artist-thumb">
+            <div class="artist-info">
+              <div class="artist-name">AI Diva (紅組)</div>
+              <div class="artist-links">
+                <a href="#" class="link-btn">X (Twitter)</a>
+                <a href="#" class="link-btn">YouTube</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="artist-card">
+            <img src="https://ui-avatars.com/api/?name=VM&background=ffffff&color=000&size=200" alt="Vocaloid Max (白組)" class="artist-thumb">
+            <div class="artist-info">
+              <div class="artist-name" style="color:#aaa;">Vocaloid Max (白組)</div>
+              <div class="artist-links">
+                <a href="#" class="link-btn">X (Twitter)</a>
+                <a href="#" class="link-btn">YouTube</a>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+
+      <!-- GOODS SECTION -->
+      <section id="goods" class="tab-pane">
+        <h3 class="section-title">Goods</h3>
+        <div class="goods-grid">
+          <div class="goods-card">
+            <h4>応援グッズ</h4>
+            <div class="goods-links">
+              <a href="#" class="goods-link">紅組ペンライト</a>
+              <a href="#" class="goods-link">白組特製うちわ</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main>
+  </div>
+  
+  <script src="js/main.js"></script>
+</body>
+</html>

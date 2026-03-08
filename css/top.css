@@ -1,0 +1,171 @@
+/* Specific styles for the Top Page (index.html) */
+
+.top-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  background: #050505;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.top-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.top-header h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.top-header .subtitle {
+  font-size: clamp(0.8rem, 3vw, 1.1rem);
+  color: #a0a0b0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* 2x2 Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr; /* Mobile: 1 col */
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-grow: 1;
+  z-index: 10;
+}
+
+@media (min-width: 600px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Tablet/Desktop: 2x2 */
+  }
+}
+
+/* Grid Items (The Buttons) */
+.grid-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 220px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: left;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.grid-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+  z-index: 20;
+}
+
+/* Base dark fade overlay */
+.grid-item::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.1) 80%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.item-content {
+  position: relative;
+  z-index: 3;
+}
+
+.season-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 50px;
+  margin-bottom: 0.8rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.grid-item h2 {
+  font-size: clamp(1.2rem, 4vw, 1.8rem);
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.grid-item p {
+  font-size: 0.85rem;
+  color: #ccc;
+  font-weight: 300;
+}
+
+/* Background Animations */
+.bg-animation {
+  position: absolute;
+  top: -50%; left: -50%; right: -50%; bottom: -50%;
+  z-index: 1;
+  background-size: 100% 100%;
+  transition: transform 0.8s ease, opacity 0.5s ease;
+}
+
+.grid-item:hover .bg-animation {
+  transform: scale(1.1) rotate(2deg);
+}
+
+/* Theme: Spring (Black/Silver) */
+.theme-spring .bg-animation {
+  background: radial-gradient(circle at center, #434343 0%, #000000 70%);
+  opacity: 0.8;
+}
+.theme-spring:hover .bg-animation { background: radial-gradient(circle at center, #555555 0%, #000000 80%); }
+.theme-spring .season-badge { color: #f0f0f0; border-color: #f0f0f0; }
+
+/* Theme: Summer (Night/Neon blue) */
+.theme-summer .bg-animation {
+  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+}
+.theme-summer:hover .bg-animation { background: linear-gradient(135deg, #00d2ff 0%, #203a43 50%, #0f2027 100%); }
+.theme-summer .season-badge { color: #00d2ff; border-color: #00d2ff; }
+
+/* Theme: Autumn (Redcarpet/Red Gold) */
+.theme-autumn .bg-animation {
+  background: radial-gradient(ellipse at center, #6a0000 0%, #1a0000 100%);
+}
+.theme-autumn:hover .bg-animation { background: radial-gradient(ellipse at center, #900000 0%, #3b0000 100%); }
+.theme-autumn .season-badge { color: #f9d423; border-color: #f9d423; }
+
+/* Theme: Kohaku (Red/White) */
+.theme-kohaku .bg-animation {
+  background: linear-gradient(135deg, #cc0000 0%, #880000 50%, #111111 50%, #000000 100%);
+}
+.theme-kohaku:hover .bg-animation { background: linear-gradient(135deg, #dd0000 0%, #aa0000 45%, #222222 55%, #000000 100%); }
+.theme-kohaku .season-badge { color: #111; background: #fff; border-color: #fff; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.grid-container > a:nth-child(1) { animation-delay: 0.1s; }
+.grid-container > a:nth-child(2) { animation-delay: 0.2s; }
+.grid-container > a:nth-child(3) { animation-delay: 0.3s; }
+.grid-container > a:nth-child(4) { animation-delay: 0.4s; }
