@@ -131,34 +131,103 @@
   transform: scale(1.1) rotate(2deg);
 }
 
-/* Theme: Spring (Black/Silver) */
+/* Theme: Spring (Black/Silver mix) */
 .theme-spring .bg-animation {
-  background: radial-gradient(circle at center, #434343 0%, #000000 70%);
-  opacity: 0.8;
+  background: radial-gradient(circle at center, #3a3a3a 0%, #000000 80%);
 }
-.theme-spring:hover .bg-animation { background: radial-gradient(circle at center, #555555 0%, #000000 80%); }
+.theme-spring::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;
+  background-image: 
+    radial-gradient(circle, #ffffff 1px, transparent 1px),
+    radial-gradient(circle, #e0e0e0 1.5px, transparent 1.5px);
+  background-size: 50px 50px, 40px 40px;
+  background-position: 0 0, 15px 15px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: moveParticlesCard 4s linear infinite;
+}
+.theme-spring:hover .bg-animation { background: radial-gradient(circle at center, #444444 0%, #000000 80%); }
+.theme-spring:hover::before { opacity: 0.8; }
 .theme-spring .season-badge { color: #f0f0f0; border-color: #f0f0f0; }
 
-/* Theme: Summer (Night/Neon blue) */
+@keyframes moveParticlesCard {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50px); }
+}
+
+/* Theme: Summer (Night/Neon blue with laser lines) */
 .theme-summer .bg-animation {
   background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
 }
-.theme-summer:hover .bg-animation { background: linear-gradient(135deg, #00d2ff 0%, #203a43 50%, #0f2027 100%); }
+.theme-summer::before {
+  content: '';
+  position: absolute; bottom: 0; left: 50%;
+  width: 4px; height: 120%; z-index: 1;
+  background: linear-gradient(to top, #00d2ff, #00d2ff 60%, transparent);
+  box-shadow: 0 0 15px 5px #00d2ff, 0 0 30px 10px #00d2ff;
+  transform-origin: bottom center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: cardLaserSweep 1.5s ease-in-out infinite alternate;
+}
+.theme-summer:hover .bg-animation { background: linear-gradient(135deg, #1fa2ff 0%, #12d8fa 50%, #0f2027 100%); }
+.theme-summer:hover::before { opacity: 1; }
 .theme-summer .season-badge { color: #00d2ff; border-color: #00d2ff; }
 
-/* Theme: Autumn (Redcarpet/Red Gold) */
-.theme-autumn .bg-animation {
-  background: radial-gradient(ellipse at center, #6a0000 0%, #1a0000 100%);
+@keyframes cardLaserSweep {
+  0% { transform: rotate(-50deg); }
+  100% { transform: rotate(50deg); }
 }
-.theme-autumn:hover .bg-animation { background: radial-gradient(ellipse at center, #900000 0%, #3b0000 100%); }
+
+/* Theme: Autumn (Redcarpet/Red Gold spotlights) */
+.theme-autumn .bg-animation {
+  background: radial-gradient(ellipse at center, #5a0000 0%, #1a0000 100%);
+}
+.theme-autumn::before {
+  content: '';
+  position: absolute; top: -10%; left: 40%;
+  width: 80px; height: 150%; z-index: 1;
+  background: linear-gradient(180deg, rgba(204, 163, 0, 0.4) 0%, transparent 80%);
+  filter: blur(12px);
+  transform-origin: top center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  animation: cardSpotlight 2s ease-in-out infinite alternate;
+}
+.theme-autumn:hover .bg-animation { background: radial-gradient(ellipse at center, #a00000 0%, #3a0000 100%); }
+.theme-autumn:hover::before { opacity: 1; }
 .theme-autumn .season-badge { color: #f9d423; border-color: #f9d423; }
 
-/* Theme: Kohaku (Red/White) */
-.theme-kohaku .bg-animation {
-  background: linear-gradient(135deg, #cc0000 0%, #880000 50%, #111111 50%, #000000 100%);
+@keyframes cardSpotlight {
+  0% { transform: rotate(20deg) translateX(-30px); }
+  100% { transform: rotate(-30deg) translateX(30px); }
 }
-.theme-kohaku:hover .bg-animation { background: linear-gradient(135deg, #dd0000 0%, #aa0000 45%, #222222 55%, #000000 100%); }
+
+/* Theme: Kohaku (Red/White dynamic with confetti) */
+.theme-kohaku .bg-animation {
+  background: linear-gradient(135deg, #aa0000 0%, #880000 45%, #111111 50%, #000000 100%);
+}
+.theme-kohaku::before {
+  content: '';
+  position: absolute; top: -10%; left: 0; width: 100%; height: 120%; z-index: 1;
+  background-image: 
+    linear-gradient(45deg, #cc0000 25%, transparent 25%, transparent 75%, #cc0000 75%, #cc0000),
+    linear-gradient(45deg, #cc0000 25%, transparent 25%, transparent 75%, #cc0000 75%, #cc0000);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  animation: cardConfettiFall 5s linear infinite;
+}
+.theme-kohaku:hover .bg-animation { background: linear-gradient(135deg, #ff0000 0%, #aa0000 40%, #ffffff 40%, #cccccc 60%, #000000 60%, #000000 100%); }
+.theme-kohaku:hover::before { opacity: 0.3; }
 .theme-kohaku .season-badge { color: #111; background: #fff; border-color: #fff; }
+
+@keyframes cardConfettiFall {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(40px) rotate(10deg); }
+}
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }

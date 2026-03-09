@@ -22,7 +22,30 @@
   font-size: clamp(1.2rem, 5vw, 2rem);
   font-weight: 800;
   margin-bottom: 0.5rem;
-  padding: 0 1rem;
+  padding: 0 3.5rem; /* Ensure title doesn't overlap back button */
+}
+
+/* Back Button */
+.back-btn {
+  position: absolute;
+  top: 0.8rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateX(-3px);
 }
 
 /* Tab Navigation */

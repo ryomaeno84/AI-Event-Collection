@@ -19,6 +19,7 @@
   background: radial-gradient(circle at 50% -20%, #434343 0%, var(--bg-color) 70%);
   z-index: -1;
   pointer-events: none;
+  overflow: hidden;
 }
 
 #spring-theme .bg-layer::before,
