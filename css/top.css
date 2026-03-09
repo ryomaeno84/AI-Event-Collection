@@ -131,30 +131,25 @@
   transform: scale(1.1) rotate(2deg);
 }
 
-/* Theme: Spring (Black/Silver mix) */
+/* Theme: Spring (Black/Gold dynamic) */
 .theme-spring .bg-animation {
-  background: radial-gradient(circle at center, #3a3a3a 0%, #000000 80%);
+  background: linear-gradient(135deg, #cc9900 0%, #886600 45%, #111111 50%, #000000 100%);
 }
 .theme-spring::before {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;
+  position: absolute; top: -10%; left: 0; width: 100%; height: 120%; z-index: 1;
   background-image: 
-    radial-gradient(circle, #ffffff 1px, transparent 1px),
-    radial-gradient(circle, #e0e0e0 1.5px, transparent 1.5px);
-  background-size: 50px 50px, 40px 40px;
-  background-position: 0 0, 15px 15px;
+    linear-gradient(45deg, #ffd700 25%, transparent 25%, transparent 75%, #ffd700 75%, #ffd700),
+    linear-gradient(45deg, #ffd700 25%, transparent 25%, transparent 75%, #ffd700 75%, #ffd700);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
   opacity: 0;
-  transition: opacity 0.4s ease;
-  animation: moveParticlesCard 4s linear infinite;
+  transition: opacity 0.5s ease;
+  animation: cardConfettiFall 5s linear infinite;
 }
-.theme-spring:hover .bg-animation { background: radial-gradient(circle at center, #444444 0%, #000000 80%); }
-.theme-spring:hover::before { opacity: 0.8; }
-.theme-spring .season-badge { color: #f0f0f0; border-color: #f0f0f0; }
-
-@keyframes moveParticlesCard {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-50px); }
-}
+.theme-spring:hover .bg-animation { background: linear-gradient(135deg, #ffcc00 0%, #aa8800 40%, #555555 40%, #888888 60%, #000000 60%, #000000 100%); }
+.theme-spring:hover::before { opacity: 0.2; }
+.theme-spring .season-badge { color: #111; background: #ffcc00; border-color: #ffcc00; }
 
 /* Theme: Summer (Night/Neon blue with laser lines) */
 .theme-summer .bg-animation {
