@@ -175,28 +175,30 @@
   100% { transform: rotate(50deg); }
 }
 
-/* Theme: Autumn (Redcarpet/Red Gold spotlights) */
+/* Theme: Autumn (Orange Gradient & Fire Sparks) */
 .theme-autumn .bg-animation {
-  background: radial-gradient(ellipse at center, #5a0000 0%, #1a0000 100%);
+  background: linear-gradient(135deg, #cc5200 0%, #ff8c00 100%);
 }
 .theme-autumn::before {
   content: '';
-  position: absolute; top: -10%; left: 40%;
-  width: 80px; height: 150%; z-index: 1;
-  background: linear-gradient(180deg, rgba(204, 163, 0, 0.4) 0%, transparent 80%);
-  filter: blur(12px);
-  transform-origin: top center;
+  position: absolute; top: 0; left: 0; width: 100%; height: 200%; z-index: 1;
+  background-image: 
+    radial-gradient(circle, #ffffff 1.5px, transparent 2px),
+    radial-gradient(circle, #ffeb3b 2px, transparent 3px),
+    radial-gradient(circle, #ff9800 2.5px, transparent 4px);
+  background-size: 30px 45px, 50px 70px, 70px 100px;
+  background-position: 0 0, 20px 35px, 40px 50px;
   opacity: 0;
   transition: opacity 0.4s ease;
-  animation: cardSpotlight 2s ease-in-out infinite alternate;
+  animation: sparksAscend 2.5s linear infinite;
 }
-.theme-autumn:hover .bg-animation { background: radial-gradient(ellipse at center, #a00000 0%, #3a0000 100%); }
-.theme-autumn:hover::before { opacity: 1; }
-.theme-autumn .season-badge { color: #f9d423; border-color: #f9d423; }
+.theme-autumn:hover .bg-animation { background: linear-gradient(135deg, #ff5500 0%, #ffaa00 100%); }
+.theme-autumn:hover::before { opacity: 0.9; }
+.theme-autumn .season-badge { color: #fff; background: #e65c00; border-color: #ff9800; }
 
-@keyframes cardSpotlight {
-  0% { transform: rotate(20deg) translateX(-30px); }
-  100% { transform: rotate(-30deg) translateX(30px); }
+@keyframes sparksAscend {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 /* Theme: Kohaku (Red/White dynamic with confetti) */
