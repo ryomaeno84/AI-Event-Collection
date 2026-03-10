@@ -183,6 +183,72 @@ h3.section-title {
   color: #aaa;
 }
 
+/* Timeline Components */
+.timeline {
+  position: relative;
+  margin: 1.5rem 0 2.5rem 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-color, #00d2ff);
+  box-shadow: 0 0 8px var(--accent-color, #00d2ff);
+  z-index: 1;
+}
+
+.timeline-date {
+  font-size: 0.9rem;
+  color: var(--accent-color, #00d2ff);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.5px;
+}
+
+.timeline-content {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--accent-color, #00d2ff);
+  padding: 0.8rem 1.2rem;
+  border-radius: 4px 8px 8px 4px;
+  color: #eee;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+  transform: translateX(5px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* Artist Grid */
 .artist-grid {
   display: grid;

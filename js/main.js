@@ -20,4 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Loading Overlay Logic (for index.html)
+  const loadingOverlay = document.getElementById('loading-overlay');
+  if (loadingOverlay) {
+    // Simulate loading time synchronized with CSS animation duration (0.625s)
+    setTimeout(() => {
+      loadingOverlay.classList.add('hidden');
+      // Optional: remove from DOM entirely after fade out
+      setTimeout(() => {
+        if(loadingOverlay.parentNode) {
+           loadingOverlay.parentNode.removeChild(loadingOverlay);
+        }
+      }, 800); // Wait for the CSS opacity transition to finish
+    }, 625);
+  }
 });

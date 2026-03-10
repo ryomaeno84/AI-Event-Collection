@@ -96,25 +96,76 @@
           <p style="margin-bottom: 1.5rem;">全員参加のAI音楽祭（夏）</p>
 
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">【動画出演条件】</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
-            <li>お一人様につき1分〜5分のMV1つ</li>
-            <li>ジャンル：不問</li>
-            <li>拡張子：mp4</li>
-            <li>画面サイズなど：1280x720、24〜30fps</li>
-            <li>下記のいずれかの形式<br>
-              　①動画＋曲　　定員 35名<br>
-              　②静止画＋曲　定員 15名<br>
-              　③曲のみ(静止画は主催が用意) 上記15名に含む
-            </li>
-          </ul>
+          <div style="display: grid; gap: 0.8rem; margin-bottom: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #00d2ff; padding: 0.8rem 1rem; border-radius: 4px; display: flex; align-items: center;">
+              <span style="color: #00d2ff; font-weight: bold; margin-right: 0.8rem; width: 80px; flex-shrink: 0;">時間</span>
+              <span style="color: #eee; font-size: 0.95rem;">お一人様につき 1分〜5分のMV 1つ</span>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #ff007f; padding: 0.8rem 1rem; border-radius: 4px; display: flex; align-items: center;">
+              <span style="color: #ff007f; font-weight: bold; margin-right: 0.8rem; width: 80px; flex-shrink: 0;">ジャンル</span>
+              <span style="color: #eee; font-size: 0.95rem;">不問</span>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #f9d423; padding: 0.8rem 1rem; border-radius: 4px; display: flex; align-items: center;">
+              <span style="color: #f9d423; font-weight: bold; margin-right: 0.8rem; width: 80px; flex-shrink: 0;">拡張子</span>
+              <span style="color: #eee; font-size: 0.95rem;">mp4</span>
+            </div>
+            <div style="background: rgba(255, 255, 255, 0.05); border-left: 3px solid #00d2ff; padding: 0.8rem 1rem; border-radius: 4px; display: flex; align-items: center;">
+              <span style="color: #00d2ff; font-weight: bold; margin-right: 0.8rem; width: 80px; flex-shrink: 0;">画面・fps</span>
+              <span style="color: #eee; font-size: 0.95rem;">1280x720、24〜30fps</span>
+            </div>
+          </div>
+          <p style="margin-bottom: 0.8rem; color: #ddd; font-weight: bold;">■ 下記のいずれかの形式</p>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.95rem; background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+            <thead style="background: rgba(0, 210, 255, 0.2);">
+              <tr>
+                <th style="padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); color: #00d2ff; width: 60%;">参加形式</th>
+                <th style="padding: 0.8rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); color: #00d2ff; width: 40%;">定員</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05);">① 動画 ＋ 曲</td>
+                <td style="padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05);">35 名</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05);">② 静止画 ＋ 曲</td>
+                <td style="padding: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05);">15 名</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.8rem;">③ 曲のみ <span style="font-size: 0.8rem; color: #aaa;">(静止画は主催が用意)</span></td>
+                <td style="padding: 0.8rem;"><span style="font-size: 0.85rem; color: #ccc;">上記15名に含む</span></td>
+              </tr>
+            </tbody>
+          </table>
 
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">【日程】</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: none;">
-            <li>・4/25(土)～5/1(金)：動画出演者募集期間</li>
-            <li>・5/3(日) ：出演者確定</li>
-            <li>・5/4(月)～5/8(金)：出演確定連絡</li>
-            <li>・6/14(日)：動画提出期限</li>
-            <li>・7/18(土)：イベント当日</li>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">4/25(土) ～ 5/1(金)</div>
+              <div class="timeline-content">動画出演者募集期間</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">5/3(日)</div>
+              <div class="timeline-content">出演者確定</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">5/4(月) ～ 5/8(金)</div>
+              <div class="timeline-content">出演確定連絡</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">6/14(日)</div>
+              <div class="timeline-content">動画提出期限</div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">7/18(土)</div>
+              <div class="timeline-content">イベント当日</div>
+            </li>
           </ul>
 
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">【応募フォーム】</h5>
@@ -145,9 +196,17 @@
           <p style="margin-bottom: 1.5rem; font-size: 0.85rem; color: #aaa;">※イラスト中に、ひと目で分かる大きさでご自身のペンネームをご記載下さい。フォントデザインは任意です。</p>
 
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">【日程】</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: none;">
-            <li>・4/26(日)～：イラスト募集開始<br>　（定員に達し次第、募集締切）</li>
-            <li>・7/18(土)：イベント当日</li>
+          <ul class="timeline">
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">4/26(日) ～</div>
+              <div class="timeline-content">イラスト募集開始<br><span style="font-size: 0.85rem; color: #aaa;">（定員に達し次第、募集締切）</span></div>
+            </li>
+            <li class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-date">7/18(土)</div>
+              <div class="timeline-content">イベント当日</div>
+            </li>
           </ul>
 
           <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 1.5rem;">
