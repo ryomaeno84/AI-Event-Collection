@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- トップページ -->
+  <url>
+    <loc>https://ryomaeno84.github.io/AI-Event-Collection/index.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <!-- 春フェス -->
+  <url>
+    <loc>https://ryomaeno84.github.io/AI-Event-Collection/spring.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- 夏フェス -->
+  <url>
+    <loc>https://ryomaeno84.github.io/AI-Event-Collection/summer.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- 秋フェス -->
+  <url>
+    <loc>https://ryomaeno84.github.io/AI-Event-Collection/autumn.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <!-- 紅白 -->
+  <url>
+    <loc>https://ryomaeno84.github.io/AI-Event-Collection/kohaku.html</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.8</priority>
+  </url>
+</urlset>
