@@ -6,6 +6,13 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 22,
+            "date": "2026.03.12",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　12th Artist. 大鹿ニク",
+            "content": "出演者紹介記事１２人目は大鹿ニクさん！\nぜひご覧ください！https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
             "id": 21,
             "date": "2026.03.11",
             "title": "#AISpringFES2026 出演者様インタビュー記事　11th Artist. アルパカ紳士",

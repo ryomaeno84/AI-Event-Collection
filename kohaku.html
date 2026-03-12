@@ -41,15 +41,13 @@
         <button class="tab-btn" data-target="join">参加方法</button>
         <button class="tab-btn" data-target="timetable">Timetable</button>
         <button class="tab-btn" data-target="artist">Artist</button>
-        <button class="tab-btn" data-target="goods">Goods</button>
+        <button class="tab-btn" data-target="goods">公式グッズ</button>
         <button class="tab-btn" data-target="guideline">Guideline</button>
-        <button class="tab-btn" data-target="upload">Upload</button>
       </nav>
     </header>
 
     <main class="content-container">
 
-      <!-- NEWS SECTION -->
       <section id="news" class="tab-pane active">
         <h3 class="section-title">News</h3>
         <div class="news-list">
@@ -60,7 +58,6 @@
         </div>
       </section>
 
-      <!-- ABOUT SECTION -->
       <section id="about" class="tab-pane">
         <h3 class="section-title">About</h3>
         <div class="about-text">
@@ -69,15 +66,58 @@
         </div>
       </section>
 
-      <!-- JOIN SECTION -->
       <section id="join" class="tab-pane">
         <h3 class="section-title">参加方法</h3>
         <div class="about-text">
           <p>参加方法やチケットに関する詳細は公式SNSなどで随時お知らせいたします。</p>
         </div>
+
+        <div id="upload-integrated"
+          style="margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+          <h4
+            style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+            動画アップロード</h4>
+          <div class="upload-description" style="margin-bottom: 1.5rem;">
+            出演者様専用の動画アップロードフォームです。<br>
+            運営から共有されたアップロードキーを入力し、動画ファイルを送信してください。<br>
+            <span style="color: #f9d423; font-weight: bold; display: inline-block; margin-top: 0.5rem;">※連続アップロード制限:
+              10分間隔を空けてください (ファイルサイズ上限: 10GB)</span>
+          </div>
+
+          <form id="upload-form" class="upload-form">
+            <input type="hidden" name="eventName" id="upload-event-name" value="kohaku">
+
+            <div class="upload-field">
+              <label class="upload-label" for="upload-performer">出演者名</label>
+              <input type="text" id="upload-performer" class="upload-input" placeholder="例: 出演者名" required>
+            </div>
+            <div class="upload-field">
+              <label class="upload-label" for="upload-key">アップロードキー</label>
+              <input type="password" id="upload-key" class="upload-input" placeholder="運営から共有されたキー" required>
+            </div>
+            <div class="upload-field">
+              <label class="upload-label">動画ファイル</label>
+              <input type="file" id="upload-file" class="upload-file-real" accept="video/mp4, .mp4">
+              <label for="upload-file" id="upload-file-label" class="upload-file-label">📁 ファイルを選択</label>
+            </div>
+            <button type="submit" id="upload-submit" class="upload-submit">アップロード</button>
+          </form>
+
+          <div id="upload-progress-container" class="upload-progress-container" style="display:none; margin-top: 20px;">
+            <p id="upload-status-msg" style="color: #fff; margin-bottom: 10px;">送信中...</p>
+            <div class="upload-progress-track"
+              style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
+              <div id="upload-progress-bar" class="upload-progress-bar"
+                style="background: #00d2ff; width: 0%; height: 100%; transition: width 0.3s;"></div>
+            </div>
+            <div id="upload-progress-text" class="upload-progress-text"
+              style="color: #00d2ff; text-align: right; margin-top: 5px;">0%</div>
+          </div>
+
+          <div id="upload-status" class="upload-status" style="margin-top: 20px;"></div>
+        </div>
       </section>
 
-      <!-- TIMETABLE SECTION -->
       <section id="timetable" class="tab-pane">
         <h3 class="section-title">Timetable</h3>
         <table class="timetable">
@@ -98,7 +138,6 @@
         </table>
       </section>
 
-      <!-- ARTIST SECTION -->
       <section id="artist" class="tab-pane">
         <h3 class="section-title">Artist</h3>
         <div class="artist-grid">
@@ -111,6 +150,7 @@
               <div class="artist-links">
                 <a href="#" class="link-btn">X (Twitter)</a>
                 <a href="#" class="link-btn">YouTube</a>
+                <a href="#" class="link-btn goods-btn">🛒 Goods</a>
               </div>
             </div>
           </div>
@@ -123,6 +163,7 @@
               <div class="artist-links">
                 <a href="#" class="link-btn">X (Twitter)</a>
                 <a href="#" class="link-btn">YouTube</a>
+                <a href="#" class="link-btn goods-btn">🛒 Goods</a>
               </div>
             </div>
           </div>
@@ -130,21 +171,54 @@
         </div>
       </section>
 
-      <!-- GOODS SECTION -->
       <section id="goods" class="tab-pane">
-        <h3 class="section-title">Goods</h3>
-        <div class="goods-grid">
-          <div class="goods-card">
-            <h4>応援グッズ</h4>
-            <div class="goods-links">
-              <a href="#" class="goods-link">紅組ペンライト</a>
-              <a href="#" class="goods-link">白組特製うちわ</a>
+        <h3 class="section-title">公式グッズ</h3>
+        <p style="color: #aaa; margin-bottom: 2rem;">イベントをさらに盛り上げる公式アイテム。各ストアからお求めいただけます。</p>
+
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://placehold.co/400x400/cc0000/FFF?text=Red+Team+T-Shirt" alt="紅組Tシャツ"
+                class="product-image">
+              <span class="product-badge">NEW</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">AI紅白 公式応援Tシャツ (紅組)</h4>
+              <div class="product-price">¥3,500 <span class="tax-in">(税込)</span></div>
+              <a href="#" class="product-buy-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.5rem;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                カートへ入れる
+              </a>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://placehold.co/400x400/EEEEEE/000?text=White+Team+T-Shirt" alt="白組Tシャツ"
+                class="product-image">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">AI紅白 公式応援Tシャツ (白組)</h4>
+              <div class="product-price">¥3,500 <span class="tax-in">(税込)</span></div>
+              <a href="#" class="product-buy-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.5rem;">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                カートへ入れる
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- GUIDELINE SECTION -->
       <section id="guideline" class="tab-pane">
         <h3 class="section-title">Guideline</h3>
         <div class="guideline-content" style="color: #ddd; line-height: 1.8; font-size: 0.95rem;">
@@ -208,49 +282,6 @@
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">10. お問い合わせ窓口</h5>
           <p>運営公式SNS（<a href="https://x.com/AI_animeryo" style="color: #00d2ff; text-decoration: none;"
               target="_blank">https://x.com/AI_animeryo</a>）のダイレクトメッセージにて。</p>
-        </div>
-      </section>
-
-      <!-- UPLOAD SECTION -->
-      <section id="upload" class="tab-pane">
-        <h3 class="section-title">Upload</h3>
-        <div class="upload-section-inner">
-          <div class="upload-description">
-            出演者様専用の動画アップロードページです。<br>
-            運営から共有されたアップロードキーを入力し、動画ファイルを送信してください。<br>
-            ※ファイルサイズ上限: 10GB
-          </div>
-          <form id="upload-form" class="upload-form">
-            <input type="hidden" name="eventName" id="upload-event-name" value="spring">
-
-            <div class="upload-field">
-              <label class="upload-label" for="upload-performer">出演者名</label>
-              <input type="text" id="upload-performer" class="upload-input" placeholder="例: 出演者名" required>
-            </div>
-            <div class="upload-field">
-              <label class="upload-label" for="upload-key">アップロードキー</label>
-              <input type="password" id="upload-key" class="upload-input" placeholder="運営から共有されたキー" required>
-            </div>
-            <div class="upload-field">
-              <label class="upload-label">動画ファイル</label>
-              <input type="file" id="upload-file" class="upload-file-real" accept="video/mp4, .mp4">
-              <label for="upload-file" id="upload-file-label" class="upload-file-label">📁 ファイルを選択</label>
-            </div>
-            <button type="submit" id="upload-submit" class="upload-submit">アップロード</button>
-          </form>
-
-          <div id="upload-progress-container" class="upload-progress-container" style="display:none; margin-top: 20px;">
-            <p id="upload-status-msg" style="color: #fff; margin-bottom: 10px;">送信中...</p>
-            <div class="upload-progress-track"
-              style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
-              <div id="upload-progress-bar" class="upload-progress-bar"
-                style="background: #00d2ff; width: 0%; height: 100%; transition: width 0.3s;"></div>
-            </div>
-            <div id="upload-progress-text" class="upload-progress-text"
-              style="color: #00d2ff; text-align: right; margin-top: 5px;">0%</div>
-          </div>
-
-          <div id="upload-status" class="upload-status" style="margin-top: 20px;"></div>
         </div>
       </section>
 
