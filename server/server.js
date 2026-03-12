@@ -424,8 +424,13 @@ app.get('/api/health', (_req, res) => {
 });
 
 // ─── Start Server ─────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`\n✅ Upload server running on http://localhost:${PORT}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\n✅ Upload server running on http://0.0.0.0:${PORT}`);
   console.log(`   POST /api/upload - Video upload endpoint`);
   console.log(`   GET  /api/health - Health check\n`);
 });
+
+// 5GB+ uploads: 2 hour timeout
+server.keepAliveTimeout = 7200000;
+server.headersTimeout = 7260000;
+server.timeout = 0; // no socket timeout
