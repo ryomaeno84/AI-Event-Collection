@@ -382,3 +382,178 @@ h3.section-title {
   margin: 0 auto;
   line-height: 1.5;
 }
+
+/* ----------------------------------
+   Upload Form
+----------------------------------- */
+.upload-section-inner {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.upload-description {
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.upload-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.upload-label {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.upload-input {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  color: #fff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.upload-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.upload-input::placeholder {
+  color: #666;
+}
+
+/* Hidden real file input */
+.upload-file-real {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.upload-file-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem 1rem;
+  color: #aaa;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  word-break: break-all;
+}
+
+.upload-file-label:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.upload-submit {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  margin-top: 0.5rem;
+}
+
+.upload-submit:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.1));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.upload-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Progress Bar */
+.upload-progress-container {
+  display: none;
+  margin-top: 1rem;
+}
+
+.upload-progress-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.upload-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00d2ff, #7b2ff7, #ff007f);
+  background-size: 200% 100%;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  animation: progressShimmer 2s linear infinite;
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.upload-progress-text {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  font-weight: 600;
+}
+
+/* Status Messages */
+.upload-status {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.upload-status.success {
+  background: rgba(0, 200, 83, 0.15);
+  border: 1px solid rgba(0, 200, 83, 0.4);
+  color: #69f0ae;
+}
+
+.upload-status.error {
+  background: rgba(255, 23, 68, 0.15);
+  border: 1px solid rgba(255, 23, 68, 0.4);
+  color: #ff5252;
+}

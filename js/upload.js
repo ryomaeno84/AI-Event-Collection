@@ -10,7 +10,7 @@
 
   // ── Configuration ────────────────────────────────────
   // 本番公開時（Localtunnel使用時）はここを 'https://xxxx.localtunnel.me' に書き換えてください
-  const API_BASE_URL = 'https://fresh-icons-open.loca.lt';
+  const API_BASE_URL = 'http://133.117.72.165:3000';
   const MAX_FILE_SIZE = 10 * 1024 * 1024 * 1024; // 10 GB
 
   // ── DOM References ───────────────────────────────────
