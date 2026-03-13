@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Spring FES - Live</title>
+  <script src="https://api.ai-event-collection.jp/socket.io/socket.io.js"></script>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      overflow: hidden;
+      font-family: sans-serif;
+    }
+
+    #main-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    #player {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    #firework-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    #ui-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    /* 春らしいピンクのコメント演出 */
+    .floating-comment {
+      position: absolute;
+      color: #fff;
+      font-weight: bold;
+      font-size: 2vw;
+      text-shadow: 0 0 10px #ff7eb3, 0 0 20px #ff7eb3;
+      white-space: nowrap;
+      animation: floatUp 5s forwards linear;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    #control-panel {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 100;
+      pointer-events: auto;
+      display: flex;
+      gap: 10px;
+      background: rgba(255, 192, 203, 0.2);
+      padding: 15px;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+    }
+
+    input {
+      padding: 10px 20px;
+      border-radius: 25px;
+      border: none;
+      width: 250px;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 25px;
+      background: #ff7eb3;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="main-container">
+    <div id="player"></div>
+    <canvas id="firework-canvas"></canvas>
+    <div id="ui-layer"></div>
+    <div id="control-panel">
+      <input type="text" id="comment-input" placeholder="メッセージを入力...">
+      <button id="send-btn">打ち上げる！ 🌸</button>
+    </div>
+  </div>
+
+  <script>
+    // 動画IDの設定
+    const VIDEO_1 = '4PJJGya37Wo'; // 12:59〜
+    const VIDEO_2 = '2palq7Q3LA8'; // 18:59〜
+
+    // --- YouTube API ---
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    let player;
+    let currentVideoId = "";
+
+    function onYouTubeIframeAPIReady() {
+      const initialVideo = getAppropriateVideoId();
+      currentVideoId = initialVideo;
+
+      player = new YT.Player('player', {
+        videoId: initialVideo,
+        playerVars: { 'autoplay': 1, 'controls': 1, 'rel': 0 },
+        events: { 'onReady': (event) => event.target.playVideo() }
+      });
+
+      // 30秒ごとに動画の切り替えチェック
+      setInterval(autoSwitchVideo, 30000);
+    }
+
+    // 現在時刻から適切な動画IDを判定する関数
+    function getAppropriateVideoId() {
+      const now = new Date();
+      const month = now.getMonth() + 1;
+      const date = now.getDate();
+      const time = now.getHours() * 100 + now.getMinutes();
+
+      // 3月29日限定の判定ロジック
+      if (month === 3 && date === 29) {
+        if (time >= 1859) return VIDEO_2; // 18:59以降
+        if (time >= 1259) return VIDEO_1; // 12:59以降
+      }
+      return VIDEO_1; // それ以外は1本目を待機画面として表示
+    }
+
+    function autoSwitchVideo() {
+      const targetId = getAppropriateVideoId();
+      if (currentVideoId !== targetId) {
+        currentVideoId = targetId;
+        player.loadVideoById(targetId);
+        console.log("動画を切り替えました: " + targetId);
+      }
+    }
+
+    // --- Socket.io 連携 ---
+    const socket = io('https://api.ai-event-collection.jp');
+
+    function emitComment() {
+      const input = document.getElementById('comment-input');
+      const text = input.value.trim();
+      if (text) {
+        socket.emit('send-comment', { text: text });
+        input.value = '';
+      }
+    }
+
+    document.getElementById('send-btn').onclick = emitComment;
+    document.getElementById('comment-input').onkeypress = (e) => { if (e.key === 'Enter') emitComment(); };
+
+    socket.on('new-comment', (data) => {
+      createFloatingComment(data.text);
+      launchFirework();
+    });
+
+    // --- 演出ロジック (略: 前回のコードと同様) ---
+    function createFloatingComment(text) {
+      const el = document.createElement('div');
+      el.className = 'floating-comment';
+      el.innerText = text;
+      el.style.left = (Math.random() * 60 + 20) + '%';
+      document.getElementById('ui-layer').appendChild(el);
+      setTimeout(() => el.remove(), 5000);
+    }
+
+    const canvas = document.getElementById('firework-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.onresize = resize; resize();
+
+    function launchFirework() {
+      const x = Math.random() * canvas.width;
+      const y = canvas.height * (Math.random() * 0.4 + 0.2);
+      const color = `hsl(${340 + Math.random() * 40}, 100%, 75%)`; // 桜色
+      for (let i = 0; i < 30; i++) {
+        particles.push({ x, y, vx: (Math.random() - 0.5) * 10, vy: (Math.random() - 0.5) * 10, life: 1.0, color });
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles = particles.filter(p => p.life > 0);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy; p.vy += 0.12; p.life -= 0.015;
+        ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+</body>
+
+</html>
