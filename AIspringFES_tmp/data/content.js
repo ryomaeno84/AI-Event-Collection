@@ -6,6 +6,13 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 23,
+            "date": "2026.03.13",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　13th Artist. kojirou",
+            "content": "出演者紹介記事１３人目はkojirouさん！\nぜひご覧ください！https://note.com/maenoryo/n/n3cb35213ae69?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
             "id": 22,
             "date": "2026.03.12",
             "title": "#AISpringFES2026 出演者様インタビュー記事　12th Artist. 大鹿ニク",
