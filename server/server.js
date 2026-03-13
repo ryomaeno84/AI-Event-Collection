@@ -7,10 +7,31 @@ const path = require('path');
 const fs = require('fs');
 const { google } = require('googleapis');
 const nodemailer = require('nodemailer');
-const { canUpload, recordUpload } = require('./db');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// ─── IPベースの10分間アップロード制限機能 ────────────────
+const ipUploadRecords = new Map();
+const COOLDOWN_MS = 10 * 60 * 1000; // 10分 (ミリ秒)
+
+function checkAndRecordIp(clientIp) {
+  const now = Date.now();
+  if (ipUploadRecords.has(clientIp)) {
+    const lastUploadTime = ipUploadRecords.get(clientIp);
+    const elapsed = now - lastUploadTime;
+    if (elapsed < COOLDOWN_MS) {
+      const remainingMinutes = Math.ceil((COOLDOWN_MS - elapsed) / 60000);
+      return { allowed: false, remainingMinutes };
+    }
+  }
+  return { allowed: true };
+}
+
+function updateIpRecord(clientIp) {
+  ipUploadRecords.set(clientIp, Date.now());
+}
+// ────────────────────────────────────────────────────────
 
 // ─── CORS ──────────────────────────────────────────────
 app.use(cors());
@@ -44,18 +65,18 @@ const upload = multer({
 
 // ─── Google Drive Folder ID Map ───────────────────────
 const FOLDER_MAP = {
-  'spring':  process.env.FOLDER_ID_SPRING,
-  'summer':  process.env.FOLDER_ID_SUMMER,
-  'autumn':  process.env.FOLDER_ID_AUTUMN,
-  'kohaku':  process.env.FOLDER_ID_KOHAKU
+  'spring': process.env.FOLDER_ID_SPRING,
+  'summer': process.env.FOLDER_ID_SUMMER,
+  'autumn': process.env.FOLDER_ID_AUTUMN,
+  'kohaku': process.env.FOLDER_ID_KOHAKU
 };
 
 // ─── Event display name map ───────────────────────────
 const EVENT_NAME_MAP = {
-  'spring':  'AI Spring FES',
-  'summer':  'AI SUPERLIVE SUMMER',
-  'autumn':  '秋の夜長のAI映像祭',
-  'kohaku':  'AI紅白歌合戦'
+  'spring': 'AI Spring FES',
+  'summer': 'AI SUPERLIVE SUMMER',
+  'autumn': '秋の夜長のAI映像祭',
+  'kohaku': 'AI紅白歌合戦'
 };
 
 // ─── Google Drive Auth (Service Account) ──────────────
@@ -79,7 +100,6 @@ async function getAccessToken() {
 
 // ─── Find or Create performer subfolder ───────────────
 async function findOrCreatePerformerFolder(drive, performerName, parentFolderId) {
-  // Search for existing folder with matching name inside the parent
   const query = [
     `name = '${performerName.replace(/'/g, "\\'")}'`,
     `mimeType = 'application/vnd.google-apps.folder'`,
@@ -101,7 +121,6 @@ async function findOrCreatePerformerFolder(drive, performerName, parentFolderId)
     return existing.id;
   }
 
-  // Create new subfolder
   const createRes = await drive.files.create({
     requestBody: {
       name: performerName,
@@ -117,21 +136,16 @@ async function findOrCreatePerformerFolder(drive, performerName, parentFolderId)
 }
 
 // ─── Resumable Upload to Google Drive (REST API) ──────
-// Uses the REST API directly with resumable upload type,
-// bypassing the googleapis library's upload to have full
-// control over the upload session and quota handling.
 async function uploadToGoogleDrive(filePath, fileName, rootFolderId, performerName) {
   const auth = getGoogleAuth();
   const drive = google.drive({ version: 'v3', auth });
 
-  // 1. Find or create performer subfolder inside root event folder
   const performerFolderId = await findOrCreatePerformerFolder(drive, performerName, rootFolderId);
 
   const fileStat = fs.statSync(filePath);
   const fileSize = fileStat.size;
   const accessToken = await getAccessToken();
 
-  // 2. Initiate resumable upload session via REST API
   const metadata = {
     name: fileName,
     parents: [performerFolderId],
@@ -164,7 +178,6 @@ async function uploadToGoogleDrive(filePath, fileName, rootFolderId, performerNa
 
   console.log(`  [Drive] Resumable upload session started`);
 
-  // 3. Upload file in chunks (10 MB per chunk)
   const CHUNK_SIZE = 10 * 1024 * 1024; // 10 MB
   let offset = 0;
 
@@ -189,11 +202,9 @@ async function uploadToGoogleDrive(filePath, fileName, rootFolderId, performerNa
     const status = chunkRes.status;
 
     if (status === 200 || status === 201) {
-      // Upload complete
       const fileData = await chunkRes.json();
       console.log(`  [Drive Upload] 100% complete`);
 
-      // 4. Optional: try to transfer ownership (best-effort, won't block on failure)
       try {
         const ownerEmail = process.env.EMAIL_USER;
         if (ownerEmail) {
@@ -215,7 +226,6 @@ async function uploadToGoogleDrive(filePath, fileName, rootFolderId, performerNa
 
       return fileData;
     } else if (status === 308) {
-      // Chunk accepted, continue
       const progress = Math.round(((chunkEnd + 1) / fileSize) * 100);
       console.log(`  [Drive Upload] ${progress}% complete`);
     } else {
@@ -250,7 +260,7 @@ async function sendNotificationEmail(eventKey, performerName, fileData, uploadDa
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER, // Same address as sender (kanariya.glay84@gmail.com)
+    to: process.env.EMAIL_USER,
     subject: `【動画受信】${eventName} - ${performerName}様より`,
     text: [
       `動画を受信しました。`,
@@ -273,14 +283,11 @@ async function sendNotificationEmail(eventKey, performerName, fileData, uploadDa
 
 // ─── Helper: get client IP ────────────────────────────
 function getClientIp(req) {
-  return req.headers['x-forwarded-for']?.split(',')[0]?.trim()
-    || req.connection?.remoteAddress
-    || req.ip;
+  return req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for']?.split(',')[0]?.trim() || req.connection?.remoteAddress || req.ip;
 }
 
 // ─── Helper: extract event key from eventName ─────────
 function getEventKey(eventName) {
-  // eventName is sent from the hidden field: "spring", "summer", "autumn", "kohaku"
   if (!eventName) return null;
   const key = eventName.toLowerCase().trim();
   return FOLDER_MAP[key] ? key : null;
@@ -288,22 +295,23 @@ function getEventKey(eventName) {
 
 // ─── UPLOAD ENDPOINT ──────────────────────────────────
 app.post('/api/upload', (req, res) => {
+  // 1. まずIPアドレスを取得してチェック！
   const clientIp = getClientIp(req);
+  const rateCheck = checkAndRecordIp(clientIp);
 
-  // 1. Rate limit check (before accepting file)
-  const rateCheck = canUpload(clientIp);
+  // 10分経過していない場合は、ファイルを受け取る前に弾き飛ばす
   if (!rateCheck.allowed) {
+    console.log(`[ブロック] IP: ${clientIp} は制限中です。残り約 ${rateCheck.remainingMinutes} 分`);
     return res.status(429).json({
       success: false,
-      message: `アップロード制限中です。あと約${rateCheck.remainingMinutes}分お待ちください。`
+      message: `連続アップロード制限中です。あと約 ${rateCheck.remainingMinutes} 分お待ちください。`
     });
   }
 
-  // 2. Accept file via multer
+  // 2. IPチェックを通過した場合のみ、ファイルを受け付ける
   const singleUpload = upload.single('videoFile');
 
   singleUpload(req, res, async (multerErr) => {
-    // Local helper to clean up temp file
     const cleanupTempFile = () => {
       if (req.file && fs.existsSync(req.file.path)) {
         fs.unlinkSync(req.file.path);
@@ -311,70 +319,45 @@ app.post('/api/upload', (req, res) => {
     };
 
     try {
-      console.log("Received body:", req.body);
-
       if (multerErr) {
         if (multerErr.code === 'LIMIT_FILE_SIZE') {
-          return res.status(413).json({
-            success: false,
-            message: 'ファイルサイズが10GBを超えています。'
-          });
+          return res.status(413).json({ success: false, message: 'ファイルサイズが10GBを超えています。' });
         }
         if (multerErr.code === 'LIMIT_UNEXPECTED_FILE') {
-          return res.status(400).json({
-            success: false,
-            message: 'アップロードできるファイル形式は .mp4 のみです。'
-          });
+          return res.status(400).json({ success: false, message: 'アップロードできるファイル形式は .mp4 のみです。' });
         }
         throw multerErr;
       }
 
       if (!req.file) {
-        return res.status(400).json({
-          success: false,
-          message: '動画ファイルが選択されていません。'
-        });
+        return res.status(400).json({ success: false, message: '動画ファイルが選択されていません。' });
       }
 
-      // 3. Validate upload key
       const uploadKey = req.body.uploadKey;
       const expectedKey = process.env.UPLOAD_KEY || '1234';
       if (uploadKey !== expectedKey) {
         cleanupTempFile();
-        return res.status(403).json({
-          success: false,
-          message: 'アップロードキーが正しくありません。'
-        });
+        return res.status(403).json({ success: false, message: 'アップロードキーが正しくありません。' });
       }
 
-      // 4. Validate performer name
       const performerName = req.body.performerName?.trim();
       if (!performerName) {
         cleanupTempFile();
-        return res.status(400).json({
-          success: false,
-          message: '出演者名を入力してください。'
-        });
+        return res.status(400).json({ success: false, message: '出演者名を入力してください。' });
       }
 
-      // 5. Resolve target folder (from hidden field eventName)
       const eventKey = getEventKey(req.body.eventName);
       if (!eventKey) {
         cleanupTempFile();
-        return res.status(400).json({
-          success: false,
-          message: '無効なイベントページです。'
-        });
+        return res.status(400).json({ success: false, message: '無効なイベントページです。' });
       }
       const folderId = FOLDER_MAP[eventKey];
 
-      // 6. Build target file name: "PerformerName.ext"
       const ext = path.extname(req.file.originalname);
       const targetFileName = performerName + ext;
 
       console.log(`[Upload] ${performerName} -> ${eventKey} (${req.file.size} bytes)`);
 
-      // 7. Upload to Google Drive using stream + resumable
       const fileData = await uploadToGoogleDrive(
         req.file.path,
         targetFileName,
@@ -384,22 +367,18 @@ app.post('/api/upload', (req, res) => {
 
       console.log(`  [Drive] Uploaded: ${fileData.name} (ID: ${fileData.id})`);
 
-      // 8. Record upload for rate limiting
-      recordUpload(clientIp);
+      // ★ここでアップロード成功を記録し、このIPを10分間ロックする
+      updateIpRecord(clientIp);
 
-      // 9. Send notification email
       const uploadDate = new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' });
       try {
         await sendNotificationEmail(eventKey, performerName, fileData, uploadDate);
       } catch (mailErr) {
         console.error('  [Mail] Failed to send notification:', mailErr.message);
-        // Don't fail the upload if mail fails
       }
 
-      // 10. Cleanup temp file
       cleanupTempFile();
 
-      // 11. Success response
       return res.json({
         success: true,
         message: 'アップロードが完了しました！',
@@ -430,7 +409,6 @@ const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`   GET  /api/health - Health check\n`);
 });
 
-// 5GB+ uploads: 2 hour timeout
 server.keepAliveTimeout = 7200000;
 server.headersTimeout = 7260000;
-server.timeout = 0; // no socket timeout
+server.timeout = 0;

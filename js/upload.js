@@ -12,7 +12,7 @@
   // ── Configuration ────────────────────────────────────
   // ★注意★ 送っていただいたコードのURLが古いIPアドレスに戻っていました。
   // 前回取得した「https://xxxx.trycloudflare.com」のURLに書き換えてくださいね！
-  const API_BASE_URL = 'https://downloads-pushing-handles-citysearch.trycloudflare.com';
+  const API_BASE_URL = 'https://api.ai-event-collection.jp';
   const MAX_FILE_SIZE = 10 * 1024 * 1024 * 1024; // 10 GB
   const COOLDOWN_MS = 10 * 60 * 1000; // 10分 (ミリ秒)
   const STORAGE_KEY = 'lastUploadTime';
