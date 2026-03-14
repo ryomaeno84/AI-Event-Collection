@@ -6,6 +6,13 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 24,
+            "date": "2026.03.14",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　14th Artist. To(代理回答クロ)",
+            "content": "出演者紹介記事１４人目はToさん！\n本日お誕生日のクロちゃんが代理回答してくれています🐺\nぜひご覧ください！https://note.com/maenoryo/n/nf89665e77699?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
             "id": 23,
             "date": "2026.03.13",
             "title": "#AISpringFES2026 出演者様インタビュー記事　13th Artist. kojirou",
