@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Spring FES - Test Mode</title>
+  <title>AI Spring FES 2026 - Live (Test Mode)</title>
   <script src="https://api.ai-event-collection.jp/socket.io/socket.io.js"></script>
   <style>
     :root {
@@ -16,7 +16,7 @@
       margin: 0;
       background: #0a0a0a;
       color: white;
-      font-family: sans-serif;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -28,12 +28,14 @@
       display: flex;
       align-items: center;
       padding: 0 25px;
-      background: #1a1a1a;
+      background: linear-gradient(90deg, #1a1a1a, #000);
       border-bottom: 1px solid var(--glass);
     }
 
     .logo {
+      font-size: 1.2rem;
       font-weight: bold;
+      letter-spacing: 2px;
       color: var(--pink);
     }
 
@@ -51,6 +53,7 @@
       background: #000;
       border-radius: 16px;
       overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
     }
 
     #player {
@@ -80,7 +83,7 @@
 
     #sidebar {
       flex: 1;
-      min-width: 300px;
+      min-width: 320px;
       display: flex;
       flex-direction: column;
       background: rgba(20, 20, 20, 0.8);
@@ -92,8 +95,9 @@
     .sidebar-header {
       padding: 15px;
       background: var(--glass);
-      color: var(--pink);
+      border-bottom: 1px solid var(--glass);
       font-weight: bold;
+      color: var(--pink);
     }
 
     #log-list {
@@ -121,27 +125,32 @@
     }
 
     footer {
-      height: 80px;
+      height: 90px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #111;
+      border-top: 1px solid var(--glass);
     }
 
     .input-group {
       display: flex;
-      gap: 10px;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 8px 18px;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       width: 80%;
-      max-width: 600px;
+      max-width: 700px;
+      backdrop-filter: blur(10px);
     }
 
     input {
       flex: 1;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--glass);
+      background: transparent;
+      border: none;
       color: white;
-      padding: 10px;
-      border-radius: 20px;
+      font-size: 16px;
       outline: none;
     }
 
@@ -149,18 +158,24 @@
       background: var(--pink);
       color: white;
       border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
+      padding: 10px 28px;
+      border-radius: 25px;
       cursor: pointer;
       font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ff4d94;
     }
 
     .floating-comment {
       position: absolute;
       color: #fff;
       font-weight: bold;
-      font-size: 2vw;
-      text-shadow: 0 0 10px var(--pink);
+      font-size: 1.8vw;
+      text-shadow: 0 0 10px var(--pink), 0 0 20px rgba(0, 0, 0, 0.8);
       white-space: nowrap;
       animation: floatUp 5s forwards linear;
     }
@@ -185,7 +200,7 @@
 
 <body>
   <header>
-    <div class="logo">🌸 AI Spring FES - TEST MODE</div>
+    <div class="logo">🌸 AI Spring FES 2026 - Live (Test Mode)</div>
   </header>
   <main>
     <div id="video-section">
@@ -201,12 +216,12 @@
   <footer>
     <div class="input-group">
       <input type="text" id="comment-input" placeholder="テスト入力をどうぞ！" maxlength="40">
-      <button id="send-btn">送信 🚀</button>
+      <button id="send-btn">打ち上げる！ 🚀</button>
     </div>
   </footer>
 
   <script>
-    // テスト動画ID
+    // 【テスト用】Rick Astley
     const TEST_VIDEO = 'dQw4w9WgXcQ';
 
     const tag = document.createElement('script');
@@ -217,21 +232,28 @@
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('player', {
         videoId: TEST_VIDEO,
-        playerVars: { 'autoplay': 1, 'controls': 1, 'origin': window.location.origin },
+        playerVars: {
+          'autoplay': 1,
+          'mute': 1, // ブラウザ制限回避のためミュートで開始
+          'controls': 1,
+          'rel': 0,
+          'modestbranding': 1,
+          'origin': location.origin // ドメインを明示的に指定
+        },
         events: { 'onReady': (event) => event.target.playVideo() }
       });
     }
 
     const socket = io('https://api.ai-event-collection.jp');
 
-    // 履歴の読み込み
+    // ★サーバーから過去の履歴を受け取る
     socket.on('load-history', (history) => {
       const list = document.getElementById('log-list');
       list.innerHTML = '';
       history.forEach(data => addLogItem(data));
     });
 
-    // 新規コメント受信
+    // コメント受信
     socket.on('new-comment', (data) => {
       createFloatingComment(data.text);
       addLogItem(data);
@@ -255,9 +277,9 @@
       const list = document.getElementById('log-list');
       const item = document.createElement('div');
       item.className = 'log-item';
-      const timeStr = data.time || "00:00";
+      const displayTime = data.time || "00:00";
       const shortId = data.user ? data.user.substring(0, 4) : "User";
-      item.innerHTML = `<div class="log-meta"><span>ID: ${shortId}</span><span>${timeStr}</span></div><div>${data.text}</div>`;
+      item.innerHTML = `<div class="log-meta"><span>ID: ${shortId}</span><span>${displayTime}</span></div><div class="log-content">${data.text}</div>`;
       list.prepend(item);
     }
 
@@ -266,7 +288,8 @@
       el.className = 'floating-comment';
       el.innerText = text;
       el.style.left = (Math.random() * 60 + 20) + '%';
-      document.getElementById('comment-layer').appendChild(el);
+      const layer = document.getElementById('comment-layer');
+      if (layer) layer.appendChild(el);
       setTimeout(() => el.remove(), 5000);
     }
 
@@ -281,7 +304,7 @@
       const y = canvas.height * (Math.random() * 0.4 + 0.2);
       const hue = 330 + Math.random() * 40;
       for (let i = 0; i < 60; i++) {
-        particles.push({ x, y, vx: (Math.random() - 0.5) * 15, vy: (Math.random() - 0.5) * 15, life: 1.6, color: `hsl(${hue}, 100%, 75%)` });
+        particles.push({ x, y, vx: (Math.random() - 0.5) * 15, vy: (Math.random() - 0.5) * 15, life: 1.6, color: `hsl(${hue}, 100%, 75%)`, glowColor: `hsl(${hue}, 100%, 60%)` });
       }
     }
 
@@ -291,8 +314,10 @@
       particles = particles.filter(p => p.life > 0);
       particles.forEach(p => {
         p.x += p.vx; p.y += p.vy; p.vy += 0.1; p.life -= 0.008;
+        ctx.shadowBlur = 15; ctx.shadowColor = p.glowColor;
         ctx.fillStyle = p.color; ctx.globalAlpha = p.life;
         ctx.beginPath(); ctx.arc(p.x, p.y, 3.5, 0, Math.PI * 2); ctx.fill();
+        ctx.shadowBlur = 0;
       });
       requestAnimationFrame(animate);
     }
