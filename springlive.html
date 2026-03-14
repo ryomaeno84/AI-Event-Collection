@@ -14,7 +14,8 @@
 
     body {
       margin: 0;
-      background: #0a0a0a;
+      background: #000;
+      /* 黒画面対策で背景は純粋な黒 */
       color: white;
       font-family: 'Helvetica Neue', Arial, sans-serif;
       height: 100vh;
@@ -30,6 +31,8 @@
       padding: 0 25px;
       background: linear-gradient(90deg, #1a1a1a, #000);
       border-bottom: 1px solid var(--glass);
+      flex-shrink: 0;
+      /* ヘッダーが潰れないように */
     }
 
     .logo {
@@ -45,6 +48,7 @@
       padding: 15px;
       gap: 15px;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     #video-section {
@@ -54,11 +58,20 @@
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      /* 動画プレイヤーを中央に固定 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
+    /* 動画プレイヤーの配置を絶対配置で固定（F12対策） */
     #player {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
+      z-index: 1;
     }
 
     #firework-canvas {
@@ -124,6 +137,12 @@
       margin-bottom: 4px;
     }
 
+    .log-content {
+      font-size: 14px;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
     footer {
       height: 90px;
       display: flex;
@@ -131,6 +150,7 @@
       justify-content: center;
       background: #111;
       border-top: 1px solid var(--glass);
+      flex-shrink: 0;
     }
 
     .input-group {
@@ -221,7 +241,6 @@
   </footer>
 
   <script>
-    // 【テスト用】Rick Astley
     const TEST_VIDEO = 'dQw4w9WgXcQ';
 
     const tag = document.createElement('script');
@@ -234,26 +253,29 @@
         videoId: TEST_VIDEO,
         playerVars: {
           'autoplay': 1,
-          'mute': 1, // ブラウザ制限回避のためミュートで開始
+          'mute': 1,
           'controls': 1,
           'rel': 0,
           'modestbranding': 1,
-          'origin': location.origin // ドメインを明示的に指定
+          'origin': location.origin,
+          'enablejsapi': 1 // API制御を確実にする
         },
-        events: { 'onReady': (event) => event.target.playVideo() }
+        events: {
+          'onReady': (event) => {
+            event.target.playVideo();
+          }
+        }
       });
     }
 
     const socket = io('https://api.ai-event-collection.jp');
 
-    // ★サーバーから過去の履歴を受け取る
     socket.on('load-history', (history) => {
       const list = document.getElementById('log-list');
       list.innerHTML = '';
       history.forEach(data => addLogItem(data));
     });
 
-    // コメント受信
     socket.on('new-comment', (data) => {
       createFloatingComment(data.text);
       addLogItem(data);
@@ -296,15 +318,21 @@
     const canvas = document.getElementById('firework-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    function resize() { canvas.width = canvas.parentElement.clientWidth; canvas.height = canvas.parentElement.clientHeight; }
+    function resize() {
+      if (!canvas.parentElement) return;
+      canvas.width = canvas.parentElement.clientWidth;
+      canvas.height = canvas.parentElement.clientHeight;
+    }
     window.onresize = resize; resize();
 
     function launchFirework() {
       const x = Math.random() * canvas.width;
       const y = canvas.height * (Math.random() * 0.4 + 0.2);
       const hue = 330 + Math.random() * 40;
+      const color = `hsl(${hue}, 100%, 75%)`;
+      const glowColor = `hsl(${hue}, 100%, 60%)`;
       for (let i = 0; i < 60; i++) {
-        particles.push({ x, y, vx: (Math.random() - 0.5) * 15, vy: (Math.random() - 0.5) * 15, life: 1.6, color: `hsl(${hue}, 100%, 75%)`, glowColor: `hsl(${hue}, 100%, 60%)` });
+        particles.push({ x, y, vx: (Math.random() - 0.5) * 15, vy: (Math.random() - 0.5) * 15, life: 1.6, color, glowColor });
       }
     }
 
