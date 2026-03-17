@@ -47,7 +47,7 @@
 
       <section id="news" class="tab-pane active">
         <h3 class="section-title">News</h3>
-        <div class="news-list">
+        <div class="news-list" id="news-list">
           <div class="news-item">
             <div class="news-date">2026.03.12</div>
             <div class="news-title">
@@ -55,7 +55,8 @@
               <div style="font-size: 0.9rem; font-weight: normal; color: #ccc; margin-top: 0.5rem; line-height: 1.5;">
                 出演者紹介記事１２人目は大鹿ニクさん！<br>
                 ぜひご覧ください！<br>
-                <a href="https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw" target="_blank" style="color: #00d2ff; text-decoration: underline; word-break: break-all;">https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw</a>
+                <a href="https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw" target="_blank"
+                  style="color: #00d2ff; text-decoration: underline; word-break: break-all;">https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw</a>
               </div>
             </div>
           </div>
@@ -67,6 +68,13 @@
             <div class="news-date">2026.03.01</div>
             <div class="news-title">AI Spring FES 開催決定！公式サイトオープン</div>
           </div>
+        </div>
+
+        <div id="news-toggle-container" style="text-align: center; margin-top: 20px; display: none;">
+          <button id="news-toggle-btn"
+            style="background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">
+            さらに表示 ▼
+          </button>
         </div>
       </section>
 
@@ -86,48 +94,20 @@
         </div>
 
         <div id="upload-integrated"
-          style="margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+          style="margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
           <h4
             style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
             動画アップロード</h4>
-          <div class="upload-description" style="margin-bottom: 1.5rem;">
-            出演者様専用の動画アップロードフォームです。<br>
-            運営から共有されたアップロードキーを入力し、動画ファイルを送信してください。<br>
-            <span style="color: #f9d423; font-weight: bold; display: inline-block; margin-top: 0.5rem;">※連続アップロード制限:
-              10分間隔を空けてください (ファイルサイズ上限: 10GB)</span>
-          </div>
 
-          <form id="upload-form" class="upload-form">
-            <input type="hidden" name="eventName" id="upload-event-name" value="spring">
+          <p style="color: #ddd; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">
+            作品の提出は、セキュリティが強固なGoogleの公式システムで受け付けております。<br>
+            <span style="color: #f9d423;">※提出にはGoogleアカウントへのログインが必要です。</span>
+          </p>
 
-            <div class="upload-field">
-              <label class="upload-label" for="upload-performer">出演者名</label>
-              <input type="text" id="upload-performer" class="upload-input" placeholder="例: 出演者名" required>
-            </div>
-            <div class="upload-field">
-              <label class="upload-label" for="upload-key">アップロードキー</label>
-              <input type="password" id="upload-key" class="upload-input" placeholder="運営から共有されたキー" required>
-            </div>
-            <div class="upload-field">
-              <label class="upload-label">動画ファイル</label>
-              <input type="file" id="upload-file" class="upload-file-real" accept="video/mp4, .mp4">
-              <label for="upload-file" id="upload-file-label" class="upload-file-label">📁 ファイルを選択</label>
-            </div>
-            <button type="submit" id="upload-submit" class="upload-submit">アップロード</button>
-          </form>
-
-          <div id="upload-progress-container" class="upload-progress-container" style="display:none; margin-top: 20px;">
-            <p id="upload-status-msg" style="color: #fff; margin-bottom: 10px;">送信中...</p>
-            <div class="upload-progress-track"
-              style="background: #333; height: 10px; border-radius: 5px; overflow: hidden;">
-              <div id="upload-progress-bar" class="upload-progress-bar"
-                style="background: #00d2ff; width: 0%; height: 100%; transition: width 0.3s;"></div>
-            </div>
-            <div id="upload-progress-text" class="upload-progress-text"
-              style="color: #00d2ff; text-align: right; margin-top: 5px;">0%</div>
-          </div>
-
-          <div id="upload-status" class="upload-status" style="margin-top: 20px;"></div>
+          <a href="【ここに作成したGoogleフォームのURLを貼る】" target="_blank"
+            style="display: inline-block; background: #00d2ff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; transition: 0.3s; box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);">
+            安全なフォームを開いて提出する
+          </a>
         </div>
       </section>
 
@@ -158,7 +138,6 @@
       <section id="artist" class="tab-pane">
         <h3 class="section-title">Artist</h3>
         <div class="artist-grid">
-
           <div class="artist-card">
             <img src="https://ui-avatars.com/api/?name=VD&background=222&color=e0e0e0&size=200" alt="Virtual Resonance"
               class="artist-thumb">
@@ -171,7 +150,6 @@
               </div>
             </div>
           </div>
-
           <div class="artist-card">
             <img src="https://ui-avatars.com/api/?name=AS&background=111&color=e0e0e0&size=200" alt="AI Symphony"
               class="artist-thumb">
@@ -184,7 +162,6 @@
               </div>
             </div>
           </div>
-
           <div class="artist-card">
             <img src="https://ui-avatars.com/api/?name=SD&background=444&color=fff&size=200" alt="Silver Dawn"
               class="artist-thumb">
@@ -197,14 +174,12 @@
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
       <section id="goods" class="tab-pane">
         <h3 class="section-title">公式グッズ</h3>
         <p style="color: #aaa; margin-bottom: 2rem;">イベントをさらに盛り上げる公式アイテム。各ストアからお求めいただけます。</p>
-
         <div class="product-grid">
           <div class="product-card">
             <div class="product-image-wrap">
@@ -214,18 +189,9 @@
             <div class="product-info">
               <h4 class="product-name">AI Spring FES 公式Tシャツ (Black)</h4>
               <div class="product-price">¥3,500 <span class="tax-in">(税込)</span></div>
-              <a href="#" class="product-buy-btn">
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.5rem;">
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                カートへ入れる
-              </a>
+              <a href="#" class="product-buy-btn">カートへ入れる</a>
             </div>
           </div>
-
           <div class="product-card">
             <div class="product-image-wrap">
               <img src="https://placehold.co/400x400/222/00d2ff?text=Acrylic+Stand" alt="アクリルスタンド"
@@ -234,15 +200,7 @@
             <div class="product-info">
               <h4 class="product-name">イベント限定 アクリルスタンド</h4>
               <div class="product-price">¥1,800 <span class="tax-in">(税込)</span></div>
-              <a href="#" class="product-buy-btn">
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"
-                  stroke-linecap="round" stroke-linejoin="round" style="margin-right:0.5rem;">
-                  <circle cx="9" cy="21" r="1"></circle>
-                  <circle cx="20" cy="21" r="1"></circle>
-                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-                カートへ入れる
-              </a>
+              <a href="#" class="product-buy-btn">カートへ入れる</a>
             </div>
           </div>
         </div>
@@ -256,61 +214,11 @@
             作品投稿・グッズ販売ガイドライン</h4>
           <p style="margin-bottom: 1rem;">本ガイドラインは、本イベントに参加する皆さまが、関係法令および各種権利を尊重した上で、安心して作品を投稿し、グッズを販売・交流できるよう定めるものです。
           </p>
-          <p style="margin-bottom: 2rem;">
-            本ガイドラインは、法令の改正や社会情勢、技術動向等を踏まえ、必要に応じて内容を変更する場合があります。変更を行う場合は、変更の効力発生時期を定め、変更内容を運営の公式SNS、イベントページ等で事前に周知します（緊急を要する場合を除く）。周知後、参加者が本イベントへの参加・作品投稿・グッズ販売を継続した場合、変更後のガイドラインに同意したものとみなします。
-          </p>
-
           <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">1. 用語の定義</h5>
           <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
             <li style="margin-bottom: 0.5rem;"><strong>・主催者</strong><br>AI音楽映像イベントを企画・運営する責任者を指します。</li>
             <li><strong>・参加者</strong><br>AI音楽映像イベントへ作品を投稿する方、または参加者独自のグッズを制作・販売する方を指します。</li>
           </ul>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">2. 基本方針（知的財産権の尊重）</h5>
-          <p style="margin-bottom: 0.5rem;">本イベントでは、著作権、商標権、肖像権、パブリシティ権、その他の知的財産権および関連する権利を尊重することを基本方針とします。</p>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
-            <li style="margin-bottom: 0.5rem;">投稿できる作品は <strong>オリジナル作品に限ります</strong>。</li>
-            <li style="margin-bottom: 0.5rem;">既存のアニメ、映画、ゲーム、漫画、小説、楽曲、キャラクター、ロゴ等を基にした二次創作作品やパロディ作品は認めていません。</li>
-            <li style="margin-bottom: 0.5rem;">
-              AI生成物であっても、既存作品や人物、キャラクター、声、人格等を第三者が識別可能な程度で再現・模倣した場合は権利侵害となるおそれがあります。そのような作品は投稿できません。</li>
-            <li>使用する生成AIツール、素材、音源等の商用利用可否や利用条件は、参加者自身の責任で確認してください。</li>
-          </ul>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">3. 投稿できる作品</h5>
-          <div style="margin-bottom: 1.5rem;">
-            <p style="margin-bottom: 0.5rem;"><strong>3-1.
-                オリジナル作品</strong><br>参加者自身が制作、またはAIを用いて生成したオリジナルのキャラクター、音楽、映像等。</p>
-            <p><strong>3-2. 公開ライセンス素材の利用</strong><br>Creative
-              Commons等の公開ライセンスに基づき、商用利用を含め合法的に利用可能な素材を、ライセンス条件を遵守して使用した作品。</p>
-          </div>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">4. 投稿できない作品</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: none;">
-            <li>4-1. 二次創作・パロディ（既存キャラクター、作品の模倣、AIカバー等）</li>
-            <li>4-2. 声・人格の模倣（実在人物、有名人の声の模倣等）</li>
-            <li>4-3. 音楽著作権侵害（既存楽曲のメロディ利用、許諾のないカバー等）</li>
-            <li>4-4. 商標・ブランド侵害</li>
-            <li>4-5. その他の違法・不適切行為（ディープフェイク、誹謗中傷、過度な暴力・性的表現等）</li>
-          </ul>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">5. 権利侵害が疑われる場合の対応</h5>
-          <p style="margin-bottom: 1.5rem;">運営の裁量により、作品の公開停止、修正依頼、審査対象除外、今後の参加拒否等の措置を行う場合があります。</p>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">6. 著作権および利用権</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
-            <li>著作権は各作成者に帰属します。</li>
-            <li>主催者はイベント配信・広報目的の範囲で非独占的利用権を有します。</li>
-          </ul>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">7. グッズ販売</h5>
-          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem; list-style-type: disc;">
-            <li>参加者独自のグッズ制作は自由です。</li>
-            <li>主催者は「場を提供する立場」であり、販売管理・宣伝等は行わず、トラブルに関して一切責任を負いません。</li>
-          </ul>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">10. お問い合わせ窓口</h5>
-          <p>運営公式SNS（<a href="https://x.com/AI_animeryo" style="color: #00d2ff; text-decoration: none;"
-              target="_blank">https://x.com/AI_animeryo</a>）のダイレクトメッセージにて。</p>
         </div>
       </section>
 
@@ -328,7 +236,40 @@
   </div>
 
   <script src="js/main.js"></script>
-  <script src="js/upload.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const newsItems = document.querySelectorAll('#news-list .news-item');
+      const toggleContainer = document.getElementById('news-toggle-container');
+      const toggleBtn = document.getElementById('news-toggle-btn');
+
+      const MAX_ITEMS = 5; // 何件目から隠すか
+      let isExpanded = false; // 現在開いているかどうかのフラグ
+
+      // 記事が5件より多い場合のみ、ボタンを表示して隠す処理を実行
+      if (newsItems.length > MAX_ITEMS) {
+        toggleContainer.style.display = 'block';
+
+        // 6件目以降を最初は隠す
+        for (let i = MAX_ITEMS; i < newsItems.length; i++) {
+          newsItems[i].style.display = 'none';
+        }
+
+        // ボタンがクリックされたときの処理
+        toggleBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded; // 状態を反転
+
+          for (let i = MAX_ITEMS; i < newsItems.length; i++) {
+            // isExpanded が true なら表示、false なら隠す
+            newsItems[i].style.display = isExpanded ? '' : 'none';
+          }
+
+          // ボタンのテキストを変更
+          toggleBtn.innerText = isExpanded ? '閉じる ▲' : 'さらに表示 ▼';
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
