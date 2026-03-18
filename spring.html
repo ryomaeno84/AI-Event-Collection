@@ -137,43 +137,8 @@
 
       <section id="artist" class="tab-pane">
         <h3 class="section-title">Artist</h3>
-        <div class="artist-grid">
-          <div class="artist-card">
-            <img src="https://ui-avatars.com/api/?name=VD&background=222&color=e0e0e0&size=200" alt="Virtual Resonance"
-              class="artist-thumb">
-            <div class="artist-info">
-              <div class="artist-name">Virtual Resonance</div>
-              <div class="artist-links">
-                <a href="#" class="link-btn">X (Twitter)</a>
-                <a href="#" class="link-btn">YouTube</a>
-                <a href="#" class="link-btn goods-btn">🛒 Goods</a>
-              </div>
-            </div>
-          </div>
-          <div class="artist-card">
-            <img src="https://ui-avatars.com/api/?name=AS&background=111&color=e0e0e0&size=200" alt="AI Symphony"
-              class="artist-thumb">
-            <div class="artist-info">
-              <div class="artist-name">AI Symphony</div>
-              <div class="artist-links">
-                <a href="#" class="link-btn">X (Twitter)</a>
-                <a href="#" class="link-btn">YouTube</a>
-                <a href="#" class="link-btn goods-btn">🛒 Goods</a>
-              </div>
-            </div>
-          </div>
-          <div class="artist-card">
-            <img src="https://ui-avatars.com/api/?name=SD&background=444&color=fff&size=200" alt="Silver Dawn"
-              class="artist-thumb">
-            <div class="artist-info">
-              <div class="artist-name">Silver Dawn</div>
-              <div class="artist-links">
-                <a href="#" class="link-btn">X (Twitter)</a>
-                <a href="#" class="link-btn">YouTube</a>
-                <a href="#" class="link-btn goods-btn">🛒 Goods</a>
-              </div>
-            </div>
-          </div>
+        <div id="artist-grid" class="artist-grid">
+          <!-- Dynamically inserted by js/artist_spring.js -->
         </div>
       </section>
 
@@ -236,6 +201,7 @@
   </div>
 
   <script src="js/main.js"></script>
+  <script src="js/artist_spring.js"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
