@@ -6,6 +6,34 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 28,
+            "date": "2026.03.18",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　18th Artist. Holographic Diva／プロデューサー・五島 雅",
+            "content": "出演者紹介記事１８人目は五島 雅さん！\nぜひご覧ください！https://note.com/maenoryo/n/n5ebc721be9f9?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
+            "id": 27,
+            "date": "2026.03.17",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　17th Artist. 結音",
+            "content": "出演者紹介記事１７人目は結音さん！\nぜひご覧ください！https://note.com/maenoryo/n/n7e8a88140e20?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
+            "id": 26,
+            "date": "2026.03.16",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　16th Artist. とも",
+            "content": "出演者紹介記事１６人目はともさん！\nぜひご覧ください！https://note.com/maenoryo/n/nba385887aaf5?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
+            "id": 25,
+            "date": "2026.03.15",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　15th Artist. からすい",
+            "content": "出演者紹介記事１５人目はからすいさん！\nぜひご覧ください！https://note.com/maenoryo/n/n41466d2dae50?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
             "id": 24,
             "date": "2026.03.14",
             "title": "#AISpringFES2026 出演者様インタビュー記事　14th Artist. To(代理回答クロ)",
