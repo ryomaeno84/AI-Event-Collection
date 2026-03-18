@@ -58,70 +58,40 @@
           </div>
         </div>
 
-        <div id="news-toggle-container" style="text-align: center; margin-top: 20px; display: none;">
-          <button id="news-toggle-btn"
-            style="background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">
-            さらに表示 ▼
-          </button>
+        <div id="news-toggle-container" class="news-toggle-container hidden">
+          <button id="news-toggle-btn" class="news-toggle-btn">さらに表示 ▼</button>
         </div>
       </section>
 
       <section id="about" class="tab-pane">
         <h3 class="section-title">About</h3>
-        <div class="about-text" style="max-width: 750px; margin: 0 auto; color: #ddd; line-height: 1.8;">
+        <div class="about-text">
 
-          <div style="text-align: center; margin-bottom: 2.5rem; position: relative; padding: 1.5rem 0;">
-            <div
-              style="border-top: 1px solid rgba(255,255,255,0.3); border-bottom: 1px solid rgba(255,255,255,0.3); padding: 1.5rem 0; display: inline-block; width: 100%;">
-              <h4 style="color: #fff; font-size: 1.6rem; font-weight: bold; margin: 0; letter-spacing: 0.1em;">
-                #AISUPERLIVE夏2026 開催のお知らせ
-              </h4>
+          <div class="about-header">
+            <div class="about-title-box">
+              <h4 class="about-title">#AISUPERLIVE夏2026 開催のお知らせ</h4>
             </div>
           </div>
 
-          <p style="text-align: center; font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 2.5rem;">
+          <p class="about-lead">
             AI紅白歌合戦から半年――<br>
             全員参加のお祭りが帰ってくる！
           </p>
 
-          <div
-            style="background: rgba(0, 210, 255, 0.1); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: 12px; padding: 2rem; margin-bottom: 3rem; box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.1);">
-            <h5
-              style="color: #00d2ff; margin-bottom: 1.5rem; font-size: 1.3rem; border-left: 4px solid #00d2ff; padding-left: 1rem;">
-              【Topics】</h5>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-              <div>
-                <strong style="color: #fff; font-size: 1.1rem;">① MV1つで参加！</strong><br>
-                <span style="margin-left: 1.5rem; display: block;">真夏のオールジャンル・AI大音楽祭！</span>
-              </div>
-              <div>
-                <strong style="color: #fff; font-size: 1.1rem;">② #AIイラスト でも本編動画に参加できます！</strong><br>
-                <span style="margin-left: 1.5rem; display: block;">詳しくは明日20:00の案内ポストをチェック！</span>
-              </div>
-              <div>
-                <strong style="color: #fff; font-size: 1.1rem;">③ AI動画＋AIイラストで合計130名の出演者！</strong><br>
-                <span style="margin-left: 1.5rem; display: block;">表現方法を超えた超ビッグイベント！</span>
-              </div>
-            </div>
-          </div>
-
-          <div style="display: flex; flex-direction: column; gap: 2.5rem; text-align: center;">
-            <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;">
-              <p style="color: #ff007f; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">＼ジャンル不問！
-                動画出演枠は50名に拡大！／</p>
+          <div class="highlight-group">
+            <div class="highlight-item">
+              <p class="highlight-title accent-pink">＼ジャンル不問！ 動画出演枠は50名に拡大！／</p>
               <p>アニメ、実写、ポップス、ストーリー、全部OK！<br>あなたの〝好き〟を世界に発信しよう！</p>
             </div>
 
-            <div style="border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.5rem;">
-              <p style="color: #ff007f; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">＼MV1本で誰でも参加可能！／
-              </p>
-              <p>最短1分のMVで参加OK！<br>最近流行りのAIエージェントがあれば大丈夫！<br>静止画MVもお待ちしてます！</p>
+            <div class="highlight-item">
+              <p class="highlight-title accent-pink">＼MV1本で誰でも参加可能！／</p>
+              <p>最短1分のMVで手軽に参加OK！<br>もちろん5分の本気MVもお待ちしてます！</p>
             </div>
 
-            <div>
-              <p style="color: #00d2ff; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.5rem;">＼今回のライブは動画だけじゃない！／
-              </p>
-              <p>AIイラストで参加できるライブ本編！<br>約80名様のAIイラストを募集します！<br>詳しくは明日の案内ポストをご参照下さい！</p>
+            <div class="highlight-item">
+              <p class="highlight-title accent-blue">＼全員分やります！　出演者様の紹介記事！／</p>
+              <p>各出演者様の魅力にとことんフォーカス！<br>音楽雑誌風の画像で雰囲気抜群！<br>この夏のスターはあなただ！</p>
             </div>
           </div>
         </div>
@@ -129,50 +99,34 @@
 
       <section id="join" class="tab-pane">
         <h3 class="section-title">参加方法</h3>
-        <div class="guideline-content"
-          style="max-width: 680px; margin: 0 auto; color: #ddd; line-height: 1.8; font-size: 0.95rem;">
+        <div class="join-container">
 
-          <div
-            style="text-align: center; margin-bottom: 2.5rem; padding: 2.5rem 0; border: 4px solid #00d2ff; border-radius: 20px; background: rgba(0, 210, 255, 0.07); box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);">
-            <h4
-              style="color: #00d2ff; font-size: 2.8rem; font-weight: 900; margin: 0; text-shadow: 0 0 15px rgba(0, 210, 255, 0.8); letter-spacing: 0.05em; line-height: 1.2;">
-              🎥 動画・音楽で参加
-            </h4>
+          <div class="join-header theme-blue">
+            <h4 class="join-title theme-blue">🎥 動画・音楽で参加</h4>
           </div>
 
-          <h5
-            style="color: #fff; margin-bottom: 1rem; font-size: 1.2rem; border-left: 4px solid #00d2ff; padding-left: 1rem;">
-            【出演条件】</h5>
-          <table
-            style="width: 100%; border-collapse: collapse; margin-bottom: 2rem; font-size: 0.95rem; background: rgba(0,0,0,0.3); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+          <h5 class="topics-title">【出演条件】</h5>
+          <table class="guideline-table">
             <tbody>
               <tr>
-                <th
-                  style="padding: 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0, 210, 255, 0.1); width: 30%;">
-                  時間</th>
-                <td style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">お一人様につき 1分〜5分のMV 1つ</td>
+                <th>時間</th>
+                <td>お一人様につき 1分〜5分のMV 1つ</td>
               </tr>
               <tr>
-                <th
-                  style="padding: 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0, 210, 255, 0.1);">
-                  ジャンル</th>
-                <td style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">不問</td>
+                <th>ジャンル</th>
+                <td>不問</td>
               </tr>
               <tr>
-                <th
-                  style="padding: 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0, 210, 255, 0.1);">
-                  拡張子</th>
-                <td style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">wav または mp4</td>
+                <th>拡張子</th>
+                <td>wav または mp4</td>
               </tr>
               <tr>
-                <th
-                  style="padding: 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); background: rgba(0, 210, 255, 0.1);">
-                  画面・fps</th>
-                <td style="padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">1280x720、24〜30fps</td>
+                <th>画面・fps</th>
+                <td>1280x720、24〜30fps</td>
               </tr>
               <tr>
-                <th style="padding: 1rem; text-align: left; background: rgba(0, 210, 255, 0.1);">参加形式</th>
-                <td style="padding: 1rem;">
+                <th>参加形式</th>
+                <td>
                   ① 動画 ＋ 曲（定員35名）<br>
                   ② 静止画 ＋ 曲（定員15名）<br>
                   ③ 曲のみ (静止画は主催が用意、上記15名に含む)
@@ -181,66 +135,28 @@
             </tbody>
           </table>
 
-          <h5 style="color: #fff; margin-bottom: 1rem; font-size: 1.1rem;">【応募フォーム】</h5>
-          <p style="margin-bottom: 4rem;"><a href="https://forms.gle/sCHkr8ED9zgYFLW26" target="_blank"
-              style="color: #00d2ff; text-decoration: none; word-break: break-all; font-weight: bold;">https://forms.gle/sCHkr8ED9zgYFLW26</a><br>
-            <span style="font-size: 0.85rem; color: #aaa;">※定員超過の場合、抽選でお選びします。</span>
+          <h5 class="topics-title">【出演応募フォーム】</h5>
+          <p class="mb-large">
+            <a href="https://forms.gle/sCHkr8ED9zgYFLW26" target="_blank"
+              class="accent-blue text-link">https://forms.gle/sCHkr8ED9zgYFLW26</a><br>
+            <span class="hint-text">※定員超過の場合、抽選でお選びします。</span>
           </p>
 
-          <hr style="border: none; border-top: 2px dashed rgba(255,255,255,0.2); margin: 4rem 0;">
-
-          <div
-            style="text-align: center; margin-bottom: 2.5rem; padding: 2.5rem 0; border: 4px solid #ff007f; border-radius: 20px; background: rgba(255, 0, 127, 0.07); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2);">
-            <h4
-              style="color: #ff007f; font-size: 2.8rem; font-weight: 900; margin: 0; text-shadow: 0 0 15px rgba(255, 0, 127, 0.8); letter-spacing: 0.05em; line-height: 1.2;">
-              🎨 イラストで参加
-            </h4>
-            <p style="color: #fff; margin-top: 15px; font-weight: bold; font-size: 1.1rem;">AISUPERLIVE夏2026 AIイラスト募集
-            </p>
-          </div>
-
-          <p style="margin-bottom: 1.5rem;">
-            このライブに参加できるのはAI動画だけじゃない！<br>
-            AIイラストでAI SUPERLIVE夏に参加しませんか？
-          </p>
-          <p style="margin-bottom: 1.5rem;">
-            【#AISUPERLIVE夏2026イラスト】のタグをつけて画像を投稿して頂くと、幕間カット or フィナーレ曲に使わせて頂きます！
-          </p>
-
-          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">【募集要項】</h5>
-          <ul style="margin-bottom: 3rem; padding-left: 1.5rem; list-style-type: none;">
-            <li>・募集枚数：約80枚（お1人1枚まで）</li>
-            <li>・テーマ　：夏らしさがあれば何でもOK！</li>
-            <li>・サイズ　：1920x1080、16:9（推奨）</li>
-          </ul>
-
-          <hr style="border-color: rgba(255,255,255,0.1); margin: 3rem 0;">
-
-          <div id="upload-integrated"
-            style="margin-top: 2rem; background: rgba(0,0,0,0.4); padding: 2.5rem; border-radius: 12px; border: 1px solid #00d2ff; text-align: center;">
-            <h4
-              style="color: #fff; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(0, 210, 255, 0.3); padding-bottom: 0.5rem;">
-              動画アップロード（出演者専用）</h4>
-            <p style="color: #ddd; margin-bottom: 25px; line-height: 1.8;">
+          <div id="upload-integrated" class="upload-integrated">
+            <h4 class="upload-title">動画アップロード（出演者専用）</h4>
+            <p class="upload-desc">
               作品の提出は、Googleの公式システムで受け付けております。<br>
-              <span style="color: #f9d423; font-weight: bold;">※提出にはGoogleアカウントへのログインとアップロードキーが必要です。</span>
+              <span class="accent-yellow" style="font-weight: bold;">※提出にはGoogleアカウントへのログインとアップロードキーが必要です。</span>
             </p>
 
-            <div style="margin-bottom: 20px;">
-              <input type="password" id="upload-key-input" placeholder="アップロードキーを入力"
-                style="padding: 10px; border-radius: 5px; border: 1px solid #444; background: #222; color: #fff; width: 250px; text-align: center;">
-              <button id="upload-auth-btn" onclick="checkKey()"
-                style="padding: 10px 20px; border-radius: 5px; border: none; background: #00d2ff; color: #000; font-weight: bold; cursor: pointer; margin-left: 10px;">
-                認証
-              </button>
-              <p id="upload-error-msg" style="color: #ff007f; font-size: 0.85rem; margin-top: 10px; display: none;"></p>
+            <div class="upload-controls">
+              <input type="password" id="upload-key-input" class="upload-input" placeholder="アップロードキーを入力">
+              <button id="upload-auth-btn" class="upload-btn" onclick="checkKey()">認証</button>
+              <p id="upload-error-msg" class="upload-error" style="display: none;"></p>
             </div>
 
-            <div id="form-link-container" style="display: none; transition: 0.5s;">
-              <a href="https://forms.gle/Q2apkjPNie4Wrooq9" target="_blank"
-                style="display: inline-block; background: #00d2ff; color: #000; padding: 15px 45px; text-decoration: none; border-radius: 30px; font-weight: 900; font-size: 1.3em; transition: 0.3s; box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);">
-                フォームを開いて提出する
-              </a>
+            <div id="form-link-container" class="form-link-container" style="display: none;">
+              <a href="https://forms.gle/KVMeZXyP6tqRMu4U7" target="_blank" class="form-link">フォームを開いて提出する</a>
             </div>
           </div>
 
@@ -269,26 +185,20 @@
 
       <section id="artist" class="tab-pane">
         <h3 class="section-title">Artist</h3>
-        <div class="artist-grid"
-          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 2rem; padding: 1rem;">
+        <div class="artist-grid">
 
-          <div class="artist-card"
-            style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
-            <img src="image/artist/icon01.png" alt="Artist Name" class="artist-thumb"
-              style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid #00d2ff;">
+          <div class="artist-card">
+            <img src="image/artist/icon01.png" alt="Artist Name" class="artist-thumb">
             <div class="artist-info">
-              <div class="artist-name" style="color: #fff; font-weight: bold; margin-bottom: 1rem; font-size: 0.9rem;">
-                Artist 01</div>
-              <div class="artist-links" style="display: flex; justify-content: center; gap: 0.8rem;">
-                <a href="https://x.com/username" target="_blank" title="X (Twitter)"
-                  style="color: #fff; background: #000; width: 32px; height: 32px; border-radius: 5px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2);">
+              <div class="artist-name">Artist 01</div>
+              <div class="artist-social-links">
+                <a href="https://x.com/username" target="_blank" title="X (Twitter)" class="social-link x">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                     <path
                       d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
-                <a href="https://youtube.com/@channel" target="_blank" title="YouTube"
-                  style="color: #fff; background: #ff0000; width: 32px; height: 32px; border-radius: 5px; display: flex; align-items: center; justify-content: center;">
+                <a href="https://youtube.com/@channel" target="_blank" title="YouTube" class="social-link youtube">
                   <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                     <path
                       d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
@@ -298,29 +208,27 @@
             </div>
           </div>
 
-          <div class="artist-card"
-            style="background: rgba(255,255,255,0.05); border-radius: 12px; padding: 1.5rem; text-align: center; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s;">
-            <img src="image/artist/icon02.png" alt="Artist Name" class="artist-thumb"
-              style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 2px solid #00d2ff;">
+          <div class="artist-card">
+            <img src="image/artist/icon02.png" alt="Artist Name" class="artist-thumb">
             <div class="artist-info">
-              <div class="artist-name" style="color: #fff; font-weight: bold; margin-bottom: 1rem; font-size: 0.9rem;">
-                Artist 02</div>
-              <div class="artist-links" style="display: flex; justify-content: center; gap: 0.8rem;">
-                <a href="#" target="_blank"
-                  style="color: #fff; background: #000; width: 32px; height: 32px; border-radius: 5px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.2);"><svg
-                    viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <div class="artist-name">Artist 02</div>
+              <div class="artist-social-links">
+                <a href="#" target="_blank" class="social-link x">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                     <path
                       d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg></a>
-                <a href="#" target="_blank"
-                  style="color: #fff; background: #ff0000; width: 32px; height: 32px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"><svg
-                    viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                  </svg>
+                </a>
+                <a href="#" target="_blank" class="social-link youtube">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                     <path
                       d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                  </svg></a>
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
@@ -331,96 +239,7 @@
 
       <section id="guideline" class="tab-pane">
         <h3 class="section-title">Guideline</h3>
-        <div class="guideline-content" style="color: #ddd; line-height: 1.8; font-size: 0.95rem;">
-
-          <h4
-            style="color: #fff; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem; font-size: 1.3rem;">
-            作品投稿・グッズ販売ガイドライン
-          </h4>
-          <p style="margin-bottom: 1.5rem;">
-            本ガイドラインは、本イベントに参加する皆さまが、関係法令および各種権利を尊重した上で、安心して作品を投稿し、グッズを販売・交流できるよう定めるものです。<br>
-            本ガイドラインは、法令の改正や社会情勢、技術動向等を踏まえ、必要に応じて内容を変更する場合があります。変更を行う場合は、変更の効力発生時期を定め、変更内容を運営の公式SNS、イベントページ等で事前に周知します（緊急を要する場合を除く）。周知後、参加者が本イベントへの参加・作品投稿・グッズ販売を継続した場合、変更後のガイドラインに同意したものとみなします。
-          </p>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            1. 用語の定義
-          </h5>
-          <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
-            <li><strong>・主催者</strong><br>AI音楽映像イベントを企画・運営する責任者を指します。</li>
-            <li style="margin-top: 0.8rem;"><strong>・参加者</strong><br>AI音楽映像イベントへ作品を投稿する方、または参加者独自のグッズを制作・販売する方を指します。
-            </li>
-          </ul>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            2. 基本方針（知的財産権の尊重）
-          </h5>
-          <p style="margin-bottom: 0.5rem;">本イベントでは、著作権、商標権、肖像権、パブリシティ権、その他の知的財産権および関連する権利を尊重することを基本方針とします。</p>
-          <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
-            <li>投稿できる作品は <strong>オリジナル作品</strong> に限ります。</li>
-            <li>既存のアニメ、映画、ゲーム、漫画、小説、楽曲、キャラクター、ロゴ等を基にした二次創作作品やパロディ作品は認めていません。</li>
-            <li>AI生成物であっても、既存作品や人物、キャラクター、声、人格等を第三者が識別可能な程度で再現・模倣した場合は権利侵害となるおそれがあります。そのような作品は投稿できません。</li>
-            <li>使用する生成AIツール、素材、音源等の商用利用可否や利用条件は、参加者自身の責任で確認してください。</li>
-          </ul>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            3. 投稿できる作品
-          </h5>
-          <div style="margin-bottom: 1.5rem;">
-            <p style="margin-bottom: 0.8rem;"><strong>3-1. オリジナル作品</strong><br>
-              参加者自身が制作、またはAIを用いて生成したオリジナルのキャラクター、音楽、映像等。</p>
-            <p><strong>3-2. 公開ライセンス素材の利用</strong><br>
-              Creative Commons等の公開ライセンスに基づき、商用利用を含め合法的に利用可能な素材を、ライセンス条件を遵守して使用した作品。</p>
-          </div>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            4. 投稿できない作品
-          </h5>
-          <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
-            <li>4-1. 二次創作・パロディ（既存キャラクター、作品の模倣、AIカバー等）</li>
-            <li>4-2. 声・人格の模倣（実在人物、有名人の声の模倣等）</li>
-            <li>4-3. 音楽著作権侵害（既存楽曲のメロディ利用、許諾のないカバー等）</li>
-            <li>4-4. 商標・ブランド侵害</li>
-            <li>4-5. その他の違法・不適切行為（ディープフェイク、誹謗中傷、過度な暴力・性的表現等）</li>
-          </ul>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            5. 権利侵害が疑われる場合の対応
-          </h5>
-          <p style="margin-bottom: 1.5rem;">運営の裁量により、作品の公開停止、修正依頼、審査対象除外、今後の参加拒否等の措置を行う場合があります。</p>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            6. 著作権および利用権
-          </h5>
-          <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
-            <li>著作権は各作成者に帰属します。</li>
-            <li>主催者はイベント配信・広報目的の範囲で非独占的利用権を有します。</li>
-          </ul>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            7. グッズ販売
-          </h5>
-          <ul style="padding-left: 1.5rem; margin-bottom: 1.5rem;">
-            <li>参加者独自のグッズ制作は自由です。</li>
-            <li>主催者は「場を提供する立場」であり、販売管理・宣伝等は行わず、トラブルに関して一切責任を負いません。</li>
-          </ul>
-
-          <h5
-            style="color: #00d2ff; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 0.5rem; border-left: 4px solid #00d2ff; padding-left: 0.8rem;">
-            10. お問い合わせ窓口
-          </h5>
-          <p style="margin-bottom: 1.5rem;">
-            運営公式SNS（<a href="https://x.com/AI_animeryo" target="_blank"
-              style="color: #00d2ff; text-decoration: underline;">https://x.com/AI_animeryo</a>）のダイレクトメッセージにて。
-          </p>
-
-        </div>
+        <div id="guideline-container"></div>
       </section>
 
     </main>
@@ -437,53 +256,6 @@
   <script src="js/main.js"></script>
   <script src="js/upload.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // --- タブ切り替え機能 ---
-      const tabBtns = document.querySelectorAll('.tab-btn');
-      const tabPanes = document.querySelectorAll('.tab-pane');
-
-      tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const target = btn.getAttribute('data-target');
-
-          // 全てのボタンからactiveを外す
-          tabBtns.forEach(b => b.classList.remove('active'));
-          // クリックされたボタンにactiveを付与
-          btn.classList.add('active');
-
-          // 全てのパネルからactiveを外し、ターゲットのみ表示
-          tabPanes.forEach(pane => {
-            pane.classList.remove('active');
-            if (pane.id === target) {
-              pane.classList.add('active');
-            }
-          });
-        });
-      });
-
-      // --- Newsセクションの折り畳み機能 ---
-      const newsItems = document.querySelectorAll('#news-list .news-item');
-      const toggleContainer = document.getElementById('news-toggle-container');
-      const toggleBtn = document.getElementById('news-toggle-btn');
-      const MAX_ITEMS = 5;
-      let isExpanded = false;
-
-      if (newsItems.length > MAX_ITEMS) {
-        toggleContainer.style.display = 'block';
-        for (let i = MAX_ITEMS; i < newsItems.length; i++) {
-          newsItems[i].style.display = 'none';
-        }
-        toggleBtn.addEventListener('click', () => {
-          isExpanded = !isExpanded;
-          for (let i = MAX_ITEMS; i < newsItems.length; i++) {
-            newsItems[i].style.display = isExpanded ? '' : 'none';
-          }
-          toggleBtn.innerText = isExpanded ? '閉じる ▲' : 'さらに表示 ▼';
-        });
-      }
-    });
-  </script>
 </body>
 
 </html>

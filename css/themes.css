@@ -111,6 +111,32 @@
 #summer-theme .tab-btn.active::after { background: var(--accent-color); box-shadow: 0 0 10px var(--accent-color); }
 #summer-theme h3.section-title { border-color: var(--accent-color); color: var(--accent-color); text-shadow: 0 0 8px rgba(0,210,255,0.5); }
 
+/* --- Summer Theme Specific Decorations --- */
+#summer-theme .news-toggle-btn { border-color: var(--accent-color); color: var(--accent-color); }
+#summer-theme .news-toggle-btn:hover { background: rgba(0, 210, 255, 0.1); }
+
+#summer-theme .topics-box { background: rgba(0, 210, 255, 0.1); border-color: rgba(0, 210, 255, 0.3); box-shadow: inset 0 0 15px rgba(0, 210, 255, 0.1); }
+#summer-theme .topics-title { color: var(--accent-color); border-left-color: var(--accent-color); }
+
+#summer-theme .accent-pink { color: #ff007f !important; }
+#summer-theme .accent-blue { color: var(--accent-color) !important; }
+#summer-theme .accent-yellow { color: #f9d423 !important; }
+
+#summer-theme .join-header.theme-blue { border-color: var(--accent-color); background: rgba(0, 210, 255, 0.07); box-shadow: 0 0 20px rgba(0, 210, 255, 0.2); }
+#summer-theme .join-header.theme-pink { border-color: #ff007f; background: rgba(255, 0, 127, 0.07); box-shadow: 0 0 20px rgba(255, 0, 127, 0.2); }
+#summer-theme .join-title.theme-blue { color: var(--accent-color); text-shadow: 0 0 15px rgba(0, 210, 255, 0.8); }
+#summer-theme .join-title.theme-pink { color: #ff007f; text-shadow: 0 0 15px rgba(255, 0, 127, 0.8); }
+
+#summer-theme .guideline-table th { background: rgba(0, 210, 255, 0.1); }
+
+#summer-theme .upload-integrated { border-color: var(--accent-color); }
+#summer-theme .upload-integrated h4 { border-bottom-color: rgba(0, 210, 255, 0.3); }
+#summer-theme .upload-btn { background: var(--accent-color); }
+#summer-theme .form-link { background: var(--accent-color); box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4); }
+
+#summer-theme .artist-thumb { border-color: var(--accent-color); }
+
+
 /* -----------------------------
    AUTUMN FILM: Crimson / Red Carpet Spotlights
 ------------------------------ */
