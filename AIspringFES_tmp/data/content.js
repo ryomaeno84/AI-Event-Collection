@@ -6,6 +6,13 @@
 window.APP_DATA = {
     "news": [
         {
+            "id": 29,
+            "date": "2026.03.19",
+            "title": "#AISpringFES2026 出演者様インタビュー記事　19th Artist. 藍野シアン",
+            "content": "出演者紹介記事１９人目は藍野シアンさん！\nぜひご覧ください！https://note.com/maenoryo/n/nfdf3e9085bec?sub_rt=share_pw",
+            "status": "public"
+        },
+        {
             "id": 28,
             "date": "2026.03.18",
             "title": "#AISpringFES2026 出演者様インタビュー記事　18th Artist. Holographic Diva／プロデューサー・五島 雅",
