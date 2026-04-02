@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicons/favicon-16x16.png">
+  <link rel="manifest" href="image/favicons/manifest.json">
+  <link rel="shortcut icon" href="image/favicons/favicon.ico">
+
+  <title>Coming Soon | AI Event Collection</title>
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ページ全体を真っ黒に設定 */
+    body {
+      background-color: #000000;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+      /* 余計なスクロールを防ぐ */
+    }
+
+    /* 画像のスタイル：縁を黒にして背景に溶け込ませる */
+    .coming-soon-image {
+      max-width: 80%;
+      max-height: 60vh;
+      width: auto;
+      height: auto;
+      border: 2px solid #000000;
+      /* 縁取りを黒に */
+      margin-bottom: 2rem;
+      display: block;
+    }
+
+    /* 大きなCOMING SOONの文字 */
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      letter-spacing: 0.2em;
+      margin: 0 0 2rem 0;
+      font-weight: 900;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      background: transparent;
+      border: 1px solid #444;
+      color: #888;
+      text-decoration: none;
+      font-size: 0.9rem;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      border-color: #fff;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+
+<body>
+
+  <img src="image/Character/ComingSoon_gomennasai.jpg" alt="Coming Soon" class="coming-soon-image">
+
+  <h1>COMING SOON</h1>
+
+  <a href="index.html" class="back-btn">RETURN TO TOP</a>
+
+</body>
+
+</html>

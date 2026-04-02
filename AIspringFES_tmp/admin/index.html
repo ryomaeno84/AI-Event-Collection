@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIspringFES 2026 Admin</title>
+    <link rel="stylesheet" href="admin.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon/favicon_v3.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon/favicon-16x16_v2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon/favicon-32x32_v2.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/favicon/apple-touch-icon_v2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon/android-chrome-192x192_v2.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="../assets/images/favicon/android-chrome-512x512_v2.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <header class="admin-header">
+        <h1>AIspringFES 2026 - NEWS Admin</h1>
+        <div class="header-actions">
+            <span id="deploy-status" class="status-text hidden" style="margin-right: 15px;"></span>
+            <button id="btn-deploy" class="btn btn-danger" style="margin-right: 10px;">GitHubに反映 (本番公開)</button>
+            <a href="/" target="_blank" class="btn btn-outline">サイトを開く</a>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <!-- 記事リスト -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>記事一覧</h2>
+                <button id="btn-new" class="btn btn-primary">+ 新規追加</button>
+            </div>
+            <ul id="news-list" class="news-list">
+                <!-- JSで流し込み -->
+            </ul>
+        </aside>
+
+        <!-- 編集エリア -->
+        <main class="editor-area">
+            <h2 id="editor-title">記事の編集</h2>
+            <form id="news-form">
+                <input type="hidden" id="news-id" value="">
+                <input type="hidden" id="news-number-id" value="">
+
+                <div class="form-group">
+                    <label>日付 (例: 2026.04.01)</label>
+                    <input type="text" id="news-date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>見出し (Title)</label>
+                    <input type="text" id="news-title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>詳細内容 (URLは自動でリンク化されます)</label>
+                    <textarea id="news-content" rows="10" required></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <span id="save-status" class="status-text hidden">✔ 保存しました</span>
+                    <button type="button" id="btn-preview" class="btn btn-outline">プレビュー</button>
+                    <button type="button" id="btn-save-draft" class="btn btn-secondary">非表示保存</button>
+                    <button type="button" id="btn-publish" class="btn btn-primary">公開する</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <!-- プレビューモーダル -->
+    <div id="preview-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>プレビュー</h3>
+                <button id="btn-close-preview" class="btn-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- 実際のサイトに近い表示 -->
+                <div class="preview-box">
+                    <div class="preview-date" id="preview-date"></div>
+                    <div class="preview-title" id="preview-title"></div>
+                    <div class="preview-detail" id="preview-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AISpringFES 2026 - 現代最高峰のAI音楽祭</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon/favicon_v3.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16_v2.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32_v2.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon_v2.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/favicon/android-chrome-192x192_v2.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon/android-chrome-512x512_v2.png">
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <header>
+        <div class="kv-container">
+            <picture>
+                <source srcset="assets/images/kv/Firefly_Gemini_Flash_for_SP.webp" media="(max-width: 768px)">
+                <img src="assets/images/kv/Firefly_Gemini_Flash_960px.webp" alt="AISpringFES 2026 Key Visual"
+                    class="kv-image">
+            </picture>
+        </div>
+    </header>
+
+    <nav class="tabs-nav">
+        <ul class="tabs-list">
+            <li><button class="tab-btn active" data-tab="news">NEWS</button></li>
+            <li><button class="tab-btn" data-tab="about">ABOUT</button></li>
+            <li><button class="tab-btn" data-tab="timetable">TIMETABLE</button></li>
+            <li><button class="tab-btn" data-tab="guideline">GUIDELINE</button></li>
+            <li><button class="tab-btn" data-tab="artists">ARTISTS</button></li>
+            <li><button class="tab-btn" data-tab="goods">GOODS</button></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <!-- ニュースセクション -->
+        <section id="news" class="tab-content active">
+            <h2>LATEST NEWS</h2>
+            <ul class="news-list" id="news-container">
+                <!-- JSで流し込み -->
+            </ul>
+        </section>
+
+        <!-- 概要セクション -->
+        <section id="about" class="tab-content">
+            <h2>ABOUT</h2>
+            <div class="about-container">
+                <p class="about-lead">AISpringFES2026 ーそれは現代最高峰のAI音楽祭</p>
+
+                <p>AI創作の黎明期から活躍し、実績と実力を兼ね備えたクリエイターたちを厳選。総合的な視点で選び抜かれた19名が一堂に会する、春の頂上決戦です。<br>
+                    私たちがこのフェスティバルに込める想いは、大きく2つあります。</p>
+
+                <div class="about-point">
+                    <h3>【① AI創作のフラグシップを示し、未来への道筋を照らす 】</h3>
+                    <p>2025年末のAI紅白歌合戦のコンセプトが「全員参加」だったのに対し、AISpringFESは「少数精鋭」。各年度末にAI音楽界を牽引するクリエイターにスポットを当て、今ここにある進化とこれから来る未来を提示します。商業レベルのMV・楽曲が次々と生まれ、もはや実験段階を超えたAI音楽の“現在地”を、肌で感じていただける5時間半をお届けします。
+                    </p>
+                </div>
+
+                <div class="about-point">
+                    <h3>【② AIクリエイターが正当な対価を得られる「持続可能な文化」を築く】</h3>
+                    <p>素晴らしい作品を生み出すクリエイターたちが、多大な時間と情熱を注ぎながらも、その価値が適切に還元されにくい現状を変えていきたいと考えています。<br>
+                        そこで本イベントでは、公式グッズ販売を「新しいクリエイター経済圏構築」の第一歩として位置づけています。売上は全て運営費に充て、透明性のある収支公開も行います。将来的に、AIクリエイター一人ひとりがオリジナルグッズを安心して展開し、対価が還元される流れを広げていく——そんな文化の礎を、少しずつ築いていきます。
+                    </p>
+                </div>
+
+                <p class="about-footer">誰でも作品を作れる時代だからこそ、誰とも違うものを見せる。<br>
+                    Nothing comes close to us－この世の全ては、何一つとして私たちに似ていない。<br>
+                    AI音楽の“今”と“次”を共に体感し、共に未来を創りましょう。</p>
+
+                <div class="signature-container">
+                    <div class="signature-text">
+                        AIイベント運営会社代表<br>
+                        <span class="owner-name">前野 凌</span>
+                    </div>
+                    <img src="assets/images/signature/signature_300_150_tr1.png" alt="Signature"
+                        class="signature-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- タイムテーブル -->
+        <section id="timetable" class="tab-content">
+            <h2>TIME TABLE</h2>
+            <div class="timetable-container">
+                <img src="assets/images/kv/Timetable.jpg" alt="AISpringFES 2026 Time Table" class="timetable-image">
+            </div>
+        </section>
+
+        <!-- ガイドライン -->
+        <section id="guideline" class="tab-content">
+            <h2>GUIDELINE</h2>
+            <div class="guideline-container" id="guideline-text">
+                <!-- JSで流し込み -->
+            </div>
+        </section>
+
+        <!-- 出演者 -->
+        <section id="artists" class="tab-content">
+            <h2>ARTISTS</h2>
+            <div class="artist-grid" id="artist-container">
+                <!-- JSで流し込み -->
+            </div>
+        </section>
+
+        <!-- グッズ -->
+        <section id="goods" class="tab-content">
+            <h2>GOODS</h2>
+            <div class="goods-container">
+                <div class="goods-card">
+                    <h3>◆オフィシャルグッズ</h3>
+                    <div class="goods-action">
+                        <a href="https://market.up-t.jp/creator/6950983d2fc51" target="_blank"
+                            class="x-link btn-large">SHOP ONLINE</a>
+                    </div>
+                </div>
+
+                <div class="goods-card" style="margin-top: 40px;">
+                    <h3>◆出演者グッズ紹介</h3>
+                    <p style="font-size: 0.9rem; color: #ccc; margin-bottom: 15px;">※販売の管理は運営では行いません。各リンク先をご確認ください。</p>
+                    <div class="goods-action">
+                        <a href="https://note.com/maenoryo/n/ncaeb82113a58" target="_blank"
+                            class="x-link btn-large">VIEW DETAILS (note)</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-links">
+            <a href="https://www.youtube.com/@IDOL_Diffusion" target="_blank" class="footer-link">公式YouTube</a>
+            <a href="https://x.com/AI_animeryo" target="_blank" class="footer-link">公式X (Twitter)</a>
+        </div>
+        <p class="footer-message">お問い合わせは公式Xアカウントのダイレクトメッセージにてお願いします</p>
+        <p class="footer-copyright">&copy; 2026 AISpringFES Project. All rights reserved.</p>
+    </footer>
+
+    <script src="data/content.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

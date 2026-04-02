@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="MAcyEP6Orc6uN_v1QCNc2k1dZ2gWkMQ4d3Z94s_k_dA" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicons/favicon-16x16.png">
+  <link rel="manifest" href="image/favicons/manifest.json">
+  <link rel="shortcut icon" href="image/favicons/favicon.ico">
+
+  <title>AI Spring FES | AI Event Collection</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/event.css">
+  <link rel="stylesheet" href="css/themes.css">
+</head>
+
+<body id="spring-theme">
+  <div class="bg-layer"></div>
+
+  <div class="event-wrapper">
+    <header class="event-header">
+      <a href="index.html" class="back-btn" aria-label="トップページへ戻る">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <h1 class="event-title">AI Spring FES</h1>
+
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-target="news">News</button>
+        <button class="tab-btn" data-target="about">About</button>
+        <button class="tab-btn" data-target="join">参加方法</button>
+        <button class="tab-btn" data-target="timetable">Timetable</button>
+        <button class="tab-btn" data-target="artist">Artist</button>
+        <button class="tab-btn" data-target="goods">公式グッズ</button>
+        <button class="tab-btn" data-target="guideline">Guideline</button>
+      </nav>
+    </header>
+
+    <main class="content-container">
+
+      <section id="news" class="tab-pane active">
+        <h3 class="section-title">News</h3>
+        <div class="news-list" id="news-list">
+          <div class="news-item">
+            <div class="news-date">2026.03.12</div>
+            <div class="news-title">
+              #AISpringFES2026 出演者様インタビュー記事　12th Artist. 大鹿ニク
+              <div style="font-size: 0.9rem; font-weight: normal; color: #ccc; margin-top: 0.5rem; line-height: 1.5;">
+                出演者紹介記事１２人目は大鹿ニクさん！<br>
+                ぜひご覧ください！<br>
+                <a href="https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw" target="_blank"
+                  style="color: #00d2ff; text-decoration: underline; word-break: break-all;">https://note.com/maenoryo/n/n3550f2b0b0d5?sub_rt=share_pw</a>
+              </div>
+            </div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2026.03.10</div>
+            <div class="news-title">AI Spring FES 第2弾アーティスト発表＆チケット先行開始！</div>
+          </div>
+          <div class="news-item">
+            <div class="news-date">2026.03.01</div>
+            <div class="news-title">AI Spring FES 開催決定！公式サイトオープン</div>
+          </div>
+        </div>
+
+        <div id="news-toggle-container" style="text-align: center; margin-top: 20px; display: none;">
+          <button id="news-toggle-btn"
+            style="background: transparent; border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 25px; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: 0.3s;">
+            さらに表示 ▼
+          </button>
+        </div>
+      </section>
+
+      <section id="about" class="tab-pane">
+        <h3 class="section-title">About</h3>
+        <div class="about-text">
+          <p>次世代の知性が織りなす春の祭典「AI Spring FES」。</p>
+          <p>黒と銀のコントラストが魅せる洗練されたプレミアムな空間で、最先端のAI生成音楽・映像と人間の感性が融合する新たなエンターテインメント体験をお届けします。</p>
+          <p>春の訪れとともに、AIが切り拓く新しいアートの夜明けを目撃してください。</p>
+        </div>
+      </section>
+
+      <section id="join" class="tab-pane">
+        <h3 class="section-title">参加方法</h3>
+        <div class="about-text">
+          <p>参加方法やチケットに関する詳細は公式SNSなどで随時お知らせいたします。</p>
+        </div>
+
+        <div id="upload-integrated"
+          style="margin-top: 3rem; background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); text-align: center;">
+          <h4
+            style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+            動画アップロード</h4>
+
+          <p style="color: #ddd; margin-bottom: 20px; line-height: 1.6; font-size: 0.95rem;">
+            作品の提出は、セキュリティが強固なGoogleの公式システムで受け付けております。<br>
+            <span style="color: #f9d423;">※提出にはGoogleアカウントへのログインが必要です。</span>
+          </p>
+
+          <a href="【ここに作成したGoogleフォームのURLを貼る】" target="_blank"
+            style="display: inline-block; background: #00d2ff; color: #000; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 1.1em; transition: 0.3s; box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);">
+            安全なフォームを開いて提出する
+          </a>
+        </div>
+      </section>
+
+      <section id="timetable" class="tab-pane">
+        <h3 class="section-title">Timetable</h3>
+        <table class="timetable">
+          <tbody>
+            <tr>
+              <th>13:00</th>
+              <td>Opening Act: Virtual Resonance</td>
+            </tr>
+            <tr>
+              <th>14:30</th>
+              <td>AI Symphony Orchestra</td>
+            </tr>
+            <tr>
+              <th>16:00</th>
+              <td>Cyber Diva & DJ Nexus</td>
+            </tr>
+            <tr>
+              <th>18:00</th>
+              <td>Silver Dawn (Headliner)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="artist" class="tab-pane">
+        <h3 class="section-title">Artist</h3>
+        <div id="artist-grid" class="artist-grid">
+          <!-- Dynamically inserted by js/artist_spring.js -->
+        </div>
+      </section>
+
+      <section id="goods" class="tab-pane">
+        <h3 class="section-title">公式グッズ</h3>
+        <p style="color: #aaa; margin-bottom: 2rem;">イベントをさらに盛り上げる公式アイテム。各ストアからお求めいただけます。</p>
+        <div class="product-grid">
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://placehold.co/400x400/222/FFF?text=Official+T-Shirt" alt="公式Tシャツ" class="product-image">
+              <span class="product-badge">NEW</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">AI Spring FES 公式Tシャツ (Black)</h4>
+              <div class="product-price">¥3,500 <span class="tax-in">(税込)</span></div>
+              <a href="#" class="product-buy-btn">カートへ入れる</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <img src="https://placehold.co/400x400/222/00d2ff?text=Acrylic+Stand" alt="アクリルスタンド"
+                class="product-image">
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">イベント限定 アクリルスタンド</h4>
+              <div class="product-price">¥1,800 <span class="tax-in">(税込)</span></div>
+              <a href="#" class="product-buy-btn">カートへ入れる</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="guideline" class="tab-pane">
+        <h3 class="section-title">Guideline</h3>
+        <div class="guideline-content" style="color: #ddd; line-height: 1.8; font-size: 0.95rem;">
+          <h4
+            style="color: #fff; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 0.5rem;">
+            作品投稿・グッズ販売ガイドライン</h4>
+          <p style="margin-bottom: 1rem;">本ガイドラインは、本イベントに参加する皆さまが、関係法令および各種権利を尊重した上で、安心して作品を投稿し、グッズを販売・交流できるよう定めるものです。
+          </p>
+          <h5 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.1rem;">1. 用語の定義</h5>
+          <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+            <li style="margin-bottom: 0.5rem;"><strong>・主催者</strong><br>AI音楽映像イベントを企画・運営する責任者を指します。</li>
+            <li><strong>・参加者</strong><br>AI音楽映像イベントへ作品を投稿する方、または参加者独自のグッズを制作・販売する方を指します。</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="event-footer">
+      <div class="footer-links">
+        <a href="https://www.youtube.com/@IDOL_Diffusion" target="_blank" rel="noopener noreferrer"
+          class="footer-link">公式YouTube</a>
+        <a href="https://x.com/AI_animeryo" target="_blank" rel="noopener noreferrer" class="footer-link">公式X
+          (Twitter)</a>
+      </div>
+      <p class="footer-inquiry">お問い合わせは公式Xアカウントのダイレクトメッセージにてお願いします。</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/artist_spring.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const newsItems = document.querySelectorAll('#news-list .news-item');
+      const toggleContainer = document.getElementById('news-toggle-container');
+      const toggleBtn = document.getElementById('news-toggle-btn');
+
+      const MAX_ITEMS = 5; // 何件目から隠すか
+      let isExpanded = false; // 現在開いているかどうかのフラグ
+
+      // 記事が5件より多い場合のみ、ボタンを表示して隠す処理を実行
+      if (newsItems.length > MAX_ITEMS) {
+        toggleContainer.style.display = 'block';
+
+        // 6件目以降を最初は隠す
+        for (let i = MAX_ITEMS; i < newsItems.length; i++) {
+          newsItems[i].style.display = 'none';
+        }
+
+        // ボタンがクリックされたときの処理
+        toggleBtn.addEventListener('click', () => {
+          isExpanded = !isExpanded; // 状態を反転
+
+          for (let i = MAX_ITEMS; i < newsItems.length; i++) {
+            // isExpanded が true なら表示、false なら隠す
+            newsItems[i].style.display = isExpanded ? '' : 'none';
+          }
+
+          // ボタンのテキストを変更
+          toggleBtn.innerText = isExpanded ? '閉じる ▲' : 'さらに表示 ▼';
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
