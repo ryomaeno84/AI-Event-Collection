@@ -14,7 +14,14 @@ const summerArtists = [
     image: "image/artist/summer/icon02.png",
     xUrl: "#",
     youtubeUrl: "#"
+  },
+  {
+    name: "Artist 03",
+    image: "image/artist/summer/icon03.png",
+    xUrl: "#",
+    youtubeUrl: "#"
   }
+
 ];
 
 // Formatting Icons
