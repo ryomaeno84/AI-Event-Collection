@@ -1,5 +1,5 @@
 /**
- * Artist Data: Summer LIVE 2026 Updated (Full 35 Artists - Updated Image Path)
+ * Artist Data: Summer LIVE 2026 Updated (Full 35 Artists - Updated Image Path) 
  */
 
 const summerArtists = [
