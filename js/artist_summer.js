@@ -29,7 +29,7 @@ const summerArtists = [
   },
   {
     name: "To",
-    image: "image/summer2026/icon/icon05.JPG",
+    image: "image/summer2026/icon/icon05.jpg",
     xUrl: "https://x.com/divarias_suno?s=21&t=ndz2zklhnxycajH0oeV8cw",
     youtubeUrl: "https://youtube.com/channel/UCQ-_aDu402PryjjsbIyE82g?si=O4Vl6EAWz3oXifCU"
   },
@@ -263,13 +263,13 @@ const summerArtists = [
   },
   {
     name: "虎猫G3",
-    image: "image/summer2026/icon/icon44.JPG",
+    image: "image/summer2026/icon/icon44.jpg",
     xUrl: "https://x.com/toranekog3?s=21&t=6EeKspYvtzQcwqJiqZehlQ",
     youtubeUrl: "https://www.youtube.com/@ToranekoG3"
   },
   {
     name: "∫varts",
-    image: "image/summer2026/icon/icon45.PNG",
+    image: "image/summer2026/icon/icon45.png",
     xUrl: "https://x.com/varts_works?s=21",
     youtubeUrl: "https://youtube.com/@rui_varts?si=ycvybtTLgeBLocHi"
   },
@@ -281,7 +281,7 @@ const summerArtists = [
   },
   {
     name: "南黒山ソイヤ",
-    image: "image/summer2026/icon/icon47.PNG",
+    image: "image/summer2026/icon/icon47.png",
     xUrl: "https://x.com/SoiyaChannel",
     youtubeUrl: "https://youtube.com/@soiyachannel?si=P0yr-3UPWOv8H3lL"
   },
@@ -365,7 +365,7 @@ const summerArtists = [
   },
   {
     name: "CatBeat",
-    image: "image/summer2026/icon/icon61.PNG",
+    image: "image/summer2026/icon/icon61.png",
     xUrl: "https://x.com/catbeat5656?s=21&t=KKohCF4_huyFwjrfz_ytSA",
     youtubeUrl: "https://youtube.com/@catbeat-gabu?si=uXaSHa9NUGHI_B7-"
   },
