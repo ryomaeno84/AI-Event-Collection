@@ -88,9 +88,9 @@ const summerArtists = [
     youtubeUrl: "https://www.youtube.com/channel/UCjUGIWW2q7_yQER0txD24zg"
   },
   {
-    name: "YB",
+    name: "アメロナ・ノラ 🍬",
     image: "image/summer2026/icon/icon15.png",
-    xUrl: "https://x.com/YB35769492",
+    xUrl: "https://x.com/ameronanora1111",
     youtubeUrl: "https://www.youtube.com/@ameronanora1111"
   },
   {
