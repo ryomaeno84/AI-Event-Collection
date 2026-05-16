@@ -31,14 +31,14 @@
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
       </a>
-      <h1 class="event-title" style="color:#fff;">AI紅白歌合戦</h1>
+      <h1 class="event-title" style="color:#fff;">AI紅白歌合戦2026</h1>
       <nav class="tab-nav">
         <button class="tab-btn active" data-target="news">News</button>
         <button class="tab-btn" data-target="about">About</button>
         <button class="tab-btn" data-target="join">参加方法</button>
         <button class="tab-btn" data-target="timetable">Timetable</button>
         <button class="tab-btn" data-target="artist">Artist</button>
-        <button class="tab-btn" data-target="goods">公式グッズ</button>
+        <!-- <button class="tab-btn" data-target="goods">公式グッズ</button> -->
         <button class="tab-btn" data-target="guideline">Guideline</button>
       </nav>
     </header>
@@ -60,11 +60,7 @@
       <section id="about" class="tab-pane">
         <h3 class="section-title">About</h3>
         <div class="about-text">
-          <div class="about-header">
-            <div class="about-title-box">
-              <h4 class="about-title">#AISUPERLIVE夏2026 開催のお知らせ</h4>
-            </div>
-          </div>
+          <img src="image/kohaku2026/poster/kohaku2026_introduction.png" alt="kohaku" class="kohaku-image">
           <p class="about-lead">
             AI紅白歌合戦から半年――<br>
             全員参加のお祭りが帰ってくる！
@@ -286,10 +282,12 @@
         </div>
       </section>
 
-      <section id="goods" class="tab-pane">
+      <!-- <section id="goods" class="tab-pane">
         <h3 class="section-title">公式グッズ</h3>
-        <p style="text-align: center; color: #ccc; padding: 2rem;">準備中...</p>
-      </section>
+        <div id="goods-grid" class="goods-grid">
+          [Dynamically inserted by js/goods_kohaku.js]
+        </div>
+      </section> -->
 
       <section id="guideline" class="tab-pane">
         <h3 class="section-title">Guideline</h3>
@@ -310,6 +308,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/artist_kohaku.js"></script>
+  <!-- <script src="js/goods_kohaku.js"></script> -->
   <script src="js/upload.js"></script>
 </body>
 

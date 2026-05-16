@@ -38,7 +38,7 @@
         <button class="tab-btn" data-target="join">参加方法</button>
         <button class="tab-btn" data-target="timetable">Timetable</button>
         <button class="tab-btn" data-target="artist">Artist</button>
-        <button class="tab-btn" data-target="goods">公式グッズ</button>
+        <!-- <button class="tab-btn" data-target="goods">公式グッズ</button> -->
         <button class="tab-btn" data-target="guideline">Guideline</button>
       </nav>
     </header>
@@ -142,34 +142,12 @@
         </div>
       </section>
 
-      <section id="goods" class="tab-pane">
+      <!-- <section id="goods" class="tab-pane">
         <h3 class="section-title">公式グッズ</h3>
-        <p style="color: #aaa; margin-bottom: 2rem;">イベントをさらに盛り上げる公式アイテム。各ストアからお求めいただけます。</p>
-        <div class="product-grid">
-          <div class="product-card">
-            <div class="product-image-wrap">
-              <img src="https://placehold.co/400x400/222/FFF?text=Official+T-Shirt" alt="公式Tシャツ" class="product-image">
-              <span class="product-badge">NEW</span>
-            </div>
-            <div class="product-info">
-              <h4 class="product-name">AI Spring FES 公式Tシャツ (Black)</h4>
-              <div class="product-price">¥3,500 <span class="tax-in">(税込)</span></div>
-              <a href="#" class="product-buy-btn">カートへ入れる</a>
-            </div>
-          </div>
-          <div class="product-card">
-            <div class="product-image-wrap">
-              <img src="https://placehold.co/400x400/222/00d2ff?text=Acrylic+Stand" alt="アクリルスタンド"
-                class="product-image">
-            </div>
-            <div class="product-info">
-              <h4 class="product-name">イベント限定 アクリルスタンド</h4>
-              <div class="product-price">¥1,800 <span class="tax-in">(税込)</span></div>
-              <a href="#" class="product-buy-btn">カートへ入れる</a>
-            </div>
-          </div>
+        <div id="goods-grid" class="goods-grid">
+          [Dynamically inserted by js/goods_spring.js]
         </div>
-      </section>
+      </section> -->
 
       <section id="guideline" class="tab-pane">
         <h3 class="section-title">Guideline</h3>
@@ -202,6 +180,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/artist_spring.js"></script>
+  <!-- <script src="js/goods_spring.js"></script> -->
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

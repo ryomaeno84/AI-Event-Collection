@@ -35,7 +35,7 @@
         <button class="tab-btn" data-target="join">参加方法</button>
         <button class="tab-btn" data-target="timetable">Timetable</button>
         <button class="tab-btn" data-target="artist">Artist</button>
-        <button class="tab-btn" data-target="goods">公式グッズ</button>
+        <!-- <button class="tab-btn" data-target="goods">公式グッズ</button> -->
         <button class="tab-btn" data-target="guideline">Guideline</button>
       </nav>
     </header>
@@ -62,7 +62,7 @@
               <h4 class="about-title">#秋の夜長のAI映像祭2026 開催のお知らせ</h4>
             </div>
           </div>
-          <img src="image/autumn2026/autumn2026_introduction.png" alt="autumn" class="autumn-image">
+          <img src="image/autumn2026/poster/autumn2026_introduction.png" alt="autumn" class="autumn-image">
           <p class="about-lead">
             何でもありの映像祭へご招待<br>
             秋の夜長をAI映像鑑賞で楽しみませんか？
@@ -208,10 +208,12 @@
         </div>
       </section>
 
-      <section id="goods" class="tab-pane">
+      <!-- <section id="goods" class="tab-pane">
         <h3 class="section-title">公式グッズ</h3>
-        <p style="text-align: center; color: #ccc; padding: 2rem;">準備中...</p>
-      </section>
+        <div id="goods-grid" class="goods-grid">
+          [Dynamically inserted by js/goods_autumn.js]
+        </div>
+      </section> -->
 
       <section id="guideline" class="tab-pane">
         <h3 class="section-title">Guideline</h3>
@@ -231,6 +233,7 @@
 
   <script src="js/main.js"></script>
   <script src="js/artist_autumn.js"></script>
+  <!-- <script src="js/goods_autumn.js"></script> -->
   <script src="js/upload.js"></script>
 </body>
 

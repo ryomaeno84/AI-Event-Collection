@@ -650,3 +650,69 @@
   font-weight: 500;
   color: #fff;
 }
+
+/* --- 12. Goods Grid & Card --- */
+.goods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 600px) {
+  .goods-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+
+.goods-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.goods-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.goods-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-bottom: 2px solid var(--accent-color, transparent);
+}
+
+.goods-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.goods-card:hover .goods-thumb {
+  transform: scale(1.05);
+}
+
+.goods-info {
+  padding: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.goods-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.4;
+}
