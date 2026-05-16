@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="MAcyEP6Orc6uN_v1QCNc2k1dZ2gWkMQ4d3Z94s_k_dA" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicons/favicon-16x16.png">
+  <link rel="manifest" href="image/favicons/manifest.json">
+  <link rel="shortcut icon" href="image/favicons/favicon.ico">
+
+  <title>Guidelines | AI Event Collection</title>
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/event.css">
+  <style>
+    /* Guideline page specific overrides */
+    :root {
+      --accent-color: #00d2ff;
+    }
+    body {
+      background: #050505;
+    }
+    .event-header {
+      padding-bottom: 1.2rem;
+    }
+    .content-container {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-layer"></div>
+
+  <div class="event-wrapper">
+    <header class="event-header">
+      <a href="index.html" class="back-btn" aria-label="トップページへ戻る">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+      <h1 class="event-title">GUIDELINES</h1>
+    </header>
+
+    <main class="content-container">
+      <div id="guideline-container">
+        <!-- Content will be injected by js/main.js -->
+      </div>
+    </main>
+
+    <footer class="event-footer">
+      <div class="footer-links">
+        <a href="https://x.com/AI_animeryo" target="_blank" class="footer-link">公式X (Twitter)</a>
+      </div>
+      <p class="footer-inquiry">お問い合わせは公式XのDM、または公式メールアドレスまで</p>
+    </footer>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
