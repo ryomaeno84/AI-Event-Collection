@@ -150,7 +150,7 @@ const guidelineContent = `
 
   <h5 class="topics-title">10. お問い合わせ窓口</h5>
   <p class="mb-normal">
-    お問い合わせや削除依頼は、運営公式SNS（<a href="https://x.com/AI_animeryo" target="_blank" class="accent-blue text-link">https://x.com/AI_animeryo</a>）のダイレクトメッセージにて受け付けます。連絡手段や対応時間は運営判断により変更される場合があります。
+    お問い合わせや削除依頼は、運営公式SNS（<a href="https://x.com/AI_animeryo" target="_blank" class="accent-blue text-link">https://x.com/AI_animeryo</a>）のダイレクトメッセージ、または公式メールアドレス（ryomaeno@ai-event-collection.com）へのご連絡にて受け付けます。連絡手段や対応時間は運営判断により変更される場合があります。
   </p>
 </div>
 `;

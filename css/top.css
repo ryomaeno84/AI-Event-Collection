@@ -376,3 +376,100 @@
 .grid-container > a:nth-child(2) { animation-delay: 0.2s; }
 .grid-container > a:nth-child(3) { animation-delay: 0.3s; }
 .grid-container > a:nth-child(4) { animation-delay: 0.4s; }
+
+/* Footer Jump Link */
+.top-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem 0;
+  z-index: 10;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.5s;
+}
+
+.guideline-jump-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0.8rem 2.2rem;
+  border: 1px solid #fff;
+  border-radius: 50px;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+}
+
+.guideline-jump-link:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-3px);
+}
+
+/* Guideline Section */
+.guideline-section {
+  padding: 6rem 1.5rem;
+  background: #080808;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.guideline-container-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Reusing Guideline styles from event.css for consistency */
+.about-text {
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+
+.about-text h4.upload-title {
+  color: #fff;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.topics-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin: 2.5rem 0 1.2rem;
+  border-left: 5px solid #fff;
+  padding-left: 1.2rem;
+  color: #fff;
+}
+
+.guideline-list {
+  list-style: none;
+  padding-left: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.guideline-list li {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.guideline-list li::before {
+  content: '・';
+  position: absolute;
+  left: -1.2rem;
+}
+
+.mb-normal { margin-bottom: 1.5rem; }
+.mb-small { margin-bottom: 0.8rem; }
+.mt-normal { margin-top: 1.2rem; }
+.hint-text { font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); margin-top: 0.5rem; display: block; }
+
+.accent-blue { color: #00d2ff !important; }
+.text-link { color: #00d2ff; text-decoration: underline; }
