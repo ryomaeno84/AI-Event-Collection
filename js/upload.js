@@ -18,15 +18,15 @@ async function checkKey() {
 
   // ページごとの正解ハッシュ値
   // default (summer): 1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b
-  let CORRECT_HASH = "1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b"; 
-  
+  let CORRECT_HASH = "1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b";
+
   const bodyId = document.body.id;
   if (bodyId === 'spring-theme') {
     CORRECT_HASH = "5c7acb9bafe684b1987fc289942f21a6cf91b7bc22033589d4dc3cc6db8d1ab2"; // spring2026
   } else if (bodyId === 'autumn-theme') {
-    CORRECT_HASH = "22a6a02ed3ce7705b9c33eaffd1628bf3a4418faf058eab17d7d1d7c4d371e30"; // autumn2026
+    CORRECT_HASH = "be72f2a4950badfd42ad9feaeb8f35aaa35b5618bafe90cbff29a84c0e71b645"; // autumn2026
   } else if (bodyId === 'kohaku-theme') {
-    CORRECT_HASH = "6b538423aea7ed8fe3ec8ae42df7a0e2a254ce61304891bf4c604351a60d9259"; // kohaku2026
+    CORRECT_HASH = "ffb95f7d357d0ff927b42b5c40d0de97b947a4a0013432d3354c3530385f65f7"; // kohaku2026
   }
 
   if (hashHex === CORRECT_HASH) {
