@@ -16,8 +16,18 @@ async function checkKey() {
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 
-  // 先ほど作成した正解のハッシュ値
-  const CORRECT_HASH = "1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b";
+  // ページごとの正解ハッシュ値
+  // default (summer): 1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b
+  let CORRECT_HASH = "1494af848dbfdd207a25025cd60c865ba5ccd48736d6ac60358331328af28f6b"; 
+  
+  const bodyId = document.body.id;
+  if (bodyId === 'spring-theme') {
+    CORRECT_HASH = "5c7acb9bafe684b1987fc289942f21a6cf91b7bc22033589d4dc3cc6db8d1ab2"; // spring2026
+  } else if (bodyId === 'autumn-theme') {
+    CORRECT_HASH = "22a6a02ed3ce7705b9c33eaffd1628bf3a4418faf058eab17d7d1d7c4d371e30"; // autumn2026
+  } else if (bodyId === 'kohaku-theme') {
+    CORRECT_HASH = "6b538423aea7ed8fe3ec8ae42df7a0e2a254ce61304891bf4c604351a60d9259"; // kohaku2026
+  }
 
   if (hashHex === CORRECT_HASH) {
     // 正解：フォームへのリンクを表示
