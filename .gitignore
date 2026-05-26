@@ -3,3 +3,5 @@ server/.env
 server/credentials.json
 server/upload_history.json
 server/tmp_uploads/
+
+AIspringFES_tmp/
