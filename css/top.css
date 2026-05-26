@@ -198,6 +198,9 @@
   .grid-container {
     grid-template-columns: repeat(2, 1fr); /* Tablet/Desktop: 2x2 */
   }
+  .theme-lesson {
+    grid-column: span 2;
+  }
 }
 
 /* Grid Items (The Buttons) */
@@ -362,6 +365,40 @@
 .theme-kohaku:hover::before { opacity: 0.3; }
 .theme-kohaku .season-badge { color: #111; background: #fff; border-color: #fff; }
 
+/* Theme: Lesson (Futuristic Neon Violet/Cyan/Gold) */
+.theme-lesson .bg-animation {
+  background: linear-gradient(135deg, #150630 0%, #081026 50%, #033240 100%);
+}
+.theme-lesson::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.15) 0%, transparent 50%);
+  z-index: 1;
+  opacity: 0.6;
+  transition: all 0.5s ease;
+}
+.theme-lesson:hover .bg-animation {
+  background: linear-gradient(135deg, #3d0c66 0%, #150a26 40%, #082d3b 70%, #856912 100%);
+}
+.theme-lesson:hover::before {
+  opacity: 1;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.3) 0%, transparent 60%),
+              radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.3) 0%, transparent 60%);
+}
+.theme-lesson .season-badge {
+  color: #00d2ff;
+  background: rgba(0, 210, 255, 0.1);
+  border-color: rgba(0, 210, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+.theme-lesson:hover .season-badge {
+  color: #ffd700;
+  border-color: #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  background: rgba(255, 215, 0, 0.1);
+}
+
 @keyframes cardConfettiFall {
   0% { transform: translateY(0) rotate(0deg); }
   100% { transform: translateY(40px) rotate(10deg); }
@@ -376,6 +413,7 @@
 .grid-container > a:nth-child(2) { animation-delay: 0.2s; }
 .grid-container > a:nth-child(3) { animation-delay: 0.3s; }
 .grid-container > a:nth-child(4) { animation-delay: 0.4s; }
+.grid-container > a:nth-child(5) { animation-delay: 0.5s; }
 
 /* Footer Jump Link */
 .top-footer {
@@ -384,7 +422,7 @@
   padding: 2rem 0;
   z-index: 10;
   animation: fadeInUp 0.8s ease forwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.6s;
 }
 
 .guideline-jump-link {

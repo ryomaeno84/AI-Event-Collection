@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="AI Event Collection主催の前野凌による、オンライン1on1 AIMV（AIミュージックビデオ）制作支援サービス。あなた専用の文字コンテ作成と画面共有による伴走型レッスンで、ご自身の楽曲を最高峰の映像作品へ。顔出し・声出し不要、テキストチャット中心の安全設計。">
+  <title>オンライン1on1 AIMV制作支援サービス | AI Event Collection</title>
+
+  <!-- Apple Touch & Favicon (shared with index.html) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicons/favicon-16x16.png">
+
+  <!-- Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Outfit:wght@500;700;800;900&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ----------------------------------
+       Reset & Basic Styles
+       ---------------------------------- */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    :root {
+      --bg-color: #ffffff;
+      --bg-light: #f5f5f7;
+      --text-color: #1d1d1f;
+      --text-muted: #86868b;
+      --primary-color: #6c21b8;
+      /* Violet */
+      --secondary-color: #007aff;
+      /* Cyber Blue */
+      --accent-color: #b8860b;
+      /* Gold/Bronze */
+      --danger-color: #ff3b30;
+      /* Warning Red */
+      --coconala-color: #2ac195;
+      /* Coconala Green */
+      --coconala-hover: #21a37d;
+
+      --card-bg: #ffffff;
+      --card-border: rgba(0, 0, 0, 0.06);
+      --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+
+      --font-heading: 'Outfit', 'Noto Sans JP', sans-serif;
+      --font-body: 'Inter', 'Noto Sans JP', sans-serif;
+
+      --glow-purple: 0 0 15px rgba(108, 33, 184, 0.1);
+      --glow-cyan: 0 0 15px rgba(0, 122, 255, 0.1);
+      --glow-gold: 0 0 15px rgba(184, 134, 11, 0.1);
+      --glow-coconala: 0 6px 20px rgba(42, 193, 149, 0.2);
+      --glow-coconala-hover: 0 10px 25px rgba(42, 193, 149, 0.35);
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-body);
+      line-height: 1.7;
+      overflow-x: hidden;
+
+      /* Subtle grid background for high-tech editor vibe */
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.01) 1px, transparent 1px);
+      background-size: 40px 40px;
+      position: relative;
+    }
+
+    /* Subtle ambient light accents behind sections */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      background: radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.04) 0%, transparent 60%),
+        radial-gradient(circle at 10% 70%, rgba(0, 122, 255, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ----------------------------------
+       Layout & Utility Classes
+       ---------------------------------- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .bg-light {
+      background-color: var(--bg-light);
+    }
+
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-color);
+      display: inline-block;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-top: 16px;
+      font-weight: 400;
+    }
+
+    /* ----------------------------------
+       Header Component
+       ---------------------------------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 0 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-color);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo span {
+      color: var(--secondary-color);
+      font-weight: 900;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-color);
+    }
+
+    .btn-portal-back {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--secondary-color);
+      border-radius: 50px;
+      color: var(--secondary-color);
+      transition: all 0.3s ease;
+      background: rgba(0, 122, 255, 0.03);
+    }
+
+    .btn-portal-back:hover {
+      background: var(--secondary-color);
+      color: #ffffff;
+      box-shadow: var(--glow-cyan);
+      transform: translateY(-1px);
+    }
+
+    /* ----------------------------------
+       Hero / First View Section
+       ---------------------------------- */
+    #hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      padding-bottom: 80px;
+      position: relative;
+      background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f3f8ff 100%);
+    }
+
+    .hero-content {
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-badge-main {
+      display: inline-block;
+      padding: 6px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      border-radius: 50px;
+      background: rgba(108, 33, 184, 0.08);
+      border: 1px solid rgba(108, 33, 184, 0.2);
+      color: var(--primary-color);
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #1d1d1f 30%, #444 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin-bottom: 40px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-image-wrap {
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-medium);
+      border: 1px solid var(--card-border);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .hero-image-wrap:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium), 0 12px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Feature Badges Container */
+    .feature-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 850px;
+      margin: 0 auto 40px auto;
+    }
+
+    .f-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s;
+      color: var(--text-color);
+    }
+
+    .f-badge svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--secondary-color);
+    }
+
+    .f-badge.f-badge-gold {
+      border-color: rgba(184, 134, 11, 0.3);
+      background: rgba(255, 215, 0, 0.05);
+      color: var(--accent-color);
+    }
+
+    .f-badge.f-badge-gold svg {
+      fill: var(--accent-color);
+    }
+
+    .f-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .f-badge.f-badge-gold:hover {
+      border-color: var(--accent-color);
+    }
+
+    /* Warning banner in hero */
+    .hero-warning-banner {
+      max-width: 650px;
+      margin: 0 auto 40px auto;
+      padding: 18px 24px;
+      background: rgba(255, 59, 48, 0.04);
+      border-left: 3px solid var(--danger-color);
+      border-radius: 0 12px 12px 0;
+      font-size: 0.85rem;
+      color: #555;
+      text-align: left;
+      line-height: 1.6;
+    }
+
+    /* Coconala Link UI */
+    .coconala-booking-card {
+      max-width: 500px;
+      margin: 0 auto 48px auto;
+      background: #ffffff;
+      border: 2px solid var(--coconala-color);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: var(--glow-coconala);
+      text-align: center;
+    }
+
+    .coconala-heading {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--coconala-hover);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* CTA Buttons */
+    .cta-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    .cta-btn {
+      padding: 16px 36px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      letter-spacing: 0.5px;
+      border: none;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-coconala {
+      background: linear-gradient(135deg, var(--coconala-color), var(--coconala-hover));
+      color: white;
+      box-shadow: 0 6px 18px rgba(42, 193, 149, 0.3);
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .cta-btn-coconala:hover {
+      box-shadow: 0 10px 25px rgba(42, 193, 149, 0.45);
+    }
+
+    .cta-btn-primary {
+      background: var(--secondary-color);
+      color: white;
+      box-shadow: 0 6px 18px rgba(0, 122, 255, 0.25);
+    }
+
+    .cta-btn-primary:hover {
+      box-shadow: 0 10px 25px rgba(0, 122, 255, 0.4);
+    }
+
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--text-color);
+      border: 1.5px solid rgba(0, 0, 0, 0.15);
+      background: rgba(0, 0, 0, 0.01);
+    }
+
+    .cta-btn-secondary:hover {
+      border-color: var(--primary-color);
+      color: var(--primary-color);
+      background: rgba(108, 33, 184, 0.03);
+    }
+
+    /* ----------------------------------
+       Overview Section
+       ---------------------------------- */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    @media (min-width: 600px) {
+      .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      box-shadow: var(--shadow-soft);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 0, 0, 0.1);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      background: rgba(0, 122, 255, 0.05);
+      border: 1px solid rgba(0, 122, 255, 0.15);
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      fill: var(--secondary-color);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* Highlight Card (Text Storyboard Focus) */
+    .card-highlight {
+      border-color: rgba(184, 134, 11, 0.3);
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.02) 0%, rgba(255, 255, 255, 0.9) 100%);
+    }
+
+    .card-highlight .card-icon {
+      background: rgba(255, 215, 0, 0.1);
+      border-color: rgba(255, 215, 0, 0.3);
+    }
+
+    .card-highlight .card-icon svg {
+      fill: var(--accent-color);
+    }
+
+    .card-highlight .card-title {
+      color: var(--accent-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-highlight-badge {
+      display: inline-block;
+      padding: 3px 8px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 4px;
+      background: var(--accent-color);
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ----------------------------------
+       Storyboard (Value) Section
+       ---------------------------------- */
+    .value-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (min-width: 992px) {
+      .value-layout {
+        grid-template-columns: 1.15fr 0.85fr;
+      }
+    }
+
+    .value-info h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.35;
+      color: var(--text-color);
+    }
+
+    .value-info p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.75;
+    }
+
+    .value-info ul {
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .value-info li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: var(--text-color);
+    }
+
+    .value-info li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #34c759;
+      font-weight: 900;
+    }
+
+    /* Interactive Sample Storyboard Visual (Maintains dark contrast for editorial realism) */
+    .storyboard-sample {
+      background: #0d0d16;
+      border: 1px solid rgba(108, 33, 184, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+
+    .sb-header {
+      background: rgba(108, 33, 184, 0.15);
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(108, 33, 184, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sb-title {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #d8b4fe;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sb-title::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #ff3b30;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ff3b30;
+    }
+
+    .sb-format {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .sb-body {
+      padding: 20px;
+    }
+
+    .sb-row {
+      display: grid;
+      grid-template-columns: 65px 75px 1fr;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 16px 0;
+      font-size: 0.85rem;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sb-row:first-child {
+      padding-top: 0;
+    }
+
+    .sb-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .sb-time {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: #00d2ff;
+      background: rgba(0, 210, 255, 0.1);
+      padding: 3px 6px;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 0.75rem;
+    }
+
+    .sb-scene {
+      font-weight: 700;
+      color: #ffd700;
+      letter-spacing: 0.5px;
+    }
+
+    .sb-desc {
+      color: #e5e5e7;
+      line-height: 1.5;
+    }
+
+    .sb-desc span {
+      display: block;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.45);
+      margin-top: 5px;
+      font-style: italic;
+    }
+
+    /* ----------------------------------
+       Lesson Flow (Step-by-Step) Section
+       ---------------------------------- */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 30px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--secondary-color) 0%, var(--primary-color) 50%, var(--accent-color) 100%);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 75px;
+      margin-bottom: 40px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 14px;
+      top: 0;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--bg-color);
+      border: 3px solid var(--secondary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 5;
+      transition: all 0.3s;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      border-color: var(--primary-color);
+    }
+
+    .timeline-item:last-child .timeline-dot {
+      border-color: var(--accent-color);
+    }
+
+    .timeline-dot span {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: var(--text-color);
+    }
+
+    .timeline-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-md);
+      padding: 30px;
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s;
+    }
+
+    .timeline-card:hover {
+      background: var(--card-bg);
+      border-color: rgba(0, 0, 0, 0.1);
+      transform: translateX(6px);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .step-tag {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .timeline-item:nth-child(even) .step-tag {
+      color: var(--primary-color);
+    }
+
+    .timeline-item:last-child .step-tag {
+      color: var(--accent-color);
+    }
+
+    .step-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text-color);
+    }
+
+    .step-content {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ----------------------------------
+       Perks Section
+       ---------------------------------- */
+    .perks-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .perks-card {
+      position: relative;
+      background: #ffffff;
+      border: 1px solid rgba(184, 134, 11, 0.2);
+      border-radius: var(--radius-lg);
+      padding: 56px 48px;
+      text-align: center;
+      box-shadow: var(--shadow-medium);
+    }
+
+    .perks-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: calc(var(--radius-lg) + 2px);
+      background: linear-gradient(135deg, var(--accent-color), transparent, var(--primary-color));
+      z-index: -1;
+      opacity: 0.15;
+    }
+
+    .perks-badge {
+      display: inline-block;
+      padding: 6px 20px;
+      background: linear-gradient(135deg, var(--accent-color) 0%, #cca300 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .perks-title {
+      font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-color);
+      line-height: 1.35;
+    }
+
+    .perks-text {
+      font-size: 1.05rem;
+      color: #44444f;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .perks-disclaimer {
+      background: var(--bg-light);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 12px;
+      padding: 20px 24px;
+      text-align: left;
+    }
+
+    .perks-disclaimer-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .perks-disclaimer-list {
+      list-style: none;
+    }
+
+    .perks-disclaimer-list li {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 4px;
+      position: relative;
+      padding-left: 14px;
+    }
+
+    .perks-disclaimer-list li::before {
+      content: '※';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+    }
+
+    /* ----------------------------------
+       Guidelines & Request Section
+       ---------------------------------- */
+    .guidelines-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .guidelines-intro {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .guideline-list {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .guideline-item-card {
+      display: flex;
+      gap: 20px;
+      padding: 24px;
+      border-radius: 12px;
+      background: var(--bg-light);
+      border: 1px solid rgba(0, 0, 0, 0.02);
+      margin-bottom: 16px;
+      transition: all 0.3s;
+    }
+
+    .guideline-item-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .guideline-item-card:hover {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.08);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .guideline-num {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--secondary-color);
+      line-height: 1.2;
+      min-width: 25px;
+    }
+
+    .guideline-item-card:nth-child(even) .guideline-num {
+      color: var(--primary-color);
+    }
+
+    .guideline-item-card.highlight-request {
+      border-color: rgba(255, 59, 48, 0.15);
+      background: rgba(255, 59, 48, 0.015);
+    }
+
+    .guideline-item-card.highlight-request .guideline-num {
+      color: var(--danger-color);
+    }
+
+    .guideline-content {
+      font-size: 0.95rem;
+      color: var(--text-color);
+      line-height: 1.65;
+    }
+
+    .guideline-content strong {
+      color: #000000;
+      font-weight: 700;
+    }
+
+    .guideline-desc-sub {
+      display: block;
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ----------------------------------
+       Pricing Section
+       ---------------------------------- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+      max-width: 900px;
+      margin: 0 auto 48px auto;
+    }
+
+    @media (min-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .price-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      padding: 48px 32px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .price-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+      border-radius: 4px 4px 0 0;
+    }
+
+    .price-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 122, 255, 0.2);
+      box-shadow: var(--shadow-medium);
+    }
+
+    .price-card.price-card-premium::before {
+      background: linear-gradient(90deg, var(--accent-color), #cca300);
+    }
+
+    .price-card.price-card-premium:hover {
+      border-color: rgba(184, 134, 11, 0.3);
+    }
+
+    .price-opt-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .price-card.price-card-premium .price-opt-label {
+      color: var(--accent-color);
+    }
+
+    .price-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-color);
+      margin-bottom: 24px;
+    }
+
+    .price-amount-wrap {
+      margin-bottom: 32px;
+    }
+
+    .price-amount {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--text-color);
+      line-height: 1;
+    }
+
+    .price-currency {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .price-tax {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 8px;
+    }
+
+    .price-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .price-features li {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .price-features li:last-child {
+      margin-bottom: 0;
+    }
+
+    .price-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #34c759;
+      font-weight: 900;
+    }
+
+    /* ----------------------------------
+       Final CTA Section
+       ---------------------------------- */
+    #final-cta {
+      background: linear-gradient(to bottom, #ffffff, var(--bg-light));
+      text-align: center;
+      padding: 110px 0;
+    }
+
+    .final-cta-card {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .final-cta-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      margin-bottom: 24px;
+      color: var(--text-color);
+      line-height: 1.3;
+    }
+
+    .final-cta-text {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+    }
+
+    /* ----------------------------------
+       Footer Component
+       ---------------------------------- */
+    footer {
+      background: #ffffff;
+      padding: 60px 0 30px 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-link {
+      transition: color 0.3s;
+      font-weight: 500;
+    }
+
+    .footer-link:hover {
+      color: var(--text-color);
+    }
+
+    .footer-disclaimer-bottom {
+      max-width: 700px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid rgba(0, 0, 0, 0.03);
+      padding-top: 24px;
+      width: 100%;
+    }
+
+    .copyright {
+      font-family: var(--font-heading);
+      margin-top: 16px;
+      font-size: 0.75rem;
+    }
+
+    /* ----------------------------------
+       Responsive Design Adjustments
+       ---------------------------------- */
+    @media (max-width: 991px) {
+      section {
+        padding: 80px 0;
+      }
+
+      .nav-menu {
+        display: none;
+        /* Hide desktop nav for simpler single page flow on mobile */
+      }
+
+      .header-container {
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .cta-btn-group {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .cta-btn {
+        width: 100%;
+      }
+
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-dot {
+        left: 4px;
+      }
+
+      .timeline-item {
+        padding-left: 45px;
+      }
+
+      .timeline-card {
+        padding: 20px;
+      }
+
+      .sb-row {
+        grid-template-columns: 50px 1fr;
+        gap: 4px;
+      }
+
+      .sb-scene {
+        grid-column: 2;
+        font-size: 0.8rem;
+      }
+
+      .sb-desc {
+        grid-column: 1 / -1;
+        margin-top: 4px;
+      }
+
+      .perks-card {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo">
+        AI Event Collection <span>1on1 Support</span>
+      </a>
+      <ul class="nav-menu">
+        <li><a href="#overview" class="nav-link">概要</a></li>
+        <li><a href="#value" class="nav-link">文字コンテ</a></li>
+        <li><a href="#flow" class="nav-link">進め方</a></li>
+        <li><a href="#perks" class="nav-link">限定特典</a></li>
+        <li><a href="#guidelines" class="nav-link">注意事項</a></li>
+        <li><a href="#pricing" class="nav-link">料金・オプション</a></li>
+      </ul>
+      <a href="index.html" class="btn-portal-back">トップに戻る</a>
+    </div>
+  </header>
+
+  <!-- Hero / First View -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-badge-main">ONLINE 1ON1 SERVICE</span>
+        <h1 class="hero-title">
+          オンライン1on1で<br>AIMV制作を支援します
+        </h1>
+        <p class="hero-subtitle">
+          MVを作ってAI SUPERLIVE・AI紅白に出演しよう！
+        </p>
+
+        <div class="hero-image-wrap">
+          <img src="image/lesson/lesson_hero.jpg" alt="1on1 オンラインAIMV作成支援" class="hero-image">
+        </div>
+
+        <!-- Feature Badges -->
+        <div class="feature-badges">
+          <div class="f-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+            顔出し不要
+          </div>
+          <div class="f-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+            声出し不要
+          </div>
+          <div class="f-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
+            </svg>
+            テキストチャット相談OK
+          </div>
+          <div class="f-badge f-badge-gold">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+            </svg>
+            初回で専用文字コンテをお渡し
+          </div>
+          <div class="f-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z" />
+            </svg>
+            画面共有で伴走支援
+          </div>
+        </div>
+
+        <!-- Warning Disclaimer -->
+        <div class="hero-warning-banner">
+          <strong>※ご理解とお願い：</strong><br>
+          本サービスは、講師と一緒に画面を共有してスキルを習得しながら進める「制作支援・伴走型レッスン」です。MV完成品をそのまま納品・制作代行するサービスではございませんので、あらかじめご了承ください。
+        </div>
+
+        <!-- Coconala Booking Callout -->
+        <div class="coconala-booking-card">
+          <div class="coconala-heading">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+            </svg>
+            申し込みは以下のココナラLinkから
+          </div>
+          <a href="https://coconala.com/services/4237095" target="_blank" rel="noopener noreferrer"
+            class="cta-btn cta-btn-coconala">
+            ココナラで申し込む (外部サイト)
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="cta-btn-group">
+          <a href="#flow" class="cta-btn cta-btn-primary">
+            講座の流れを見る
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#guidelines" class="cta-btn cta-btn-secondary">
+            購入前のお願いを見る
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section id="overview" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">サービス概要</h2>
+        <p class="section-subtitle">AI Event Collection主催の前野凌が、あなたのMV制作を徹底サポートします</p>
+      </div>
+
+      <div class="overview-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+            </svg>
+          </div>
+          <h3 class="card-title">主催者が直接マンツーマン支援</h3>
+          <p class="card-text">
+            数々のAI音楽イベントを手がけるAI Event Collection主催の「前野凌」が、オンライン1on1で直接あなたの動画制作を支援します。プロの知見と経験に基づく的確なアドバイスが受けられます。
+          </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+            </svg>
+          </div>
+          <h3 class="card-title">顔出し・声出しリスクなし</h3>
+          <p class="card-text">
+            レッスンは画面共有を行いながら、テキストチャットを中心に相談を進める方式です。顔を見せたり、声を出したりする必要がないため、プライバシーを完全に守りながらリラックスしてご参加いただけます。
+          </p>
+        </div>
+
+        <!-- Card 3: Highlighted Unique Storyboard Value -->
+        <div class="card card-highlight">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+            </svg>
+          </div>
+          <h3 class="card-title">
+            あなた専用の“文字コンテ”をお渡し
+            <span class="card-highlight-badge">最大の特徴</span>
+          </h3>
+          <p class="card-text">
+            本サービスが特別な理由、それは初回レッスン時にご提供する「あなた専用のオリジナル文字コンテ」にあります。動画生成AIに適したカメラワークやシーン構成、スクリプトの記述方法が一目瞭然になる設計図です。
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+            </svg>
+          </div>
+          <h3 class="card-title">自走も、継続受講も自由</h3>
+          <p class="card-text">
+            初回に「専用の文字コンテ」をお渡しした後は、そのコンテをもとにご自身で制作（自走）を進めていただいても全く問題ありません。もちろん、2回目以降のレッスンで一緒に細かい作り込みや編集作業を進める継続受講も大歓迎です。
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Storyboard / Value Explanation -->
+  <section id="value">
+    <div class="container">
+      <div class="value-layout">
+        <!-- Text details -->
+        <div class="value-info">
+          <div class="sb-title"
+            style="margin-bottom:1rem; font-family:var(--font-heading); color: var(--primary-color);">EXCLUSIVE FEATURE
+          </div>
+          <h3>初回から“あなた専用の文字コンテ”をお渡しします</h3>
+          <p>
+            動画制作で最も時間がかかり、迷いやすいのが「構成」と「AIに入力するプロンプトの指定」です。
+          </p>
+          <p>
+            ご提出いただいた楽曲の展開に合わせて、シーン構成、細かなカメラワーク（ズーム、パン、チルトなど）、そして動画生成AIに流用しやすいプロンプト用の表現をあらかじめ整理した「文字コンテ（スクリプト案）」を作成し、初回時にお渡しします。
+          </p>
+          <p>
+            ただレッスン時間内に作業するだけではなく、レッスンが終わった後もこの設計図があるため、迷わずにご自身でクオリティの高いMV制作を進めることができます。
+          </p>
+          <ul>
+            <li>楽曲のメロディやBPMに合わせたシーンの切り替え指示</li>
+            <li>動画生成AI（Viduなど）が理解しやすいアングルとカメラワーク指定</li>
+            <li>編集時に音ハメしやすくなるタイムライン構成</li>
+          </ul>
+        </div>
+
+        <!-- Sample Storyboard Mock -->
+        <div class="storyboard-sample">
+          <div class="sb-header">
+            <span class="sb-title">STORYBOARD_SAMPLE.TXT</span>
+            <span class="sb-format">UTF-8 / Raw</span>
+          </div>
+          <div class="sb-body">
+            <!-- Row 1 -->
+            <div class="sb-row">
+              <span class="sb-time">0:00 - 0:30</span>
+              <span class="sb-scene">イントロ</span>
+              <p class="sb-desc">
+                暗転から光のネオンラインが走る。徐々に光が集まり、ステージ中央でギターを持つ主人公の横顔へゆっくり寄る（Slow Zoom In）。
+                <span>[AI Prompt Guide: Cyberpunk neon lights, slow zoom-in close up of female guitarist profile]</span>
+              </p>
+            </div>
+            <!-- Row 2 -->
+            <div class="sb-row">
+              <span class="sb-time">0:30 - 1:10</span>
+              <span class="sb-scene">Aメロ</span>
+              <p class="sb-desc">
+                近未来の夜の街並み。足元、握りしめる手元、流れる電光掲示板など、感情とストーリーを示すカットをリズムに合わせて連続して切り替える。
+                <span>[AI Prompt Guide: Cyberpunk city at night, close-up of walking boots, flickering hologram
+                  displays]</span>
+              </p>
+            </div>
+            <!-- Row 3 -->
+            <div class="sb-row">
+              <span class="sb-time">1:10 - 1:45</span>
+              <span class="sb-scene">サビ</span>
+              <p class="sb-desc">
+                ステージ上の照明が一気に開き、色とりどりのレーザーが交錯。広角カメラ（Wide-angle camera）で疾走感を出しながらダイナミックに演出。
+                <span>[AI Prompt Guide: Concert stage, intense laser beams, wide angle shot, energetic
+                  performance]</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Flow -->
+  <section id="flow" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">講座の進め方</h2>
+        <p class="section-subtitle">事前準備から実際の制作レッスンまで、わかりやすい5つのステップで進行します</p>
+      </div>
+
+      <div class="timeline">
+        <!-- Step 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>01</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">STEP 01</span>
+            <h4 class="step-title">楽曲のご提出（レッスン前）</h4>
+            <p class="step-content">
+              レッスンを開始する前に、MVの対象となる楽曲をご提出いただきます。楽曲の長さは3分前後でお願いします。提出方法はSunoの共有リンク、YouTube動画のURLなどで簡単に共有いただけます。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>02</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">STEP 02</span>
+            <h4 class="step-title">文字コンテ（スクリプト）の作成</h4>
+            <p class="step-content">
+              ご提出いただいた楽曲を前野凌が事前に聴き込み、動画AIプロンプトやシーン生成に流用しやすい最適な「あなた専用の文字コンテ」を作成します。これが本レッスンのロードマップとなります。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>03</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">STEP 03</span>
+            <h4 class="step-title">動画編集環境の確認</h4>
+            <p class="step-content">
+              すでにお使いのお好みの動画編集ソフトがある場合は、事前にご連絡ください。動画編集が全く初めてで、どのソフトを使えばよいか分からない場合は、ソフトの選定やインストール手順から丁寧に支援します。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>04</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">STEP 04</span>
+            <h4 class="step-title">オンライン1on1伴走レッスン開始</h4>
+            <p class="step-content">
+              画面共有機能を使いながら、テキストチャットベースで相談しつつ制作を進めます。動画生成AIサービスはご希望のものを使用しますが、特にこだわりがない場合は高品質な生成が可能な「Vidu」の使用を推奨しています。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>05</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">STEP 05</span>
+            <h4 class="step-title">テキストチャット相談による制作進行</h4>
+            <p class="step-content">
+              事前にお渡しした「文字コンテ」を教材テキストとして、プロンプトの調整、シーンの厳選、動画編集での音ハメ作業などを伴走しながら進め、オリジナルのAIMVを一緒に形にしていきます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Perks Section -->
+  <section id="perks">
+    <div class="container">
+      <div class="perks-container">
+        <div class="perks-card">
+          <span class="perks-badge">EXCLUSIVE BONUS</span>
+          <h3 class="perks-title">
+            4回以上のご購入で<br>イベント優先枠のチャンス
+          </h3>
+          <p class="perks-text">
+            本レッスンを4回以上ご購入いただいた受講者様には、完成したAIMVを「AI SUPERLIVE
+            SUMMER」または「AI紅白歌合戦」の優先枠にて公開・お披露目できる特典をご用意しています。ご自身の作品を大舞台で発表する絶好の機会です。（※サービスご購入時点で出演者応募開始日が近い方のイベントにご出演頂きます）
+          </p>
+
+          <!-- Disclaimer inside card -->
+          <div class="perks-disclaimer">
+            <div class="perks-disclaimer-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+              </svg>
+              特典に関する注意事項
+            </div>
+            <ul class="perks-disclaimer-list">
+              <li>イベントには定員制限がございます。定員に達し次第、枠の確保は終了となります。</li>
+              <li>公開・掲載を100%保証するものではありません。</li>
+              <li>完成した作品の内容や、イベント運営上の都合、進行状況により、最終的な掲載可否を判断する場合があります。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guidelines / Attention Section -->
+  <section id="guidelines" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">ご購入にあたってのお願い</h2>
+        <p class="section-subtitle">お申し込みの前に、以下の注意事項と利用条件を必ずご確認ください</p>
+      </div>
+
+      <div class="guidelines-card card">
+        <p class="guidelines-intro">受講者様に安心してサービスをご利用いただくため、以下の内容に同意いただいた上でご購入をお願いいたします。</p>
+
+        <ul class="guideline-list">
+          <!-- Item 1 (Highlight: Support, not delivery) -->
+          <li class="guideline-item-card highlight-request">
+            <span class="guideline-num">①</span>
+            <div class="guideline-content">
+              <strong>【最重要】本サービスは画面共有を用いた「制作支援（レッスン）」です。</strong>
+              <span class="guideline-desc-sub">
+                完成品のMVをこちらで制作して納品する代行サービスではありません。ご自身のスキルアップと共同作業を目的とした伴走型サービスであることをご理解ください。
+              </span>
+            </div>
+          </li>
+
+          <!-- Item 2 -->
+          <li class="guideline-item-card">
+            <span class="guideline-num">②</span>
+            <div class="guideline-content">
+              <strong>レッスン開始前に、対象となる楽曲をご提出ください。</strong>
+              <span class="guideline-desc-sub">
+                楽曲の長さは3分前後を目安としていただきますようお願いいたします。提出方法はSunoの共有リンクやYouTube動画のURLなどでOKです。
+              </span>
+            </div>
+          </li>
+
+          <!-- Item 3 -->
+          <li class="guideline-item-card">
+            <span class="guideline-num">③</span>
+            <div class="guideline-content">
+              <strong>お好みの動画編集ソフトがある場合は、事前にご連絡ください。</strong>
+              <span class="guideline-desc-sub">
+                特に指定やご希望がない、または使い方が分からない場合は、お持ちのPC環境に適したソフトのインストール作業から丁寧にサポートします。
+              </span>
+            </div>
+          </li>
+
+          <!-- Item 4 -->
+          <li class="guideline-item-card">
+            <span class="guideline-num">④</span>
+            <div class="guideline-content">
+              <strong>お好みのAI動画生成サービスがある場合は、事前にご連絡ください。</strong>
+              <span class="guideline-desc-sub">
+                ご希望がない場合は、高品質な動画生成ができる「Vidu」を推奨してレッスンを行います。Viduなどの外部有料/無料サービスを利用される場合は、レッスン開始前にご自身で利用契約（プラン加入等）を済ませておいてください。
+              </span>
+            </div>
+          </li>
+
+          <!-- Item 5 -->
+          <li class="guideline-item-card">
+            <span class="guideline-num">⑤</span>
+            <div class="guideline-content">
+              <strong>作成したAIMVの法令遵守・利用規約について。</strong>
+              <span class="guideline-desc-sub">
+                作成されたAIMVが著作権侵害などの第三者の権利侵害、またはその他の法令違反を犯した場合、前野凌は一切の責任を負いかねます。作成されたAIMVの公開や二次利用は、ご自身の責任の範囲内で実施してください。
+              </span>
+            </div>
+          </li>
+
+          <!-- Item 6 -->
+          <li class="guideline-item-card">
+            <span class="guideline-num">⑥</span>
+            <div class="guideline-content">
+              <strong>X（旧Twitter）での相互フォロー限定について。</strong>
+              <span class="guideline-desc-sub">
+                2026年現在のご購入は、緊密なサポート体制を維持するため、X（旧Twitter）において前野凌のアカウントと相互フォロー関係にある方に限らせていただきます。
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Options -->
+  <section id="pricing">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">有料オプション</h2>
+        <p class="section-subtitle">ご要望に応じて、以下の追加オプションを合わせてご購入いただけます</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Option 1 -->
+        <div class="price-card">
+          <div>
+            <span class="price-opt-label">OPTION 01</span>
+            <h3 class="price-title">DMでの個別相談</h3>
+            <div class="price-amount-wrap">
+              <span class="price-amount"><span class="price-currency">+</span>500</span>
+              <span class="price-tax">円 (税込)</span>
+            </div>
+            <ul class="price-features">
+              <li>レッスン時間外での相談が可能</li>
+              <li>XのDMを用いた1回の質疑応答（往復）</li>
+              <li>疑問点や編集の悩みをピンポイントで解決</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Option 2 -->
+        <div class="price-card price-card-premium">
+          <div>
+            <span class="price-opt-label">OPTION 02</span>
+            <h3 class="price-title">追加の文字コンテ作成</h3>
+            <div class="price-amount-wrap">
+              <span class="price-amount"><span class="price-currency">+</span>6,000</span>
+              <span class="price-tax">円 (税込)</span>
+            </div>
+            <ul class="price-features">
+              <li>別の楽曲用の文字コンテを新規作成</li>
+              <li>または、大幅な構成変更に伴う新しい文字コンテ</li>
+              <li>プロンプト用スクリプトのストックを増やしたい方に</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Final CTA -->
+      <section id="final-cta">
+        <div class="container">
+          <div class="final-cta-card">
+            <h2 class="final-cta-title">あなたの楽曲を、AIMVとしてステージへ。</h2>
+            <p class="final-cta-text">
+              綿密に組まれたあなた専用の「文字コンテ」と、徹底した1on1の「伴走型レッスン」で、MV制作の第一歩を一緒に形にしていきましょう。顔出し・声出し不要、テキストチャット中心で安心してご相談ください。
+            </p>
+
+            <!-- Final Booking Callout -->
+            <div class="coconala-booking-card" style="margin-bottom: 32px;">
+              <div class="coconala-heading">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                </svg>
+                申し込みは以下のココナラLinkから
+              </div>
+              <a href="https://coconala.com/services/4237095" target="_blank" rel="noopener noreferrer"
+                class="cta-btn cta-btn-coconala">
+                ココナラで申し込む (外部サイト)
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
+                </svg>
+              </a>
+            </div>
+
+            <!-- CTA Navigation Buttons -->
+            <div class="cta-btn-group">
+              <a href="#guidelines" class="cta-btn cta-btn-secondary">
+                購入前のお願いを確認する
+              </a>
+              <a href="#flow" class="cta-btn cta-btn-secondary">
+                講座の流れをもう一度見る
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <div class="container footer-content">
+          <ul class="footer-links">
+            <li><a href="index.html" class="footer-link">AI Event Collectionポータル</a></li>
+            <li><a href="#overview" class="footer-link">サービス概要</a></li>
+            <li><a href="#value" class="footer-link">文字コンテについて</a></li>
+            <li><a href="#flow" class="footer-link">受講の流れ</a></li>
+            <li><a href="#guidelines" class="footer-link">注意事項</a></li>
+            <li><a href="#pricing" class="footer-link">オプション料金</a></li>
+          </ul>
+
+          <div class="footer-disclaimer-bottom">
+            ※本サービスはマンツーマンの制作支援・指導を提供する伴走型レッスンです。動画（ミュージックビデオ）の完成品を受託制作し、納品するサービスではございませんのでご注意ください。
+          </div>
+
+          <div class="copyright">
+            &copy; 2026 AI Event Collection. All Rights Reserved.
+          </div>
+        </div>
+      </footer>
+
+</body>
+
+</html>
