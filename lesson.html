@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="AI Event Collection主催の前野凌による、オンライン1on1 AIMV（AIミュージックビデオ）制作支援サービス。あなた専用の文字コンテ（スクリプト付き）+絵コンテ作成と画面共有による伴走型レッスンで、ご自身の楽曲を最高峰の映像作品へ。顔出し・声出し不要、テキストチャット中心の安全設計。">
-  <title>オンライン1on1 AIMV制作支援サービス | AI Event Collection</title>
+    content="AIで作った楽曲をMVにしたい方向けに、AI動画MV制作の設計図を作るサービスです。キャラクター整理・MVスクリプト・文字コンテ・動画生成AIプロンプトなどをまとめて作成し、週1回の質疑応答で制作を伴走サポートします。">
+  <title>AI動画MV制作 伴走サポートサービス | AI Event Collection</title>
 
   <!-- Apple Touch & Favicon (shared with index.html) -->
   <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
@@ -1290,15 +1290,15 @@
   <header>
     <div class="header-container">
       <a href="index.html" class="logo">
-        AI Event Collection <span>1on1 Support</span>
+        AI Event Collection <span>MV制作サポート</span>
       </a>
       <ul class="nav-menu">
-        <li><a href="#overview" class="nav-link">概要</a></li>
-        <li><a href="#value" class="nav-link">文字コンテ（スクリプト付き）+絵コンテ</a></li>
-        <li><a href="#flow" class="nav-link">進め方</a></li>
-        <li><a href="#perks" class="nav-link">限定特典</a></li>
+        <li><a href="#overview" class="nav-link">サービス概要</a></li>
+        <li><a href="#service-detail" class="nav-link">サービス内容</a></li>
+        <li><a href="#prepare" class="nav-link">ご準備いただくもの</a></li>
+        <li><a href="#recommend" class="nav-link">こんな方に</a></li>
+        <li><a href="#deliverables" class="nav-link">納品物</a></li>
         <li><a href="#guidelines" class="nav-link">注意事項</a></li>
-        <li><a href="#pricing" class="nav-link">料金・オプション</a></li>
       </ul>
       <a href="index.html" class="btn-portal-back">トップに戻る</a>
     </div>
@@ -1308,80 +1308,491 @@
   <section id="hero">
     <div class="container">
       <div class="hero-content">
-        <span class="hero-badge-main">ONLINE 1ON1 SERVICE</span>
+        <span class="hero-badge-main">AI MV PRODUCTION SUPPORT</span>
         <h1 class="hero-title">
-          オンライン1on1で<br>AIMV制作を支援します
+          🎬 AI動画MV制作を<br>伴走サポートします
         </h1>
         <p class="hero-subtitle">
-          MVを作ってAI SUPERLIVE・AI紅白に出演しよう！
+          楽曲ファイルと歌詞から、MV制作の"設計図"をまるごと作成＋<strong>1週間・1時間の制作相談付き</strong>
         </p>
 
-        <div class="hero-image-wrap">
-          <img src="image/lesson/lesson_hero.jpg" alt="1on1 オンラインAIMV作成支援" class="hero-image">
+        <!-- Problem statement -->
+        <div class="hero-warning-banner"
+          style="background: rgba(108,33,184,0.04); border-left-color: var(--primary-color); color: #444; max-width: 680px;">
+          <h1>こんなお悩みはありませんか？</h1>
+          <p>
+            「何から始めればいいかわからない」<br>
+            「キャラ画像はあるけど、動画化の設計ができない」<br>
+            「動画生成AIに入れるプロンプトや文字コンテを作れない」
+          </p>
         </div>
 
-        <h1 class="hero-title">
-          高コスパに自信あり！
-        </h1>
-        <p class="hero-subtitle">
-          AIMVは自作できた方が断然お得！
-        </p>
-        <div class="hero-image-wrap">
-          <img src="image/lesson/費用対効果.png" alt="費用対効果" class="hero-image">
+        <img src="image/lesson/lesson_hero.jpg" alt="lesson" class="lesson-image">
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Overview -->
+  <section id="overview" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">サービス概要</h2>
+        <p class="section-subtitle">AI動画MV制作の設計図を、まるごとお作りします</p>
+      </div>
+
+      <div class="overview-grid">
+        <!-- Card 1 -->
+        <div class="card">
+          <div class="card-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+            </svg>
+          </div>
+          <h3 class="card-title">AIで作った楽曲をMVにしたい方へ</h3>
+          <p class="card-text">
+            楽曲ファイル・歌詞・演出希望・キャラクター画像をもとに、MV制作に必要な資料をまとめて作成します。
+          </p>
         </div>
 
-        <!-- Feature Badges -->
-        <div class="feature-badges">
-          <div class="f-badge">
+        <!-- Card 2 -->
+        <div class="card">
+          <div class="card-icon">
             <svg viewBox="0 0 24 24">
               <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
             </svg>
-            顔出し不要
           </div>
-          <div class="f-badge">
+          <h3 class="card-title">設計から一緒に進める伴走型</h3>
+          <p class="card-text">
+            完成動画の納品ではなく、制作中の疑問にも対応する週1回・1時間の質疑応答サポートつき。自分で作れるようになることを目指します。
+          </p>
+        </div>
+
+        <!-- Card 3: Highlight -->
+        <div class="card card-highlight">
+          <div class="card-icon">
             <svg viewBox="0 0 24 24">
               <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
+                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
             </svg>
-            声出し不要
           </div>
-          <div class="f-badge">
+          <h3 class="card-title">
+            MV制作に必要な資料をまるごと作成
+            <span class="card-highlight-badge">最大の特徴</span>
+          </h3>
+          <p class="card-text">
+            キャラクター設定・MVスクリプト・文字コンテ（表形式）・動画生成AIプロンプト・制作方法の説明画像まで、MV制作に必要な"設計図"一式をお渡しします。
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+          <div class="card-icon">
             <svg viewBox="0 0 24 24">
               <path
                 d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z" />
             </svg>
-            テキストチャット相談OK
           </div>
-          <div class="f-badge f-badge-gold">
-            <svg viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-            </svg>
-            初回であなた専用文字コンテ（スクリプト付き）＋絵コンテをお渡し
-          </div>
-          <div class="f-badge">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z" />
-            </svg>
-            画面共有で伴走支援
+          <h3 class="card-title">全部そろっていなくても大丈夫</h3>
+          <p class="card-text">
+            素材が不足していても問題ありません。不足部分は相談しながら一緒に整理していきます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Detail Section -->
+  <section id="service-detail">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🌟 サービス内容</h2>
+        <p class="section-subtitle">MV制作に必要な資料を、まとめてお作りします</p>
+      </div>
+
+      <div class="timeline">
+        <!-- Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>01</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">🎭 CHARACTER</span>
+            <h4 class="step-title">キャラクター整理</h4>
+            <p class="step-content">
+              登場キャラクターの見た目・衣装・表情・楽器・小物などを整理し、動画生成時にキャラがブレにくいよう設定をまとめます。
+            </p>
           </div>
         </div>
 
-        <!-- Warning Disclaimer -->
-        <div class="hero-warning-banner">
-          <strong>※ご理解とお願い：</strong><br>
-          本サービスは、講師と一緒に画面を共有してスキルを習得しながら進める「制作支援・伴走型レッスン」です。MV完成品をそのまま納品・制作代行するサービスではございませんので、あらかじめご了承ください。
+        <!-- Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>02</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">🎼 MV SCRIPT</span>
+            <h4 class="step-title">MVスクリプト作成</h4>
+            <p class="step-content">
+              歌詞と曲の展開に合わせて、MV全体のカット割りを作成します。<br><br>
+              ・Introで印象的な導入<br>
+              ・Verseでキャラクターや世界観を見せる<br>
+              ・Chorusで一気に盛り上げる<br>
+              ・Bridgeで感情や演出の変化を作る<br>
+              ・Final Chorusでクライマックスを作る<br><br>
+              曲の盛り上がりに合わせて、映像の流れを設計します。
+            </p>
+          </div>
         </div>
 
-        <!-- Coconala Booking Callout -->
-        <div class="coconala-booking-card">
+        <!-- Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>03</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">📝 STORYBOARD</span>
+            <h4 class="step-title">文字コンテ作成</h4>
+            <p class="step-content">
+              各カットを表形式で整理します。<br><br>
+              ・CUT番号と時間<br>
+              ・該当歌詞<br>
+              ・映像内容<br>
+              ・カメラワーク<br>
+              ・キャラクターの動き<br>
+              ・動画生成AI用プロンプト<br><br>
+              Excelやスプレッドシートで扱いやすい形式でお渡しします。
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>04</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">🤖 AI PROMPT</span>
+            <h4 class="step-title">動画生成AI用プロンプト作成</h4>
+            <p class="step-content">
+              動画生成AIに入力しやすい日本語プロンプトを作成します。<br><br>
+              ・共通プロンプト<br>
+              ・キャラクター指定<br>
+              ・映像内容<br>
+              ・カメラ<br>
+              ・動き<br>
+              ・画風<br><br>
+              まで整理します。
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>05</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">🖼️ GUIDE IMAGE</span>
+            <h4 class="step-title">制作方法の説明画像作成</h4>
+            <p class="step-content">
+              動画生成時の設定が一目でわかる説明画像も作成します。<br><br>
+              ・動画生成モード<br>
+              ・入力画像<br>
+              ・使用する動画生成AI<br>
+              ・スクリプトの入力方法<br>
+              ・秒数の指定方法<br><br>
+              などを、見やすい説明画像にまとめます。
+            </p>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"><span>06</span></div>
+          <div class="timeline-card">
+            <span class="step-tag">💬 Q&A SUPPORT</span>
+            <h4 class="step-title">週1回・1時間の質疑応答つき</h4>
+            <p class="step-content">
+              成果物を渡して終わりではなく、制作中の疑問にも対応します。<br><br>
+              ・このカットはどう生成すればいい？<br>
+              ・プロンプトをどう直せばいい？<br>
+              ・キャラが崩れた時は？<br>
+              ・MV全体の流れに違和感はない？<br><br>
+              など、実制作で詰まりやすい部分を一緒に整理します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Storyboard Visual -->
+  <section id="value" class="bg-light">
+    <div class="container">
+      <div class="value-layout">
+        <div class="value-info">
+          <div class="sb-title"
+            style="margin-bottom:1rem; font-family:var(--font-heading); color: var(--primary-color);">STORYBOARD SAMPLE
+          </div>
+          <h3>文字コンテはこんなイメージです</h3>
+          <p>各カットの時間・歌詞・映像内容・カメラワーク・動き・AIプロンプトを表形式で整理。Excelやスプレッドシートでそのまま使えます。</p>
+          <ul>
+            <li>CUT番号と時間で管理しやすい構成</li>
+            <li>動画生成AIが理解しやすいプロンプト付き</li>
+            <li>カメラワーク・キャラの動きも明記</li>
+          </ul>
+        </div>
+
+        <!-- Sample Storyboard Mock -->
+        <div class="storyboard-sample">
+          <div class="sb-header">
+            <span class="sb-title">STORYBOARD_SAMPLE.TXT</span>
+            <span class="sb-format">Excel / Spreadsheet</span>
+          </div>
+          <div class="sb-body">
+            <div class="sb-row">
+              <span class="sb-time">Intro<br>0:00-0:15</span>
+              <span class="sb-scene">CUT 01</span>
+              <p class="sb-desc">
+                暗転から光のネオンラインが走り、ステージ中央でギターを持つキャラの横顔へゆっくり寄る。
+                <span>[AI Prompt: Cyberpunk neon lights, slow zoom-in, female guitarist profile, cinematic]</span>
+              </p>
+            </div>
+            <div class="sb-row">
+              <span class="sb-time">Verse<br>0:15-0:45</span>
+              <span class="sb-scene">CUT 02</span>
+              <p class="sb-desc">
+                近未来の夜の街並み。足元・手元・電光掲示板など感情を示すカットをリズムに合わせて連続切り替え。
+                <span>[AI Prompt: Cyberpunk city at night, close-up boots, hologram displays, fast cuts]</span>
+              </p>
+            </div>
+            <div class="sb-row">
+              <span class="sb-time">Chorus<br>0:45-1:15</span>
+              <span class="sb-scene">CUT 03</span>
+              <p class="sb-desc">
+                ステージ照明が一気に開き、レーザーが交錯。広角カメラで疾走感を出しながらダイナミックに演出。
+                <span>[AI Prompt: Concert stage, intense laser beams, wide angle shot, energetic performance]</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Prepare -->
+  <section id="prepare">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">📦 ご用意いただくもの</h2>
+        <p class="section-subtitle">全部そろっていなくても大丈夫。不足部分は相談しながら整理します</p>
+      </div>
+
+      <div class="perks-container">
+        <div class="perks-card">
+          <div class="perks-badge">REQUIRED MATERIALS</div>
+          <div class="overview-grid" style="text-align:left;">
+            <div class="guideline-item-card">
+              <span class="guideline-num">①</span>
+              <div class="guideline-content"><strong>楽曲ファイル</strong></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">②</span>
+              <div class="guideline-content"><strong>歌詞</strong></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">③</span>
+              <div class="guideline-content"><strong>演出の希望</strong></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">④</span>
+              <div class="guideline-content"><strong>キャラクター画像</strong></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">⑤</span>
+              <div class="guideline-content"><strong>背景画像</strong><span class="guideline-desc-sub">あれば</span></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">⑥</span>
+              <div class="guideline-content"><strong>参考MVやイメージ</strong><span class="guideline-desc-sub">あれば</span></div>
+            </div>
+            <div class="guideline-item-card">
+              <span class="guideline-num">⑦</span>
+              <div class="guideline-content"><strong>使用予定の動画生成AI</strong><span class="guideline-desc-sub">未定でも可</span>
+              </div>
+            </div>
+          </div>
+          <p class="perks-text" style="margin-top: 24px; font-size: 0.95rem;">
+            ※素材が不足していても、相談しながら一緒に整理します。まずはお気軽にご相談ください。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recommend Section -->
+  <section id="recommend" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🚀 こんな方におすすめ</h2>
+        <p class="section-subtitle">AI楽曲をMVとして映像化したい方を幅広くサポートします</p>
+      </div>
+
+      <div class="guidelines-card card">
+        <ul class="guideline-list">
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">AI楽曲をMV化したい方</div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">AIで作った曲に映像をつけたい方</div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">動画生成AIでMVを作りたい方</div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">キャラ画像を使って動画化したい方</div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">カット割りやプロンプト作成が苦手な方</div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">✓</span>
+            <div class="guideline-content">制作代行ではなく、自分で作れるようになりたい方</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section id="deliverables">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">🎁 納品物</h2>
+        <p class="section-subtitle">MV制作に必要な資料一式をお渡しします</p>
+      </div>
+
+      <div class="perks-container">
+        <div class="perks-card">
+          <div class="perks-badge">DELIVERABLES</div>
+          <div class="guidelines-card card" style="box-shadow: none; border: none; padding: 0;">
+            <ul class="guideline-list">
+              <li class="guideline-item-card">
+                <span class="guideline-num">📋</span>
+                <div class="guideline-content"><strong>キャラクター設定整理</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">🎭</span>
+                <div class="guideline-content"><strong>キャラクターシート</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">🎼</span>
+                <div class="guideline-content"><strong>MVスクリプト</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">📝</span>
+                <div class="guideline-content"><strong>文字コンテ</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">🤖</span>
+                <div class="guideline-content"><strong>動画生成AI向け日本語プロンプト</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">📊</span>
+                <div class="guideline-content"><strong>Excelまたはスプレッドシート形式の制作表</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">🖼️</span>
+                <div class="guideline-content"><strong>制作方法の説明画像</strong></div>
+              </li>
+              <li class="guideline-item-card">
+                <span class="guideline-num">💬</span>
+                <div class="guideline-content"><strong>週1回、1時間の質疑応答サポート</strong></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Guidelines / Attention Section -->
+  <section id="guidelines" class="bg-light">
+    <div class="container">
+      <div class="section-title-wrap">
+        <h2 class="section-title">⚠️ 注意事項</h2>
+        <p class="section-subtitle">お申し込みの前に必ずご確認ください</p>
+      </div>
+
+      <div class="guidelines-card card">
+        <p class="guidelines-intro">ご依頼者様に安心してサービスをご利用いただくため、以下の内容をご確認の上お申し込みください。</p>
+
+        <ul class="guideline-list">
+          <li class="guideline-item-card highlight-request">
+            <span class="guideline-num">①</span>
+            <div class="guideline-content">
+              <strong>【最重要】完成動画そのものを納品するサービスではありません。</strong>
+              <span class="guideline-desc-sub">
+                本サービスはMV制作に必要な設計図・資料を作成し、制作中の質疑応答でサポートする伴走型サービスです。
+              </span>
+            </div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">②</span>
+            <div class="guideline-content">
+              <strong>生成AIの仕様上、キャラや背景が完全に一致しない場合があります。</strong>
+              <span class="guideline-desc-sub">
+                動画生成AIの特性上、完全な一致保証はできません。あらかじめご了承ください。
+              </span>
+            </div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">③</span>
+            <div class="guideline-content">
+              <strong>素材の権利確認はご依頼者様側でお願いします。</strong>
+              <span class="guideline-desc-sub">
+                楽曲・キャラクター画像などの著作権・利用権は必ずご自身で確認してください。
+              </span>
+            </div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">④</span>
+            <div class="guideline-content">
+              <strong>各AIツールの商用利用可否、利用規約もご確認ください。</strong>
+              <span class="guideline-desc-sub">
+                使用する動画生成AIや音楽生成AIの利用規約はご自身でご確認の上、ご利用ください。
+              </span>
+            </div>
+          </li>
+          <li class="guideline-item-card">
+            <span class="guideline-num">⑤</span>
+            <div class="guideline-content">
+              <strong>長尺MVや複雑な演出は追加相談となる場合があります。</strong>
+              <span class="guideline-desc-sub">
+                通常の楽曲（3〜5分程度）を想定しています。長尺・複雑な演出の場合は事前にご相談ください。
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section id="final-cta">
+    <div class="container">
+      <div class="final-cta-card">
+        <h2 class="final-cta-title">あなたの楽曲を、<br>最高のMVとして映像化しよう。</h2>
+        <p class="final-cta-text">
+          楽曲ファイルと歌詞があれば、MV制作の設計図はこちらで作ります。<br>
+          一緒にAI動画MV制作を進めましょう。
+        </p>
+
+        <!-- Final Booking Callout -->
+        <div class="coconala-booking-card" style="margin-bottom: 32px;">
           <div class="coconala-heading">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path
                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
             </svg>
-            申し込みは以下のココナラLinkから
+            申し込みはこちら（ココナラ）
           </div>
           <a href="https://coconala.com/services/4237095" target="_blank" rel="noopener noreferrer"
             class="cta-btn cta-btn-coconala">
@@ -1393,419 +1804,40 @@
           </a>
         </div>
 
-        <!-- CTA Buttons -->
+        <!-- CTA Navigation Buttons -->
         <div class="cta-btn-group">
-          <a href="#flow" class="cta-btn cta-btn-primary">
-            講座の流れを見る
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
           <a href="#guidelines" class="cta-btn cta-btn-secondary">
-            購入前のお願いを見る
+            注意事項を確認する
+          </a>
+          <a href="#service-detail" class="cta-btn cta-btn-secondary">
+            サービス内容をもう一度見る
           </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Service Overview -->
-  <section id="overview" class="bg-light">
-    <div class="container">
-      <div class="section-title-wrap">
-        <h2 class="section-title">サービス概要</h2>
-        <p class="section-subtitle">AI Event Collection主催の前野凌が、あなたのMV制作を徹底サポートします</p>
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-content">
+      <ul class="footer-links">
+        <li><a href="index.html" class="footer-link">AI Event Collectionポータル</a></li>
+        <li><a href="#overview" class="footer-link">サービス概要</a></li>
+        <li><a href="#service-detail" class="footer-link">サービス内容</a></li>
+        <li><a href="#prepare" class="footer-link">ご準備いただくもの</a></li>
+        <li><a href="#deliverables" class="footer-link">納品物</a></li>
+        <li><a href="#guidelines" class="footer-link">注意事項</a></li>
+      </ul>
+
+      <div class="footer-disclaimer-bottom">
+        ※本サービスはAI動画MV制作に必要な設計図・資料を作成し、週1回の質疑応答で制作を伴走サポートするサービスです。完成動画そのものを納品するサービスではございませんのでご注意ください。
       </div>
 
-      <div class="overview-grid">
-        <!-- Card 1 -->
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-            </svg>
-          </div>
-          <h3 class="card-title">主催者が直接マンツーマン支援</h3>
-          <p class="card-text">
-            数々のAI音楽イベントを手がけるAI Event Collection主催の「前野凌」が、オンライン1on1で直接あなたの動画制作を支援します。
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
-            </svg>
-          </div>
-          <h3 class="card-title">顔出し・声出しリスクなし</h3>
-          <p class="card-text">
-            レッスンは画面共有を行いながら、テキストチャットを中心に相談を進める方式です。顔を見せたり、声を出したりする必要がないため、プライバシーを完全に守りながらリラックスしてご参加いただけます。
-          </p>
-        </div>
-
-        <!-- Card 3: Highlighted Unique Storyboard Value -->
-        <div class="card card-highlight">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-            </svg>
-          </div>
-          <h3 class="card-title">
-            あなた専用の“文字コンテ（スクリプト付き）＋絵コンテ”をお渡し
-            <span class="card-highlight-badge">最大の特徴</span>
-          </h3>
-          <p class="card-text">
-            本サービスが特別な理由、それは初回レッスン時にご提供する「あなた専用の文字コンテ（スクリプト付き）＋絵コンテ」にあります。動画生成AIに適したカメラワークやシーン構成、スクリプトの記述方法が一目瞭然になる設計図です。
-          </p>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="card">
-          <div class="card-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-            </svg>
-          </div>
-          <h3 class="card-title">自走も、継続受講も自由</h3>
-          <p class="card-text">
-            初回に「文字コンテ（スクリプト付き）＋絵コンテ」をお渡しした後は、そのコンテをもとにご自身で制作（自走）を進めていただいても全く問題ありません。もちろん、2回目以降のレッスンで一緒に細かい作り込みや編集作業を進める継続受講も大歓迎です。
-          </p>
-        </div>
-
+      <div class="copyright">
+        &copy; 2026 AI Event Collection. All Rights Reserved.
       </div>
     </div>
-  </section>
-
-  <!-- Storyboard / Value Explanation -->
-  <section id="value">
-    <div class="container">
-      <div class="value-layout">
-        <!-- Text details -->
-        <div class="value-info">
-          <div class="sb-title"
-            style="margin-bottom:1rem; font-family:var(--font-heading); color: var(--primary-color);">EXCLUSIVE FEATURE
-          </div>
-          <h3>初回から“あなた専用の文字コンテ（スクリプト付き）＋絵コンテ”をお渡しします</h3>
-          <p>
-            動画制作で最も時間がかかり、迷いやすいのが「構成」と「AIに入力するプロンプトの指定」です。
-          </p>
-          <p>
-            ご提出いただいた楽曲の展開に合わせて、シーン構成、細かなカメラワーク（ズーム、パン、チルトなど）、そして動画生成AIに流用しやすいプロンプト用の表現をあらかじめ整理した「文字コンテ（スクリプト付き）＋絵コンテ」を作成し、初回時にお渡しします。
-          </p>
-          <p>
-            ただレッスン時間内に作業するだけではなく、レッスンが終わった後もこの設計図があるため、迷わずにご自身でクオリティの高いMV制作を進めることができます。
-          </p>
-          <ul>
-            <li>楽曲のメロディやBPMに合わせたシーンの切り替え指示</li>
-            <li>動画生成AI（Viduなど）が理解しやすいアングルとカメラワーク指定</li>
-            <li>編集時に音ハメしやすくなるタイムライン構成</li>
-          </ul>
-        </div>
-
-        <!-- Sample Storyboard Mock -->
-        <div class="storyboard-sample">
-          <div class="sb-header">
-            <span class="sb-title">STORYBOARD_SAMPLE.TXT</span>
-            <span class="sb-format">UTF-8 / Raw</span>
-          </div>
-          <div class="sb-body">
-            <!-- Row 1 -->
-            <div class="sb-row">
-              <span class="sb-time">0:00 - 0:30</span>
-              <span class="sb-scene">イントロ</span>
-              <p class="sb-desc">
-                暗転から光のネオンラインが走る。徐々に光が集まり、ステージ中央でギターを持つ主人公の横顔へゆっくり寄る（Slow Zoom In）。
-                <span>[AI Prompt Guide: Cyberpunk neon lights, slow zoom-in close up of female guitarist profile]</span>
-              </p>
-            </div>
-            <!-- Row 2 -->
-            <div class="sb-row">
-              <span class="sb-time">0:30 - 1:10</span>
-              <span class="sb-scene">Aメロ</span>
-              <p class="sb-desc">
-                近未来の夜の街並み。足元、握りしめる手元、流れる電光掲示板など、感情とストーリーを示すカットをリズムに合わせて連続して切り替える。
-                <span>[AI Prompt Guide: Cyberpunk city at night, close-up of walking boots, flickering hologram
-                  displays]</span>
-              </p>
-            </div>
-            <!-- Row 3 -->
-            <div class="sb-row">
-              <span class="sb-time">1:10 - 1:45</span>
-              <span class="sb-scene">サビ</span>
-              <p class="sb-desc">
-                ステージ上の照明が一気に開き、色とりどりのレーザーが交錯。広角カメラ（Wide-angle camera）で疾走感を出しながらダイナミックに演出。
-                <span>[AI Prompt Guide: Concert stage, intense laser beams, wide angle shot, energetic
-                  performance]</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Step-by-Step Flow -->
-  <section id="flow" class="bg-light">
-    <div class="container">
-      <div class="section-title-wrap">
-        <h2 class="section-title">講座の進め方</h2>
-        <p class="section-subtitle">事前準備から実際の制作レッスンまで、わかりやすい5つのステップで進行します</p>
-      </div>
-
-      <div class="timeline">
-        <!-- Step 1 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"><span>01</span></div>
-          <div class="timeline-card">
-            <span class="step-tag">STEP 01</span>
-            <h4 class="step-title">楽曲のご提出（レッスン前）</h4>
-            <p class="step-content">
-              レッスンを開始する前に、MVの対象となる楽曲をご提出いただきます。楽曲の長さは3分前後でお願いします。提出方法はSunoの共有リンク、YouTube動画のURLなどで簡単に共有いただけます。
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"><span>02</span></div>
-          <div class="timeline-card">
-            <span class="step-tag">STEP 02</span>
-            <h4 class="step-title">文字コンテ（スクリプト）の作成</h4>
-            <p class="step-content">
-              ご提出いただいた楽曲を前野凌が事前に聴き込み、動画AIプロンプトやシーン生成に流用しやすい最適な「あなた専用の文字コンテ（スクリプト付き）＋絵コンテ」を作成します。これが本レッスンのロードマップとなります。
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"><span>03</span></div>
-          <div class="timeline-card">
-            <span class="step-tag">STEP 03</span>
-            <h4 class="step-title">動画編集環境の確認</h4>
-            <p class="step-content">
-              すでにお使いのお好みの動画編集ソフトがある場合は、事前にご連絡ください。動画編集が全く初めてで、どのソフトを使えばよいか分からない場合は、ソフトの選定やインストール手順から丁寧に支援します。
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"><span>04</span></div>
-          <div class="timeline-card">
-            <span class="step-tag">STEP 04</span>
-            <h4 class="step-title">オンライン1on1伴走レッスン開始</h4>
-            <p class="step-content">
-              画面共有機能を使いながら、テキストチャットベースで相談しつつ制作を進めます。動画生成AIサービスはご希望のものを使用しますが、特にこだわりがない場合は高品質な生成が可能な「Vidu」の使用を推奨しています。
-            </p>
-          </div>
-        </div>
-
-        <!-- Step 5 -->
-        <div class="timeline-item">
-          <div class="timeline-dot"><span>05</span></div>
-          <div class="timeline-card">
-            <span class="step-tag">STEP 05</span>
-            <h4 class="step-title">テキストチャット相談による制作進行</h4>
-            <p class="step-content">
-              事前にお渡しした「文字コンテ（スクリプト付き）＋絵コンテ」を教材テキストとして、プロンプトの調整、シーンの厳選、動画編集での音ハメ作業などを伴走しながら進め、オリジナルのAIMVを一緒に形にしていきます。
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Guidelines / Attention Section -->
-  <section id="guidelines" class="bg-light">
-    <div class="container">
-      <div class="section-title-wrap">
-        <h2 class="section-title">ご購入にあたってのお願い</h2>
-        <p class="section-subtitle">お申し込みの前に、以下の注意事項と利用条件を必ずご確認ください</p>
-      </div>
-
-      <div class="guidelines-card card">
-        <p class="guidelines-intro">受講者様に安心してサービスをご利用いただくため、以下の内容に同意いただいた上でご購入をお願いいたします。</p>
-
-        <ul class="guideline-list">
-          <!-- Item 1 (Highlight: Support, not delivery) -->
-          <li class="guideline-item-card highlight-request">
-            <span class="guideline-num">①</span>
-            <div class="guideline-content">
-              <strong>【最重要】本サービスは画面共有を用いた「制作支援（レッスン）」です。</strong>
-              <span class="guideline-desc-sub">
-                完成品のMVをこちらで制作して納品する代行サービスではありません。ご自身のスキルアップと共同作業を目的とした伴走型サービスであることをご理解ください。
-              </span>
-            </div>
-          </li>
-
-          <!-- Item 2 -->
-          <li class="guideline-item-card">
-            <span class="guideline-num">②</span>
-            <div class="guideline-content">
-              <strong>レッスン開始前に、対象となる楽曲をご提出ください。</strong>
-              <span class="guideline-desc-sub">
-                楽曲の長さは3分前後を目安としていただきますようお願いいたします。提出方法はSunoの共有リンクやYouTube動画のURLなどでOKです。
-              </span>
-            </div>
-          </li>
-
-          <!-- Item 3 -->
-          <li class="guideline-item-card">
-            <span class="guideline-num">③</span>
-            <div class="guideline-content">
-              <strong>お好みの動画編集ソフトがある場合は、事前にご連絡ください。</strong>
-              <span class="guideline-desc-sub">
-                特に指定やご希望がない、または使い方が分からない場合は、お持ちのPC環境に適したソフトのインストール作業から丁寧にサポートします。
-              </span>
-            </div>
-          </li>
-
-          <!-- Item 4 -->
-          <li class="guideline-item-card">
-            <span class="guideline-num">④</span>
-            <div class="guideline-content">
-              <strong>お好みのAI動画生成サービスがある場合は、事前にご連絡ください。</strong>
-              <span class="guideline-desc-sub">
-                ご希望がない場合は、高品質な動画生成ができる「Vidu」を推奨してレッスンを行います。Viduなどの外部有料/無料サービスを利用される場合は、レッスン開始前にご自身で利用契約（プラン加入等）を済ませておいてください。
-              </span>
-            </div>
-          </li>
-
-          <!-- Item 5 -->
-          <li class="guideline-item-card">
-            <span class="guideline-num">⑤</span>
-            <div class="guideline-content">
-              <strong>作成したAIMVの法令遵守・利用規約について。</strong>
-              <span class="guideline-desc-sub">
-                作成されたAIMVが著作権侵害などの第三者の権利侵害、またはその他の法令違反を犯した場合、前野凌は一切の責任を負いかねます。作成されたAIMVの公開や二次利用は、ご自身の責任の範囲内で実施してください。
-              </span>
-            </div>
-          </li>
-
-          <!-- Item 6 -->
-          <li class="guideline-item-card">
-            <span class="guideline-num">⑥</span>
-            <div class="guideline-content">
-              <strong>X（旧Twitter）での相互フォロー限定について。</strong>
-              <span class="guideline-desc-sub">
-                2026年現在のご購入は、緊密なサポート体制を維持するため、X（旧Twitter）において前野凌のアカウントと相互フォロー関係にある方に限らせていただきます。
-              </span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Pricing Options -->
-  <section id="pricing">
-    <div class="container">
-      <div class="section-title-wrap">
-        <h2 class="section-title">有料オプション</h2>
-        <p class="section-subtitle">ご要望に応じて、以下の追加オプションを合わせてご購入いただけます</p>
-      </div>
-
-      <div class="pricing-grid">
-        <!-- Option 1 -->
-        <div class="price-card">
-          <div>
-            <span class="price-opt-label">OPTION 01</span>
-            <h3 class="price-title">DMでの個別相談（1往復）</h3>
-            <div class="price-amount-wrap">
-              <span class="price-amount"><span class="price-currency">+</span>500</span>
-              <span class="price-tax">円 (税込)</span>
-            </div>
-            <ul class="price-features">
-              <li>レッスン時間外での相談が可能</li>
-              <li>XのDMを用いた1回の質疑応答（往復）</li>
-              <li>疑問点や編集の悩みをピンポイントで解決</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Option 2 -->
-        <div class="price-card price-card-premium">
-          <div>
-            <span class="price-opt-label">OPTION 02</span>
-            <h3 class="price-title">追加の文字コンテ（スクリプト付き）+絵コンテ作成</h3>
-            <div class="price-amount-wrap">
-              <span class="price-amount"><span class="price-currency">+</span>6,000</span>
-              <span class="price-tax">円 (税込)</span>
-            </div>
-            <ul class="price-features">
-              <li>別の楽曲用の文字コンテ（スクリプト付き）+絵コンテを新規作成</li>
-              <li>または、大幅な構成変更に伴う新しい文字コンテ（スクリプト付き）+絵コンテ</li>
-              <li>プロンプト用スクリプトのストックを増やしたい方に</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- Final CTA -->
-      <section id="final-cta">
-        <div class="container">
-          <div class="final-cta-card">
-            <h2 class="final-cta-title">あなたの楽曲を、AIMVとしてステージへ。</h2>
-
-            <!-- Final Booking Callout -->
-            <div class="coconala-booking-card" style="margin-bottom: 32px;">
-              <div class="coconala-heading">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                </svg>
-                申し込みは以下のココナラLinkから
-              </div>
-              <a href="https://coconala.com/services/4237095" target="_blank" rel="noopener noreferrer"
-                class="cta-btn cta-btn-coconala">
-                ココナラで申し込む (外部サイト)
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" />
-                </svg>
-              </a>
-            </div>
-
-            <!-- CTA Navigation Buttons -->
-            <div class="cta-btn-group">
-              <a href="#guidelines" class="cta-btn cta-btn-secondary">
-                購入前のお願いを確認する
-              </a>
-              <a href="#flow" class="cta-btn cta-btn-secondary">
-                講座の流れをもう一度見る
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer>
-        <div class="container footer-content">
-          <ul class="footer-links">
-            <li><a href="index.html" class="footer-link">AI Event Collectionポータル</a></li>
-            <li><a href="#overview" class="footer-link">サービス概要</a></li>
-            <li><a href="#value" class="footer-link">文字コンテ（スクリプト付き）+絵コンテについて</a></li>
-            <li><a href="#flow" class="footer-link">受講の流れ</a></li>
-            <li><a href="#guidelines" class="footer-link">注意事項</a></li>
-            <li><a href="#pricing" class="footer-link">オプション料金</a></li>
-          </ul>
-
-          <div class="footer-disclaimer-bottom">
-            ※本サービスはマンツーマンの制作支援・指導を提供する伴走型レッスンです。動画（ミュージックビデオ）の完成品を受託制作し、納品するサービスではございませんのでご注意ください。
-          </div>
-
-          <div class="copyright">
-            &copy; 2026 AI Event Collection. All Rights Reserved.
-          </div>
-        </div>
-      </footer>
+  </footer>
 
 </body>
 
