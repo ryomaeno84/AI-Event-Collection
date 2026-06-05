@@ -4,7 +4,7 @@
 
 const springArtists = [
   {
-    name: "Virtual Resonance",
+    name: "spring test1",
     image: "image/artist/spring/icon01.png",
     xUrl: "#",
     youtubeUrl: "#"

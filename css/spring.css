@@ -1,0 +1,1391 @@
+/*
+ * AI Spring FES — spring.css
+ * 春のパステルカラーAI映像祭テーマ
+ * スコープ: #spring-theme, .sp-* クラス
+ * 他ページへの影響なし
+ */
+
+/* ============================================================
+   1. Google Fonts インポート（global.cssにない場合の補完）
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;800;900&display=swap');
+
+/* ============================================================
+   2. CSS カスタムプロパティ（Spring専用）
+   ============================================================ */
+#spring-theme {
+  --sp-pink:        #f9a8d4;
+  --sp-pink-light:  #fce7f3;
+  --sp-pink-deep:   #ec4899;
+  --sp-lavender:    #ddd6fe;
+  --sp-lavender-light: #ede9fe;
+  --sp-lavender-deep:  #7c3aed;
+  --sp-mint:        #a7f3d0;
+  --sp-mint-light:  #d1fae5;
+  --sp-sky:         #bae6fd;
+  --sp-sky-light:   #e0f2fe;
+  --sp-cream:       #fefce8;
+  --sp-gold:        #fbbf24;
+  --sp-gold-light:  #fef3c7;
+
+  /* テキストカラー */
+  --sp-text-dark:   #1e1b4b;
+  --sp-text-body:   #3730a3;
+  --sp-text-muted:  #6b7280;
+  --sp-text-light:  #9ca3af;
+
+  /* 背景 */
+  --sp-bg-base:     #fdf4ff;
+  --sp-bg-section:  rgba(255, 255, 255, 0.85);
+  --sp-bg-card:     rgba(255, 255, 255, 0.92);
+
+  /* シャドウ */
+  --sp-shadow-sm:   0 2px 12px rgba(236, 72, 153, 0.10);
+  --sp-shadow-md:   0 8px 30px rgba(124, 58, 237, 0.12);
+  --sp-shadow-lg:   0 20px 50px rgba(124, 58, 237, 0.15);
+
+  /* ボーダー */
+  --sp-border-pink: 1px solid rgba(249, 168, 212, 0.6);
+  --sp-border-lavender: 1px solid rgba(221, 214, 254, 0.7);
+  --sp-border-sky:  1px solid rgba(186, 230, 253, 0.7);
+
+  /* アクセント */
+  --sp-accent:      #ec4899;
+  --sp-accent2:     #8b5cf6;
+
+  /* フォント */
+  --sp-font: 'Noto Sans JP', 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  font-family: var(--sp-font);
+  background: var(--sp-bg-base);
+  color: var(--sp-text-dark);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   3. キャンバス（花びら）
+   ============================================================ */
+#spring-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   4. ボディ背景グラデーション
+   ============================================================ */
+#spring-theme body,
+#spring-theme {
+  background:
+    linear-gradient(135deg,
+      #fdf4ff 0%,
+      #fce7f3 20%,
+      #e0f2fe 45%,
+      #f0fdf4 70%,
+      #fefce8 100%);
+  background-attachment: fixed;
+}
+
+/* ============================================================
+   5. ラッパー
+   ============================================================ */
+.sp-wrapper {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ============================================================
+   6. ヘッダー
+   ============================================================ */
+.sp-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(249, 168, 212, 0.4);
+  padding: 0.9rem 0 0 0;
+  box-shadow: 0 2px 20px rgba(236, 72, 153, 0.08);
+}
+
+.sp-header-title {
+  text-align: center;
+  font-size: clamp(1.3rem, 4.5vw, 1.9rem);
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 0.6rem;
+  padding: 0 4rem;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.04em;
+}
+
+.sp-back-btn {
+  position: absolute;
+  top: 0.9rem;
+  left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(249, 168, 212, 0.25);
+  border-radius: 50%;
+  color: var(--sp-pink-deep);
+  border: 1px solid rgba(249, 168, 212, 0.5);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.sp-back-btn:hover {
+  background: rgba(249, 168, 212, 0.5);
+  transform: translateX(-3px);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+/* タブナビ */
+.sp-tab-nav {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-top: 1px solid rgba(249, 168, 212, 0.25);
+  -webkit-overflow-scrolling: touch;
+}
+
+.sp-tab-nav::-webkit-scrollbar { display: none; }
+
+.sp-tab-btn {
+  flex: 1;
+  min-width: 75px;
+  background: transparent;
+  border: none;
+  color: var(--sp-text-muted);
+  padding: 0.85rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+  font-family: var(--sp-font);
+  letter-spacing: 0.02em;
+}
+
+.sp-tab-btn:hover {
+  color: var(--sp-pink-deep);
+  background: rgba(249, 168, 212, 0.1);
+}
+
+.sp-tab-btn.active {
+  color: var(--sp-pink-deep);
+}
+
+.sp-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sp-pink-deep), var(--sp-accent2));
+  border-radius: 3px 3px 0 0;
+  animation: spTabLine 0.3s ease-out;
+}
+
+@keyframes spTabLine {
+  from { transform: scaleX(0); opacity: 0; }
+  to   { transform: scaleX(1); opacity: 1; }
+}
+
+/* ============================================================
+   7. ヒーローセクション
+   ============================================================ */
+.sp-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 5rem 1.5rem 4rem;
+  background: linear-gradient(160deg,
+    rgba(252, 231, 243, 0.9) 0%,
+    rgba(237, 233, 254, 0.85) 40%,
+    rgba(224, 242, 254, 0.85) 80%,
+    rgba(209, 250, 229, 0.8) 100%);
+  text-align: center;
+  border-bottom: 1px solid rgba(249, 168, 212, 0.3);
+}
+
+/* 薄いグリッドライン */
+.sp-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(236, 72, 153, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236, 72, 153, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+/* スクリーン風矩形ライン */
+.sp-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 640px);
+  height: min(70%, 380px);
+  border: 1px solid rgba(236, 72, 153, 0.12);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.sp-hero::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(82%, 580px);
+  height: min(60%, 330px);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.sp-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.sp-hero-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(249, 168, 212, 0.7), rgba(221, 214, 254, 0.7));
+  border: 1px solid rgba(249, 168, 212, 0.6);
+  color: var(--sp-lavender-deep);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(10px);
+}
+
+.sp-hero-title {
+  font-size: clamp(2.4rem, 9vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #be185d 0%, #7c3aed 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.01em;
+}
+
+.sp-hero-catch {
+  font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--sp-text-body);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.sp-hero-sub {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: var(--sp-text-muted);
+  line-height: 1.9;
+  margin-bottom: 2.2rem;
+}
+
+.sp-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.sp-hero-meta-item {
+  background: rgba(255, 255, 255, 0.85);
+  border: var(--sp-border-pink);
+  border-radius: 50px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--sp-text-dark);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.sp-hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ============================================================
+   8. ボタン
+   ============================================================ */
+.sp-btn-primary {
+  display: inline-block;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2.4rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--sp-font);
+  letter-spacing: 0.03em;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.35);
+  text-decoration: none;
+}
+
+.sp-btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(236, 72, 153, 0.45);
+  filter: brightness(1.08);
+}
+
+.sp-btn-secondary {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--sp-accent2);
+  border: 2px solid rgba(139, 92, 246, 0.4);
+  padding: 0.85rem 2.4rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  font-family: var(--sp-font);
+  letter-spacing: 0.03em;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+
+.sp-btn-secondary:hover {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.7);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
+}
+
+/* ============================================================
+   9. メインコンテンツ
+   ============================================================ */
+.sp-content {
+  flex-grow: 1;
+  padding: 3rem 1.2rem 6rem;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* タブパネル */
+.sp-pane {
+  display: none;
+}
+
+.sp-pane.active {
+  display: block;
+  animation: spFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes spFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* セクションタイトル */
+.sp-section-title {
+  font-size: clamp(1.4rem, 5vw, 1.9rem);
+  font-weight: 900;
+  margin-bottom: 2rem;
+  color: var(--sp-text-dark);
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--sp-pink-deep), var(--sp-accent2), #0ea5e9) 1;
+  padding-bottom: 0.7rem;
+  letter-spacing: 0.04em;
+}
+
+.sp-sub-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--sp-text-body);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--sp-pink-deep);
+}
+
+/* ============================================================
+   10. News セクション
+   ============================================================ */
+.sp-news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sp-news-item {
+  background: var(--sp-bg-card);
+  border-radius: 16px;
+  border-left: 4px solid var(--sp-pink-deep);
+  padding: 1.2rem 1.4rem;
+  box-shadow: var(--sp-shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.sp-news-item:hover {
+  transform: translateX(5px);
+  box-shadow: var(--sp-shadow-md);
+}
+
+.sp-news-date {
+  font-size: 0.8rem;
+  color: var(--sp-text-muted);
+  font-family: monospace;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.sp-news-text {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--sp-text-dark);
+  line-height: 1.6;
+}
+
+.sp-news-toggle-wrap {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.sp-news-toggle-btn {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(236, 72, 153, 0.4);
+  color: var(--sp-pink-deep);
+  padding: 0.65rem 2.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 800;
+  font-family: var(--sp-font);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.sp-news-toggle-btn:hover {
+  background: var(--sp-pink-light);
+  box-shadow: var(--sp-shadow-sm);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   11. About セクション
+   ============================================================ */
+.sp-about-hero-card {
+  background: linear-gradient(135deg,
+    rgba(252, 231, 243, 0.9),
+    rgba(237, 233, 254, 0.85));
+  border: 1px solid rgba(249, 168, 212, 0.5);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
+  box-shadow: var(--sp-shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.sp-about-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.35rem 1.2rem;
+  border-radius: 50px;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.4rem;
+}
+
+.sp-about-headline {
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.sp-about-lead {
+  font-size: 1rem;
+  color: var(--sp-text-body);
+  line-height: 1.9;
+}
+
+/* コンセプトカード */
+.sp-concept-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.sp-concept-card {
+  background: var(--sp-bg-card);
+  border-radius: 20px;
+  padding: 1.8rem 1.5rem;
+  border: var(--sp-border-lavender);
+  box-shadow: var(--sp-shadow-sm);
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sp-concept-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sp-shadow-lg);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.sp-concept-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.sp-concept-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--sp-text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.sp-concept-body {
+  font-size: 0.9rem;
+  color: var(--sp-text-muted);
+  line-height: 1.8;
+}
+
+/* 定員バナー */
+.sp-capacity-banner {
+  background: linear-gradient(135deg, rgba(249, 168, 212, 0.3), rgba(221, 214, 254, 0.3));
+  border: 2px solid rgba(236, 72, 153, 0.3);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.sp-capacity-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sp-text-dark);
+  padding-right: 0.5rem;
+}
+
+.sp-capacity-num {
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-capacity-unit {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--sp-text-dark);
+  align-self: flex-end;
+  padding-bottom: 0.5rem;
+}
+
+.sp-capacity-note {
+  width: 100%;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--sp-lavender-deep);
+  margin-top: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   12. Join / Entry セクション
+   ============================================================ */
+.sp-join-header {
+  background: linear-gradient(135deg,
+    rgba(252, 231, 243, 0.95),
+    rgba(224, 242, 254, 0.90));
+  border: 2px solid rgba(249, 168, 212, 0.5);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  box-shadow: var(--sp-shadow-md);
+}
+
+.sp-join-icon {
+  font-size: 2.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.sp-join-title {
+  font-size: clamp(1.3rem, 4.5vw, 1.8rem);
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.sp-join-sub {
+  font-size: 0.95rem;
+  color: var(--sp-text-muted);
+  line-height: 1.8;
+}
+
+/* アラートボックス（定員・抽選情報） */
+.sp-alert-box {
+  background: rgba(254, 243, 199, 0.85);
+  border: 2px solid rgba(251, 191, 36, 0.5);
+  border-radius: 16px;
+  padding: 1.6rem 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(251, 191, 36, 0.12);
+}
+
+.sp-alert-title {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #92400e;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.sp-alert-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sp-alert-list li {
+  font-size: 0.92rem;
+  color: #78350f;
+  line-height: 1.7;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.sp-alert-list li::before {
+  content: '・';
+  position: absolute;
+  left: 0;
+  color: #d97706;
+}
+
+.sp-alert-emphasis {
+  font-weight: 800 !important;
+  color: #92400e !important;
+}
+
+/* フォームリンクセクション */
+.sp-form-section {
+  background: var(--sp-bg-card);
+  border-radius: 16px;
+  padding: 1.5rem 1.8rem;
+  margin-bottom: 2rem;
+  border: var(--sp-border-pink);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.sp-form-note {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.sp-text-link {
+  color: var(--sp-pink-deep);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease;
+  word-break: break-all;
+}
+
+.sp-text-link:hover {
+  border-bottom-color: var(--sp-pink-deep);
+}
+
+.sp-hint-text {
+  font-size: 0.82rem;
+  color: var(--sp-text-muted);
+  margin-top: 0.4rem;
+  display: block;
+}
+
+/* アップロードブロック */
+.sp-upload-block {
+  background: linear-gradient(135deg,
+    rgba(237, 233, 254, 0.7),
+    rgba(224, 242, 254, 0.7));
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  margin: 2rem 0;
+  text-align: center;
+  box-shadow: var(--sp-shadow-md);
+  backdrop-filter: blur(10px);
+}
+
+.sp-upload-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 1rem;
+}
+
+.sp-upload-desc {
+  font-size: 0.92rem;
+  color: var(--sp-text-muted);
+  line-height: 1.9;
+  margin-bottom: 1.8rem;
+}
+
+.sp-upload-warn {
+  color: #7c3aed;
+  font-weight: 800;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+.sp-upload-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.sp-upload-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  border-radius: 12px;
+  padding: 0.8rem 1.4rem;
+  color: var(--sp-text-dark);
+  font-size: 1rem;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+  font-family: var(--sp-font);
+  transition: all 0.3s ease;
+}
+
+.sp-upload-input:focus {
+  outline: none;
+  border-color: var(--sp-accent2);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.sp-upload-btn {
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2.2rem;
+  border-radius: 12px;
+  font-weight: 900;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: var(--sp-font);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 5px 18px rgba(139, 92, 246, 0.35);
+}
+
+.sp-upload-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.45);
+  filter: brightness(1.08);
+}
+
+.sp-upload-error {
+  color: #dc2626;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 0.8rem;
+}
+
+.sp-form-link-wrap {
+  margin-top: 1.2rem;
+}
+
+.sp-form-link {
+  display: inline-block;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  color: #fff;
+  padding: 1.1rem 3rem;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 28px rgba(139, 92, 246, 0.35);
+  letter-spacing: 0.03em;
+}
+
+.sp-form-link:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 16px 40px rgba(139, 92, 246, 0.45);
+  filter: brightness(1.08);
+}
+
+/* ============================================================
+   13. 提出条件セクション
+   ============================================================ */
+.sp-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.sp-rule-card {
+  background: var(--sp-bg-card);
+  border-radius: 20px;
+  padding: 1.8rem 1.4rem;
+  text-align: center;
+  box-shadow: var(--sp-shadow-sm);
+  border: var(--sp-border-lavender);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sp-rule-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sp-shadow-lg);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+.sp-rule-icon {
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
+}
+
+.sp-rule-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--sp-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.sp-rule-value {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 0.8rem;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-rule-detail {
+  font-size: 0.85rem;
+  color: var(--sp-text-muted);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+
+.sp-rule-note {
+  font-size: 0.78rem;
+  color: #d97706;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* 提出条件まとめ表 */
+.sp-rules-summary {
+  background: var(--sp-bg-card);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: var(--sp-shadow-sm);
+  border: var(--sp-border-pink);
+}
+
+.sp-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+}
+
+.sp-table th,
+.sp-table td {
+  padding: 1rem 1.2rem;
+  border-bottom: 1px solid rgba(249, 168, 212, 0.25);
+  line-height: 1.7;
+  vertical-align: top;
+  font-size: 0.92rem;
+}
+
+.sp-table th {
+  width: 28%;
+  font-weight: 800;
+  color: var(--sp-pink-deep);
+  text-align: left;
+  background: rgba(252, 231, 243, 0.5);
+}
+
+.sp-table td {
+  color: var(--sp-text-dark);
+}
+
+.sp-table tr:last-child th,
+.sp-table tr:last-child td {
+  border-bottom: none;
+}
+
+.sp-tag-ok {
+  display: inline-block;
+  background: rgba(167, 243, 208, 0.6);
+  color: #065f46;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.3rem;
+}
+
+.sp-tag-warn {
+  display: inline-block;
+  background: rgba(254, 243, 199, 0.8);
+  color: #92400e;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.3rem;
+}
+
+.sp-tag-info {
+  display: inline-block;
+  background: rgba(186, 230, 253, 0.7);
+  color: #0c4a6e;
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.8rem;
+  border-radius: 50px;
+  margin-top: 0.3rem;
+}
+
+/* ============================================================
+   14. スケジュールセクション
+   ============================================================ */
+.sp-schedule-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.sp-schedule-card {
+  background: var(--sp-bg-card);
+  border-radius: 20px;
+  padding: 1.8rem 2rem;
+  width: 100%;
+  max-width: 560px;
+  box-shadow: var(--sp-shadow-md);
+  text-align: center;
+  position: relative;
+  border: 2px solid transparent;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sp-schedule-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sp-shadow-lg);
+}
+
+.sp-schedule-step1 { border-color: rgba(249, 168, 212, 0.6); }
+.sp-schedule-step2 { border-color: rgba(221, 214, 254, 0.7); }
+.sp-schedule-step3 { border-color: rgba(186, 230, 253, 0.7); }
+.sp-schedule-step4 {
+  border-color: rgba(167, 243, 208, 0.7);
+  background: linear-gradient(135deg,
+    rgba(252, 231, 243, 0.8),
+    rgba(237, 233, 254, 0.8));
+}
+
+.sp-schedule-step-num {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  color: var(--sp-text-muted);
+  background: rgba(249, 168, 212, 0.25);
+  padding: 0.25rem 1rem;
+  border-radius: 50px;
+  margin-bottom: 0.8rem;
+}
+
+.sp-schedule-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.8rem;
+}
+
+.sp-schedule-date {
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.sp-schedule-label {
+  font-size: 1.05rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.8rem;
+}
+
+.sp-schedule-note {
+  font-size: 0.82rem;
+  color: var(--sp-text-muted);
+  line-height: 1.7;
+}
+
+.sp-schedule-arrow {
+  font-size: 1.8rem;
+  color: var(--sp-pink);
+  margin: 0.6rem 0;
+  line-height: 1;
+}
+
+/* ============================================================
+   15. タイムテーブル工事中ボックス
+   ============================================================ */
+.sp-construction-box {
+  background: var(--sp-bg-card);
+  border: 2px solid rgba(249, 168, 212, 0.4);
+  border-radius: 24px;
+  padding: 4rem 2rem;
+  text-align: center;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.sp-construction-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--sp-pink-deep), var(--sp-accent2));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 0.4rem 1.4rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+}
+
+.sp-construction-text {
+  font-size: 1rem;
+  color: var(--sp-text-muted);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+/* ============================================================
+   16. アーティストグリッド
+   ============================================================ */
+.sp-artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1.8rem;
+}
+
+@media (min-width: 600px) {
+  .sp-artist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  }
+}
+
+/* artist_spring.js が挿入する .artist-card を春テーマで上書き */
+#spring-theme .artist-card {
+  background: var(--sp-bg-card);
+  border: var(--sp-border-lavender);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+#spring-theme .artist-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--sp-shadow-lg);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+#spring-theme .artist-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-bottom: 2px solid rgba(249, 168, 212, 0.5);
+  transition: transform 0.5s ease;
+}
+
+#spring-theme .artist-card:hover .artist-thumb {
+  transform: scale(1.05);
+}
+
+#spring-theme .artist-info {
+  padding: 1.4rem;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#spring-theme .artist-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--sp-text-dark);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+#spring-theme .artist-social-links {
+  display: flex;
+  justify-content: center;
+  gap: 0.8rem;
+}
+
+#spring-theme .social-link {
+  color: var(--sp-text-dark);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(249, 168, 212, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(249, 168, 212, 0.4);
+}
+
+#spring-theme .social-link svg {
+  width: 17px;
+  height: 17px;
+}
+
+#spring-theme .social-link:hover {
+  transform: translateY(-3px) rotate(8deg);
+  background: rgba(249, 168, 212, 0.5);
+}
+
+#spring-theme .social-link.x:hover { background: #000; color: #fff; }
+#spring-theme .social-link.youtube:hover { background: #ff0000; color: #fff; }
+
+/* ============================================================
+   17. フッター
+   ============================================================ */
+.sp-footer {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  background: linear-gradient(to top,
+    rgba(252, 231, 243, 0.6),
+    transparent);
+  border-top: 1px solid rgba(249, 168, 212, 0.3);
+  margin-top: 2rem;
+}
+
+.sp-footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.sp-footer-link {
+  color: var(--sp-text-dark);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border: var(--sp-border-pink);
+  transition: all 0.3s ease;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.sp-footer-link:hover {
+  background: linear-gradient(135deg, rgba(249, 168, 212, 0.5), rgba(221, 214, 254, 0.5));
+  transform: translateY(-4px);
+  box-shadow: var(--sp-shadow-md);
+}
+
+.sp-footer-inquiry {
+  font-size: 0.82rem;
+  color: var(--sp-text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+}
+
+.sp-footer-copy {
+  font-size: 0.75rem;
+  color: var(--sp-text-light);
+}
+
+/* ============================================================
+   18. ユーティリティ
+   ============================================================ */
+.hidden { display: none !important; }
+
+/* ============================================================
+   19. レスポンシブ (モバイル)
+   ============================================================ */
+@media (max-width: 480px) {
+  .sp-hero {
+    padding: 4rem 1.2rem 3rem;
+  }
+
+  .sp-hero-title {
+    font-size: 2.4rem;
+  }
+
+  .sp-concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-rules-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sp-table th,
+  .sp-table td {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .sp-table th {
+    width: 35%;
+  }
+
+  .sp-schedule-card {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .sp-upload-block {
+    padding: 2rem 1.2rem;
+  }
+
+  .sp-hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sp-btn-primary,
+  .sp-btn-secondary {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .sp-rules-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sp-capacity-num {
+    font-size: 3rem;
+  }
+
+  .sp-hero-meta {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   20. ガイドライン本文スタイル
+   ============================================================ */
+.sp-guideline-body {
+  background: var(--sp-bg-card);
+  border-radius: 20px;
+  padding: 2rem 1.8rem;
+  border: var(--sp-border-lavender);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.sp-guideline-heading {
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--sp-text-dark);
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid rgba(249, 168, 212, 0.4);
+}
+
+.sp-guideline-section {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--sp-lavender-deep);
+  margin: 1.8rem 0 0.8rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--sp-accent2);
+}
+
+.sp-guideline-para {
+  font-size: 0.9rem;
+  color: var(--sp-text-muted);
+  line-height: 1.9;
+  margin-bottom: 0.8rem;
+}
+
+.sp-guideline-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.sp-guideline-list li {
+  font-size: 0.88rem;
+  color: var(--sp-text-dark);
+  line-height: 1.75;
+  padding-left: 1.2em;
+  position: relative;
+}
+
+.sp-guideline-list li::before {
+  content: '・';
+  position: absolute;
+  left: 0;
+  color: var(--sp-pink-deep);
+}
+

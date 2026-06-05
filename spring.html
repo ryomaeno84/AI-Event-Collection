@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="MAcyEP6Orc6uN_v1QCNc2k1dZ2gWkMQ4d3Z94s_k_dA" />
+  <meta name="description" content="春のAI映像フリーマーケット — 春の光に、AI映像が咲く。生成AIで生まれた映像作品が春のスクリーンに集う、オンライン上映イベント。">
 
   <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
@@ -12,235 +13,491 @@
   <link rel="manifest" href="image/favicons/manifest.json">
   <link rel="shortcut icon" href="image/favicons/favicon.ico">
 
-  <title>AI Spring FES | AI Event Collection</title>
+  <title>春のAI映像フリーマーケット | AI Event Collection</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;800;900&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="css/global.css">
-  <link rel="stylesheet" href="css/event.css">
-  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/spring.css">
 </head>
 
 <body id="spring-theme">
-  <div class="bg-layer"></div>
+  <canvas id="spring-canvas" aria-hidden="true"></canvas>
 
-  <div class="event-wrapper">
-    <header class="event-header">
-      <a href="index.html" class="back-btn" aria-label="トップページへ戻る">
-        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+  <div class="sp-wrapper">
+
+    <header class="sp-header">
+      <a href="index.html" class="sp-back-btn" aria-label="トップページへ戻る">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2.5" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
       </a>
-      <h1 class="event-title">AI Spring FES</h1>
 
-      <nav class="tab-nav">
-        <button class="tab-btn active" data-target="news">News</button>
-        <button class="tab-btn" data-target="about">About</button>
-        <button class="tab-btn" data-target="join">参加方法</button>
-        <button class="tab-btn" data-target="timetable">Timetable</button>
-        <button class="tab-btn" data-target="artist">MV Artist</button>
-        <!-- <button class="tab-btn" data-target="goods">公式グッズ</button> -->
-        <button class="tab-btn" data-target="guideline">Guideline</button>
+      <h1 class="sp-header-title">🌸 春のAI映像フリーマーケット</h1>
+
+      <nav class="sp-tab-nav" role="tablist" aria-label="ページナビゲーション">
+        <button class="sp-tab-btn active" data-target="news" role="tab" aria-selected="true" id="tab-news">News</button>
+        <button class="sp-tab-btn" data-target="about" role="tab" aria-selected="false" id="tab-about">About</button>
+        <button class="sp-tab-btn" data-target="join" role="tab" aria-selected="false" id="tab-join">参加条件</button>
+        <button class="sp-tab-btn" data-target="timetable" role="tab" aria-selected="false"
+          id="tab-timetable">Timetable</button>
+        <button class="sp-tab-btn" data-target="artist" role="tab" aria-selected="false" id="tab-artist">Movie
+          Artist</button>
+        <button class="sp-tab-btn" data-target="guideline" role="tab" aria-selected="false"
+          id="tab-guideline">Guideline</button>
       </nav>
     </header>
 
-    <main class="content-container">
-      <section id="news" class="tab-pane active">
-        <h3 class="section-title">News</h3>
-        <div class="news-list" id="news-list">
-          <div class="news-item">
-            <div class="news-date">2026.07.25</div>
-            <div class="news-title">公式サイトオープン！</div>
-          </div>
+    <main class="sp-content" role="main">
+
+      <section id="news" class="sp-pane active" role="tabpanel" aria-labelledby="tab-news">
+        <h3 class="sp-section-title">🌷 News</h3>
+
+        <div class="sp-news-list" id="news-list">
+          <article class="sp-news-item">
+            <time class="sp-news-date" datetime="2026-07-25">2026.07.25</time>
+            <p class="sp-news-text">公式サイトオープン！</p>
+          </article>
         </div>
-        <div id="news-toggle-container" class="news-toggle-container hidden">
-          <button id="news-toggle-btn" class="news-toggle-btn">さらに表示 ▼</button>
+
+        <div id="news-toggle-container" class="sp-news-toggle-wrap hidden">
+          <button id="news-toggle-btn" class="sp-news-toggle-btn" type="button">さらに表示 ▼</button>
         </div>
       </section>
 
-      <section id="about" class="tab-pane">
-        <h3 class="section-title">About</h3>
-        <div class="about-text">
-          <div class="about-header">
-            <div class="about-title-box">
-              <h4 class="about-title">#秋の夜長のAI映像祭2026 開催のお知らせ</h4>
-            </div>
-          </div>
-          <img src="image/autumn2026/poster/autumn2026_introduction.png" alt="autumn" class="autumn-image">
-          <p class="about-lead">
-            何でもありの映像祭へご招待<br>
-            秋の夜長をAI映像鑑賞で楽しみませんか？
-          </p>
-          <div class="highlight-group">
-            <div class="highlight-item">
-              <p class="highlight-title accent-yellow">～本気のストーリー動画も一発勝負のネタ動画も～</p>
-              <p>シリアス、ギャグ、バトル、一発ネタ……！<br>ジャンル不問の一夜限りの映像祭！</p>
-            </div>
-            <div class="highlight-group">
-              <div class="highlight-item">
-                <p class="highlight-title accent-yellow">～あなたの"好き"をみんなで共有しよう！～</p>
-                <p>あなたが面白ければそれでOK！<br>今夜はあなたが映画監督でありスターです！</p>
-              </div>
-              <div class="highlight-item">
-                <p class="highlight-title accent-yellow">＼出演枠は30名！／</p>
-                <p>最短1分の動画で手軽に参加OK！<br>もちろん5分の本気動画もお待ちしてます！</p>
-              </div>
+      <section id="about" class="sp-pane" role="tabpanel" aria-labelledby="tab-about">
+        <h3 class="sp-section-title">🌸 About</h3>
+        <img src="image/spring2027/poster/about.png" alt="About" class="sp-hero-img">
+        <div class="sp-hero" aria-label="ヒーローセクション">
+          <div class="sp-hero-grid" aria-hidden="true"></div>
+
+          <div class="sp-hero-content">
+            <h2 class="sp-hero-title">春のAI映像<br>フリーマーケット</h2>
+            <p class="sp-hero-catch">春の光に、AI映像が咲く。</p>
+            <p class="sp-hero-sub">
+              春の光に包まれたオンライン上映イベントです。<br>
+              AIで生まれた映像作品を、みんなで楽しむ発表の場です。
+            </p>
+
+            <div class="sp-hero-meta">
+              <span class="sp-hero-meta-item">📅 2027年3月28日（土）</span>
+              <span class="sp-hero-meta-item">👥 定員30名</span>
+              <span class="sp-hero-meta-item">🎬 オンライン配信</span>
             </div>
           </div>
         </div>
+
+        <div class="sp-concept-grid">
+          <div class="sp-concept-card">
+            <div class="sp-concept-icon">🎬</div>
+            <h5 class="sp-concept-title">ジャンル不問の映像祭</h5>
+            <p class="sp-concept-body">
+              シリアス、ファンタジー、コメディ、ドラマ……<br>
+              AIで生まれた作品であれば、ジャンルは自由です。
+            </p>
+          </div>
+
+          <div class="sp-concept-card">
+            <div class="sp-concept-icon">✨</div>
+            <h5 class="sp-concept-title">初参加でも入りやすい</h5>
+            <p class="sp-concept-body">
+              最短1分の動画から参加OK。<br>
+              大切なのは、あなたの「表現したい」という気持ちです。
+            </p>
+          </div>
+
+          <div class="sp-concept-card">
+            <div class="sp-concept-icon">🌱</div>
+            <h5 class="sp-concept-title">クリエイターの発表の場</h5>
+            <p class="sp-concept-body">
+              完成度より、表現の豊かさを。<br>
+              AIクリエイターが集まる春の舞台へ、ぜひ。
+            </p>
+          </div>
+        </div>
+
+        <div class="sp-capacity-banner">
+          <span class="sp-capacity-label">定員</span>
+          <span class="sp-capacity-num">30</span>
+          <span class="sp-capacity-unit">名</span>
+          <p class="sp-capacity-note">応募者が30名を超えた場合は抽選。先着順ではありません。</p>
+        </div>
       </section>
 
-      <section id="join" class="tab-pane">
-        <h3 class="section-title">参加方法</h3>
-        <div class="join-container">
-          <div class="join-header theme-blue">
-            <h4 class="join-title theme-blue">🎥 動画で参加</h4>
-          </div>
-          <h5 class="topics-title">【出演条件】</h5>
-          <table class="guideline-table">
+      <section id="join" class="sp-pane" role="tabpanel" aria-labelledby="tab-join">
+        <h3 class="sp-section-title">🌸 参加条件</h3>
+
+        <div class="sp-join-header">
+          <div class="sp-join-icon">🎥</div>
+          <h4 class="sp-join-title">動画作品で参加しよう！</h4>
+          <p class="sp-join-sub">春の光に包まれたオンライン上映イベントへ、あなたの作品を届けてください。</p>
+        </div>
+
+        <div class="sp-rules-summary" style="margin-top: 2rem;">
+          <table class="sp-table">
             <tbody>
               <tr>
                 <th>時間</th>
-                <td>お一人様につき 1分〜5分の動画 1つ</td>
+                <td>
+                  お一人様につき 1分〜5分の動画を1作品まで<br>
+                  <span class="sp-tag-ok">短編動画を結合した作品もOK！</span><br>
+                  <span class="sp-tag-warn">5分を超えた作品については、運営側で調整を行います</span>
+                </td>
               </tr>
               <tr>
                 <th>ジャンル</th>
-                <td>不問、ただしMVはミュージカル形式のみ可</td>
+                <td>不問（ただし、MVはミュージカル形式のみ可）</td>
               </tr>
               <tr>
                 <th>拡張子</th>
                 <td>wav または mp4</td>
               </tr>
               <tr>
-                <th>画面・fps</th>
-                <td>1280x720、24〜30fps</td>
+                <th>画面サイズ</th>
+                <td>1280×720</td>
+              </tr>
+              <tr>
+                <th>fps</th>
+                <td>24〜30fps</td>
               </tr>
               <tr>
                 <th>定員</th>
-                <td>30名</td>
-              </tr>
-              <tr>
-                <th>日程</th>
                 <td>
-                  <div class="timeline">
-                    <div class="timeline-item">
-                      <div class="timeline-marker"></div>
-                      <div class="timeline-content">
-                        <div class="timeline-date">7/25(土)～7/31(金)</div>
-                        <div class="timeline-title">出演者募集</div>
-                      </div>
-                    </div>
-                    <div class="timeline-item">
-                      <div class="timeline-marker"></div>
-                      <div class="timeline-content">
-                        <div class="timeline-date">8/2(日)</div>
-                        <div class="timeline-title">出演者確定</div>
-                      </div>
-                    </div>
-                    <div class="timeline-item">
-                      <div class="timeline-marker"></div>
-                      <div class="timeline-content">
-                        <div class="timeline-date">8/3(月)～8/7(金)</div>
-                        <div class="timeline-title">出演確定連絡</div>
-                      </div>
-                    </div>
-                    <div class="timeline-item">
-                      <div class="timeline-marker"></div>
-                      <div class="timeline-content">
-                        <div class="timeline-date">8/29(土)</div>
-                        <div class="timeline-title">動画提出期限</div>
-                      </div>
-                    </div>
-                    <div class="timeline-item">
-                      <div class="timeline-marker"></div>
-                      <div class="timeline-content">
-                        <div class="timeline-date">10/3(土)</div>
-                        <div class="timeline-title">イベント当日！</div>
-                      </div>
-                    </div>
-                  </div>
+                  30名<br>
+                  <span class="sp-tag-warn">応募者が30名を超えた場合は、抽選により参加者を決定します</span><br>
+                  <span class="sp-tag-info">先着順ではありません。募集期間内にお申し込みいただいた方を対象に抽選を行います</span>
                 </td>
               </tr>
             </tbody>
           </table>
-          <h5 class="topics-title">【出演応募フォーム】</h5>
-          <p class="mb-large">
-            <a href="https://forms.gle/sCHkr8ED9zgYFLW26" target="_blank"
-              class="accent-blue text-link">https://XXX/</a><br>
-            <span class="hint-text">※定員超過の場合、抽選でお選びします。</span>
+        </div>
+
+        <div class="sp-schedule-section" style="margin-bottom: 3rem;">
+          <h5 class="sp-sub-title">📅 日程</h5>
+
+          <div class="sp-schedule-grid">
+            <div class="sp-schedule-card sp-schedule-step1">
+              <div class="sp-schedule-step-num">STEP 1</div>
+              <div class="sp-schedule-icon">📣</div>
+              <div class="sp-schedule-date">2027年1/3（日）〜1/10（日）</div>
+              <div class="sp-schedule-label">出演者募集</div>
+              <p class="sp-schedule-note">募集期間内にフォームよりお申し込みください。先着順ではありません。</p>
+            </div>
+
+            <div class="sp-schedule-arrow" aria-hidden="true">↓</div>
+
+            <div class="sp-schedule-card sp-schedule-step2">
+              <div class="sp-schedule-step-num">STEP 2</div>
+              <div class="sp-schedule-icon">✉️</div>
+              <div class="sp-schedule-date">2027年1/11（月）〜1/18（月）</div>
+              <div class="sp-schedule-label">出演確定連絡</div>
+              <p class="sp-schedule-note">30名を超えた場合は抽選。結果は期間内に個別にご連絡します。</p>
+            </div>
+
+            <div class="sp-schedule-arrow" aria-hidden="true">↓</div>
+
+            <div class="sp-schedule-card sp-schedule-step3">
+              <div class="sp-schedule-step-num">STEP 3</div>
+              <div class="sp-schedule-icon">📤</div>
+              <div class="sp-schedule-date">2027年2/28（土）</div>
+              <div class="sp-schedule-label">作品提出期日</div>
+              <p class="sp-schedule-note">出演確定者は期日までに作品をご提出ください。</p>
+            </div>
+
+            <div class="sp-schedule-arrow" aria-hidden="true">↓</div>
+
+            <div class="sp-schedule-card sp-schedule-step4">
+              <div class="sp-schedule-step-num">STEP 4</div>
+              <div class="sp-schedule-icon">🌸</div>
+              <div class="sp-schedule-date">2027年3/28（土）</div>
+              <div class="sp-schedule-label">イベント当日！</div>
+              <p class="sp-schedule-note">春のスクリーンに、あなたの作品が咲きます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sp-form-section" style="margin-bottom: 3rem;">
+          <h5 class="sp-sub-title">📝 出演応募フォーム</h5>
+          <p class="sp-form-note">
+            <a href="https://forms.gle/sCHkr8ED9zgYFLW26" target="_blank" rel="noopener" class="sp-text-link">
+              https://forms.gle/sCHkr8ED9zgYFLW26
+            </a>
+          </p>
+          <p class="sp-hint-text">※ 募集期間：2027年1月3日（日）〜1月10日（日）</p>
+        </div>
+
+        <div id="upload-integrated" class="sp-upload-block">
+          <h4 class="sp-upload-title">🌸 動画アップロード（出演者専用）</h4>
+          <p class="sp-upload-desc">
+            作品の提出は、Googleの公式システムで受け付けております。<br>
+            <strong class="sp-upload-warn">
+              ※ 提出にはGoogleアカウントへのログインとアップロードキーが必要です。<br>
+              アップロードキーは出演者様専用のDiscordで個別にお伝えします。
+            </strong>
           </p>
 
-          <div id="upload-integrated" class="upload-integrated">
-            <h4 class="upload-title">動画アップロード（出演者専用）</h4>
-            <p class="upload-desc">
-              作品の提出は、Googleの公式システムで受け付けております。<br>
-              <span class="accent-yellow" style="font-weight: bold;">
-                ※提出にはGoogleアカウントへのログインとアップロードキーが必要です。<br>
-                アップロードキーは出演者様専用のDiscordで個別にお伝えします。</span>
-            </p>
-            <div class="upload-controls">
-              <input type="password" id="upload-key-input" class="upload-input" placeholder="アップロードキーを入力">
-              <button id="upload-auth-btn" class="upload-btn" onclick="checkKey()">認証</button>
-              <p id="upload-error-msg" class="upload-error" style="display: none;"></p>
-            </div>
-            <div id="form-link-container" class="form-link-container" style="display: none;">
-              <a href="https://forms.gle/KVMeZXyP6tqRMu4U7" target="_blank" class="form-link">フォームを開いて提出する</a>
-            </div>
+          <div class="sp-upload-controls">
+            <input type="password" id="upload-key-input" class="sp-upload-input" placeholder="アップロードキーを入力"
+              aria-label="アップロードキー入力欄">
+            <button id="upload-auth-btn" class="sp-upload-btn" type="button" onclick="checkKey()"
+              aria-label="認証ボタン">認証</button>
+          </div>
+
+          <p id="upload-error-msg" class="sp-upload-error" style="display: none;" role="alert"></p>
+
+          <div id="form-link-container" class="sp-form-link-wrap" style="display: none;">
+            <a href="https://forms.gle/KVMeZXyP6tqRMu4U7" target="_blank" rel="noopener" class="sp-upload-form-link">
+              作品アップロードフォームを開く
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="timetable" class="tab-pane">
-        <h3 class="section-title">Timetable</h3>
+      <section id="timetable" class="sp-pane" role="tabpanel" aria-labelledby="tab-timetable">
+        <h3 class="sp-section-title">🌷 Timetable</h3>
         <div class="under-construction-box">
-          <div class="construction-status">
-            <span class="status-badge">NOW PLANNING</span>
-            <p class="status-text">
-              調整中……
-            </p>
-          </div>
-          <p class="hint-text">
-            最新情報は公式X（Twitter）をチェックして、<br>
-            続報をお待ちください！
-          </p>
+          Coming Soon...
         </div>
       </section>
 
-      <section id="artist" class="tab-pane">
-        <h3 class="section-title">MV Artist</h3>
-        <div id="artist-grid" class="artist-grid">
+      <section id="artist" class="sp-pane" role="tabpanel" aria-labelledby="tab-artist">
+        <h3 class="sp-section-title">🌸 Movie Artist</h3>
+        <div id="artist-grid" class="sp-artist-grid">
           <!-- Dynamically inserted by js/artist_spring.js -->
         </div>
       </section>
 
-      <!-- <section id="goods" class="tab-pane">
-        <h3 class="section-title">公式グッズ</h3>
-        <div id="goods-grid" class="goods-grid">
-          [Dynamically inserted by js/goods_spring.js]
-        </div>
-      </section> -->
+      <section id="guideline" class="sp-pane" role="tabpanel" aria-labelledby="tab-guideline">
+        <h3 class="sp-section-title">🌸 Guideline</h3>
 
-      <section id="guideline" class="tab-pane">
-        <h3 class="section-title">Guideline</h3>
-        <div id="guideline-container">
+        <div class="sp-guideline-body">
+          <h4 class="sp-guideline-heading">作品投稿・グッズ販売ガイドライン</h4>
+
+          <p class="sp-guideline-para">
+            本ガイドラインは、本イベントに参加する皆さまが、関係法令および各種権利を尊重した上で、安心して作品を投稿し、グッズを販売・交流できるよう定めるものです。<br>
+            本ガイドラインは、法令の改正や社会情勢、技術動向等を踏まえ、必要に応じて内容を変更する場合があります。変更を行う場合は、変更の効力発生時期を定め、変更内容を運営の公式SNS、イベントページ等で事前に周知します（緊急を要する場合を除く）。周知後、参加者が本イベントへの参加・作品投稿・グッズ販売を継続した場合、変更後のガイドラインに同意したものとみなします。
+          </p>
+
+          <h5 class="sp-guideline-section">1. 用語の定義</h5>
+          <ul class="sp-guideline-list">
+            <li><strong>主催者</strong><br>AI音楽映像イベントを企画・運営する責任者を指します。</li>
+            <li><strong>参加者</strong><br>AI音楽映像イベントへ作品を投稿する方、または参加者独自のグッズを制作・販売する方を指します。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">2. 基本方針（知的財産権の尊重）</h5>
+          <p class="sp-guideline-para">
+            本イベントでは、著作権、商標権、肖像権、パブリシティ権、その他の知的財産権および関連する権利を尊重することを基本方針とします。
+          </p>
+          <ul class="sp-guideline-list">
+            <li>投稿できる作品は<strong>オリジナル作品に限ります。</strong></li>
+            <li>既存のアニメ、映画、ゲーム、漫画、小説、楽曲、キャラクター、ロゴ等を基にした二次創作作品やパロディ作品は認めていません。</li>
+            <li>AI生成物であっても、既存作品や人物、キャラクター、声、人格等を第三者が識別可能な程度で再現・模倣した場合は権利侵害となるおそれがあります。そのような作品は投稿できません。</li>
+            <li>本イベントには企業広告が含まれる場合があります。</li>
+            <li>使用する生成AIツール、素材、音源等の商用利用可否や利用条件は、参加者自身の責任で確認してください。</li>
+            <li>クレジット表記等の条件がある場合は、各利用規約に従ってください。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">3. 投稿できる作品</h5>
+          <p class="sp-guideline-para">以下のいずれかに該当する作品のみ投稿可能です。</p>
+          <ul class="sp-guideline-list">
+            <li><strong>3-1. オリジナル作品</strong><br>参加者自身が制作、またはAIを用いて生成したオリジナルのキャラクター、音楽、映像等。</li>
+            <li><strong>3-2. 公開ライセンス素材の利用</strong><br>Creative
+              Commons等の公開ライセンスに基づき、商用利用を含め合法的に利用可能な素材を、ライセンス条件を遵守して使用した作品。</li>
+            <li><strong>3-3. 権利関係が明確な素材</strong><br>参加者自身が演奏・撮影・録音した素材、または商用利用可能であることが明示された有償素材。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">4. 投稿できない作品</h5>
+          <p class="sp-guideline-para">
+            以下を含む、または含むおそれのある作品は投稿できません。<br>
+            投稿後に判明した場合、運営判断により非公開等の対応を行うことがあります。
+          </p>
+          <ul class="sp-guideline-list">
+            <li>
+              <strong>4-1. 二次創作・パロディ</strong><br>
+              既存キャラクター、デザイン、ロゴ等の使用・模倣<br>
+              既存作品を想起させる構図、表現、名称<br>
+              既存アニメ、映画、番組、ゲーム等の映像・音声の利用<br>
+              既存曲のAIカバー、既存映像のAI加工
+            </li>
+            <li><strong>4-2. 声・人格の模倣</strong><br>実在人物、声優、歌手、VTuber等の声や話し方、人格を特定可能な形で再現・模倣したAI生成音声。</li>
+            <li><strong>4-3. 音楽著作権侵害</strong><br>既存楽曲のメロディやコード進行等を実質的に利用した作品、許諾のないカバー、替え歌、アレンジ。</li>
+            <li><strong>4-4. 商標・ブランド侵害</strong><br>有名作品やブランドを想起させる紛らわしい名称、登録商標やロゴの模倣。</li>
+            <li><strong>4-5. その他の違法・不適切行為</strong><br>実在人物のディープフェイク、プライバシー侵害、誹謗中傷、差別的表現、政治的・宗教的扇動、暴力、流血、直接的な性的表現。</li>
+          </ul>
+          <p class="sp-hint-text">※ 暗喩的・抽象的表現であっても、運営が不適切と判断した場合は投稿不可とします。</p>
+
+          <h5 class="sp-guideline-section">5. 他者素材・ツール利用時の注意</h5>
+          <ul class="sp-guideline-list">
+            <li>使用する素材サイト、生成AIツール、編集ソフト等の利用規約は必ず確認し遵守してください。</li>
+            <li>配信プラットフォームで使用禁止の楽曲・素材は利用できません。</li>
+            <li>第三者の権利に関する申し立てがあった場合、運営は法令および本ガイドラインに基づき対応します。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">6. 権利侵害が疑われる場合の対応</h5>
+          <p class="sp-guideline-para">
+            運営の裁量により、以下の措置を行う場合があります。<br>
+            正式な申し立てがあった場合、事実確認後、速やかに対応を実施します。
+          </p>
+          <ul class="sp-guideline-list">
+            <li>作品の公開停止または非公開化</li>
+            <li>修正依頼</li>
+            <li>審査対象からの除外</li>
+            <li>悪質な場合、今後の参加拒否</li>
+            <li>悪質かつ明確な権利侵害が認められた場合、必要に応じて権利者や関係当局への通報</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">7. 著作権および利用権</h5>
+          <ul class="sp-guideline-list">
+            <li>著作権は各作成者に帰属します。</li>
+            <li>主催者はイベント配信・広報目的の範囲で非独占的利用権を有します。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">8. グッズ販売</h5>
+          <ul class="sp-guideline-list">
+            <li>参加者独自のグッズ制作および主催者が用意した専用ハッシュタグ（例：#AISpringFES物販）の利用は自由です。</li>
+            <li>
+              主催者は「参加者の作品発表および交流のための場を提供する立場」であり、参加者独自のグッズの制作・販売管理・斡旋・宣伝等は行いません。参加者によるグッズの販売・金銭トラブル・不良品等について主催者は一切責任を負いません。
+            </li>
+            <li>参加者独自のグッズ販売において、著作権、商標権その他の知的財産権を侵害しないよう、参加者自身が責任を持って確認してください。権利侵害が疑われる場合は、第6項に準じた措置を取る場合があります。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">9. 免責事項</h5>
+          <ul class="sp-guideline-list">
+            <li>投稿作品の合法性および素材利用の権利処理は参加者自身の責任とします。</li>
+            <li>参加者は、作品が第三者の権利を侵害しないこと、および自身の創作であることを表明・保証します。</li>
+            <li>虚偽申告や違反により紛争が生じた場合、参加者は自己の責任と費用で解決するものとします。</li>
+            <li>主催者が損害を被った場合、合理的な弁護士費用を含め賠償請求できるものとします。ただし、主催者の故意または重過失による場合はこの限りではありません。</li>
+            <li>法令改正や社会情勢等により内容を変更する場合があります。重要変更は適切な方法で告知します。</li>
+          </ul>
+
+          <h5 class="sp-guideline-section">10. お問い合わせ窓口</h5>
+          <p class="sp-guideline-para">
+            お問い合わせや削除依頼は、運営公式SNS（<a href="https://x.com/AI_animeryo" target="_blank" rel="noopener"
+              class="sp-text-link">https://x.com/AI_animeryo</a>）のダイレクトメッセージ、または公式メールアドレス（ryomaeno@ai-event-collection.com）へのご連絡にて受け付けます。連絡手段や対応時間は運営判断により変更される場合があります。
+          </p>
         </div>
       </section>
+
     </main>
 
-    <footer class="event-footer">
-      <div class="footer-links">
-        <a href="https://www.youtube.com/@IDOL_Diffusion" target="_blank" rel="noopener noreferrer"
-          class="footer-link">公式YouTube</a>
-        <a href="https://x.com/AI_animeryo" target="_blank" rel="noopener noreferrer" class="footer-link">公式X
-          (Twitter)</a>
+    <footer class="sp-footer">
+      <div class="sp-footer-links">
+        <a href="index.html" class="sp-footer-link">トップページ</a>
+        <a href="https://www.youtube.com/@IDOL_Diffusion" target="_blank" rel="noopener"
+          class="sp-footer-link">公式YouTube</a>
+        <a href="https://x.com/AI_animeryo" target="_blank" rel="noopener" class="sp-footer-link">公式X (Twitter)</a>
       </div>
-      <p class="footer-inquiry">お問い合わせは公式Xアカウントのダイレクトメッセージにてお願いします。</p>
+      <p class="sp-footer-inquiry">お問い合わせは公式XのDMまで</p>
+      <p class="sp-footer-copy">&copy; AI Event Collection. All Rights Reserved.</p>
     </footer>
   </div>
 
-  <script src="js/main.js"></script>
   <script src="js/artist_spring.js"></script>
-  <!-- <script src="js/goods_spring.js"></script> -->
   <script src="js/upload.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabBtns = document.querySelectorAll('.sp-tab-btn');
+      const tabPanes = document.querySelectorAll('.sp-pane');
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          tabBtns.forEach((b) => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+
+          tabPanes.forEach((pane) => {
+            pane.classList.remove('active');
+          });
+
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const target = document.getElementById(btn.dataset.target);
+          if (target) {
+            target.classList.add('active');
+          }
+        });
+      });
+
+      const canvas = document.getElementById('spring-canvas');
+      if (!canvas) return;
+
+      const ctx = canvas.getContext('2d');
+      const petals = [];
+      const colors = ['#ffc8d8', '#ffb3c6', '#f9a8d4', '#fbcfe8', '#e9d5ff', '#bfdbfe', '#d1fae5'];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      function createPetal() {
+        return {
+          x: Math.random() * canvas.width,
+          y: -20,
+          size: Math.random() * 8 + 5,
+          speedY: Math.random() * 1.2 + 0.4,
+          speedX: (Math.random() - 0.5) * 0.8,
+          rotation: Math.random() * Math.PI * 2,
+          rotSpeed: (Math.random() - 0.5) * 0.04,
+          opacity: Math.random() * 0.45 + 0.35,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          sway: Math.random() * Math.PI * 2,
+          swaySpeed: Math.random() * 0.02 + 0.005
+        };
+      }
+
+      function drawPetal(petal) {
+        ctx.save();
+        ctx.translate(petal.x, petal.y);
+        ctx.rotate(petal.rotation);
+        ctx.globalAlpha = petal.opacity;
+        ctx.fillStyle = petal.color;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, petal.size * 0.6, petal.size, 0, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function animatePetals() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        petals.forEach((petal, index) => {
+          petal.sway += petal.swaySpeed;
+          petal.x += petal.speedX + Math.sin(petal.sway) * 0.5;
+          petal.y += petal.speedY;
+          petal.rotation += petal.rotSpeed;
+
+          drawPetal(petal);
+
+          if (petal.y > canvas.height + 20) {
+            petals[index] = createPetal();
+          }
+        });
+
+        requestAnimationFrame(animatePetals);
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      for (let i = 0; i < 30; i += 1) {
+        const petal = createPetal();
+        petal.y = Math.random() * window.innerHeight;
+        petals.push(petal);
+      }
+
+      animatePetals();
+    });
+  </script>
 </body>
 
 </html>
