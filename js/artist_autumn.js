@@ -4,16 +4,82 @@
 
 const autumnArtists = [
   {
-    name: "Director AI",
-    image: "image/artist/autumn/icon01.png",
-    xUrl: "#",
-    youtubeUrl: "#"
+    name: "天汐香弓",
+    image: "image/autumn2026/icon/icon01.jpeg",
+    xUrl: "https://x.com/teshio_k",
+    youtubeUrl: "https://youtube.com/@user-usuisioaji"
   },
   {
-    name: "Autumn Guest",
-    image: "image/artist/autumn/icon02.png",
-    xUrl: "#",
-    youtubeUrl: "#"
+    name: "To",
+    image: "image/autumn2026/icon/icon02.jpg",
+    xUrl: "https://x.com/divarias_SUNO",
+    youtubeUrl: "https://youtube.com/@studioto-animecreation?si=OU6wT3xUvojTFGpo"
+  },
+  {
+    name: "PONTA",
+    image: "image/autumn2026/icon/icon03.png",
+    xUrl: "https://x.com/pinkshihtzu",
+    youtubeUrl: ""
+  },
+  {
+    name: "美桜",
+    image: "image/autumn2026/icon/icon04.jpg",
+    xUrl: "https://x.com/AI_mio_AI",
+    youtubeUrl: "https://www.youtube.com/@AI_mio_AI"
+  },
+  {
+    name: "Resonance Diva",
+    image: "image/autumn2026/icon/icon05.png",
+    xUrl: "https://x.com/resonancediva",
+    youtubeUrl: "https://www.youtube.com/@resonance_diva"
+  },
+  {
+    name: "bell_bright",
+    image: "image/autumn2026/icon/icon06.png",
+    xUrl: "https://x.com/tl_bellbright?s=11",
+    youtubeUrl: ""
+  },
+  {
+    name: "ねね",
+    image: "image/autumn2026/icon/icon07.jpg",
+    xUrl: "@anonenonenonene",
+    youtubeUrl: "https://youtube.com/channel/UCbrty3dpwhgQZROiWrMrUEg?si=xszcvqQYMTYU4Bls"
+  },
+  {
+    name: "こうたろう🐸ケロキング",
+    image: "image/autumn2026/icon/icon08.jpeg",
+    xUrl: "https://x.com/torotoromoney",
+    youtubeUrl: "https://www.youtube.com/@koutaroukero"
+  },
+  {
+    name: "ぱんちょ",
+    image: "image/autumn2026/icon/icon09.jpg",
+    xUrl: "https://x.com/pancyo999",
+    youtubeUrl: "https://youtube.com/@pancyo924"
+  },
+  {
+    name: "ブランシェスカ",
+    image: "image/autumn2026/icon/icon10.png",
+    xUrl: "@montblanc5815",
+    youtubeUrl: "https://youtube.com/@abnormalbraincrisisrecord"
+  },
+  {
+    name: "マンダリンみかん",
+    image: "image/autumn2026/icon/icon999.png",
+    xUrl: "https://x.com/potechimusha",
+    youtubeUrl: ""
+  },
+  {
+    name: "minmin",
+    image: "image/autumn2026/icon/icon12.jpg",
+    xUrl: "@minmin_4410",
+    youtubeUrl: "https://youtube.com/@minmin_4410"
+  },
+  {
+    name: "Ushizaru",
+    image: "image/autumn2026/icon/icon13.jpg",
+    xUrl: "@Ushizaru_LAB",
+    youtubeUrl: "https://www.youtube.com/@Ushizaru-il2sw"
   }
 ];
 
