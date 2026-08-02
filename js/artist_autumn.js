@@ -42,7 +42,7 @@ const autumnArtists = [
   {
     name: "ねね",
     image: "image/autumn2026/icon/icon07.jpg",
-    xUrl: "@anonenonenonene",
+    xUrl: "https://x.com/anonenonenonene",
     youtubeUrl: "https://youtube.com/channel/UCbrty3dpwhgQZROiWrMrUEg?si=xszcvqQYMTYU4Bls"
   },
   {
@@ -60,7 +60,7 @@ const autumnArtists = [
   {
     name: "ブランシェスカ",
     image: "image/autumn2026/icon/icon10.png",
-    xUrl: "@montblanc5815",
+    xUrl: "https://x.com/montblanc5815",
     youtubeUrl: "https://youtube.com/@abnormalbraincrisisrecord"
   },
   {
@@ -72,14 +72,110 @@ const autumnArtists = [
   {
     name: "minmin",
     image: "image/autumn2026/icon/icon12.jpg",
-    xUrl: "@minmin_4410",
+    xUrl: "https://x.com/minmin_4410",
     youtubeUrl: "https://youtube.com/@minmin_4410"
   },
   {
     name: "Ushizaru",
     image: "image/autumn2026/icon/icon13.jpg",
-    xUrl: "@Ushizaru_LAB",
+    xUrl: "https://x.com/Ushizaru_LAB",
     youtubeUrl: "https://www.youtube.com/@Ushizaru-il2sw"
+  },
+  {
+    name: "Drakichi",
+    image: "image/autumn2026/icon/icon14.png",
+    xUrl: "https://x.com/drakichi_kabu",
+    youtubeUrl: "https://youtube.com/@drakichienglish?si=UqrTH9Nd3RESIEIm"
+  },
+  {
+    name: "ApandaI",
+    image: "image/autumn2026/icon/icon15.jpg",
+    xUrl: "https://x.com/aipandap",
+    youtubeUrl: ""
+  },
+  {
+    name: "月川マキ",
+    image: "image/autumn2026/icon/icon16.png",
+    xUrl: "https://x.com/4696memory?s=11&t=SxBdMMMgRTwCDaHSHntKfQ",
+    youtubeUrl: "https://youtube.com/@4696memory?si=vngaWIk-HP8y26Y3"
+  },
+  {
+    name: "高宮ルアリエ",
+    image: "image/autumn2026/icon/icon17.png",
+    xUrl: "https://x.com/LuarieTakamiya",
+    youtubeUrl: "https://www.youtube.com/@%E9%AB%98%E5%AE%AE%E3%83%AB%E3%82%A2%E3%83%AA%E3%82%A8-LUA"
+  },
+  {
+    name: "nekop",
+    image: "image/autumn2026/icon/icon18.jpg",
+    xUrl: "https://x.com/catfish01090122",
+    youtubeUrl: "https://www.youtube.com/@nekop_within_suno"
+  },
+  {
+    name: "DJ NYAAAN",
+    image: "image/autumn2026/icon/icon19.png",
+    xUrl: "https://x.com/djnyaaan222",
+    youtubeUrl: "https://youtube.com/@djnyaaan222"
+  },
+  {
+    name: "STN",
+    image: "image/autumn2026/icon/icon20.png",
+    xUrl: "https://x.com/stn_aicreator",
+    youtubeUrl: "https://www.youtube.com/@stn_ai"
+  },
+  {
+    name: "Katsnn",
+    image: "image/autumn2026/icon/icon21.JPEG",
+    xUrl: "https://x.com/Ka2nnAI_NekoOG",
+    youtubeUrl: "https://www.youtube.com/@NekoOtomeCH"
+  },
+  {
+    name: "∫varts",
+    image: "image/autumn2026/icon/icon22.PNG",
+    xUrl: "https://x.com/varts_works?s=11",
+    youtubeUrl: "https://youtube.com/@rui_varts?si=0Do-zfppDT495ng0"
+  },
+  {
+    name: "K.Imayui",
+    image: "image/autumn2026/icon/icon23.png",
+    xUrl: "https://x.com/ai_imayui",
+    youtubeUrl: "https://www.youtube.com/@AIAnimePoetry"
+  },
+  {
+    name: "noriyang",
+    image: "image/autumn2026/icon/icon24.jpeg",
+    xUrl: "https://x.com/noriyang_crypt",
+    youtubeUrl: "https://www.youtube.com/@noriyang0911"
+  },
+  {
+    name: "Doraking",
+    image: "image/autumn2026/icon/icon25.jpeg",
+    xUrl: "https://x.com/doraking_jp",
+    youtubeUrl: "https://www.youtube.com/@doraking_jp"
+  },
+  {
+    name: "藍野シアン",
+    image: "image/autumn2026/icon/icon26.png",
+    xUrl: "https://x.com/ugus9GSDC6j9nC8",
+    youtubeUrl: "https://www.youtube.com/@AINO_Channel_Cyan"
+  },
+  {
+    name: "kurumi",
+    image: "image/autumn2026/icon/icon27.jpg",
+    xUrl: "https://x.com/kurukuru_963963",
+    youtubeUrl: "https://youtube.com/channel/UC0DlrQU9L-q2bHeknwX1J-w?si=r8SB5MZCkudGEqNz"
+  },
+  {
+    name: "JACKPOT031",
+    image: "image/autumn2026/icon/icon28.png",
+    xUrl: "https://x.com/JACKPOT031",
+    youtubeUrl: "https://www.youtube.com/@jackpot0031"
+  },
+  {
+    name: "Hina",
+    image: "image/autumn2026/icon/icon29.png",
+    xUrl: "https://x.com/hina23x",
+    youtubeUrl: ""
   }
 ];
 
