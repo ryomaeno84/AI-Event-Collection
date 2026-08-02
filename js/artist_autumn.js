@@ -35,7 +35,7 @@ const autumnArtists = [
   },
   {
     name: "bell_bright",
-    image: "image/autumn2026/icon/icon06.PNG",
+    image: "image/autumn2026/icon/icon06.jpg",
     xUrl: "https://x.com/tl_bellbright?s=11",
     youtubeUrl: ""
   },
