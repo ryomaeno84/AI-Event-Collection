@@ -124,7 +124,7 @@ const autumnArtists = [
     youtubeUrl: "https://www.youtube.com/@stn_ai"
   },
   {
-    name: "Katsnn",
+    name: "Katsunn",
     image: "image/autumn2026/icon/icon21.JPEG",
     xUrl: "https://x.com/Ka2nnAI_NekoOG",
     youtubeUrl: "https://www.youtube.com/@NekoOtomeCH"
