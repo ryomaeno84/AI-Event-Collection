@@ -114,7 +114,7 @@ const autumnArtists = [
   {
     name: "DJ NYAAAN",
     image: "image/autumn2026/icon/icon19.png",
-    xUrl: "https://x.com/djnyaaan222",
+    xUrl: "https://x.com/djnyaaan",
     youtubeUrl: "https://youtube.com/@djnyaaan222"
   },
   {
