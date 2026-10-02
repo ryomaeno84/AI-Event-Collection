@@ -60,11 +60,14 @@
 .tab-nav {
   display: flex;
   overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
+  /* Firefox */
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.tab-nav::-webkit-scrollbar { display: none; }
+.tab-nav::-webkit-scrollbar {
+  display: none;
+}
 
 .tab-btn {
   flex: 1;
@@ -104,8 +107,15 @@
 }
 
 @keyframes tabUnderline {
-  from { transform: scaleX(0); opacity: 0; }
-  to { transform: scaleX(1); opacity: 1; }
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
 }
 
 /* --- 3. Content Area --- */
@@ -127,8 +137,15 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-title {
@@ -227,7 +244,7 @@
   color: #fff;
   line-height: 1.8;
   margin-bottom: 3rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 }
 
@@ -305,7 +322,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.guideline-table th, .guideline-table td {
+.guideline-table th,
+.guideline-table td {
   padding: 1.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   line-height: 1.6;
@@ -320,7 +338,7 @@
   vertical-align: top;
 }
 
-.guideline-table tr:last-child th, 
+.guideline-table tr:last-child th,
 .guideline-table tr:last-child td {
   border-bottom: none;
 }
@@ -434,7 +452,9 @@
 }
 
 @media (min-width: 600px) {
-  .artist-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .artist-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
 
 .artist-card {
@@ -511,8 +531,15 @@
   background: rgba(255, 255, 255, 0.2);
 }
 
-.social-link.x:hover { background: #000; color: #fff; }
-.social-link.youtube:hover { background: #ff0000; color: #fff; }
+.social-link.x:hover {
+  background: #000;
+  color: #fff;
+}
+
+.social-link.youtube:hover {
+  background: #ff0000;
+  color: #fff;
+}
 
 /* --- 9. Footer --- */
 .event-footer {
@@ -558,7 +585,9 @@
 }
 
 /* --- 10. Utilities --- */
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .text-link {
   color: var(--accent-color, #00d2ff);
@@ -572,13 +601,29 @@
   border-bottom-color: var(--accent-color, #00d2ff);
 }
 
-.mb-large { margin-bottom: 4rem; }
-.hint-text { font-size: 0.85rem; color: rgba(255, 255, 255, 0.5); margin-top: 0.5rem; display: block; }
+.mb-large {
+  margin-bottom: 4rem;
+}
+
+.hint-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.5rem;
+  display: block;
+}
 
 /* Custom Accents (Used in About Lead) */
-.accent-pink { color: #ff007f !important; }
-.accent-blue { color: var(--accent-color, #00d2ff) !important; }
-.accent-yellow { color: #f9d423 !important; }
+.accent-pink {
+  color: #ff007f !important;
+}
+
+.accent-blue {
+  color: var(--accent-color, #00d2ff) !important;
+}
+
+.accent-yellow {
+  color: #f9d423 !important;
+}
 
 /* Timetable (Basic Version fallback) */
 .timetable {
@@ -586,16 +631,17 @@
   border-collapse: collapse;
 }
 
-.timetable th, .timetable td {
+.timetable th,
+.timetable td {
   padding: 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   text-align: left;
 }
 
 .timetable th {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
   width: 120px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   font-family: monospace;
 }
 
@@ -659,7 +705,9 @@
 }
 
 @media (min-width: 600px) {
-  .goods-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .goods-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
 }
 
 .goods-card {
@@ -705,14 +753,43 @@
   padding: 1.5rem;
   text-align: center;
   flex-grow: 1;
+
   display: flex;
+  flex-direction: column;
+
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+
+  gap: 0.6rem;
 }
 
 .goods-name {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   color: #fff;
   line-height: 1.4;
+
+  width: 100%;
+  text-align: center;
+
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: anywhere;
+
+  margin: 0;
+
+  min-height: 2.8em;
+}
+
+.goods-variation {
+  margin: 0;
+
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.4;
+
+  color: #d8c28a;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }

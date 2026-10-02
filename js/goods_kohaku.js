@@ -6,21 +6,21 @@ const kohakuGoods = [
   {
     name: "【公式】AI紅白歌合戦2026オリジナルジップアップパーカー",
     variation: "刺繍＋背面プリント",
-    badge: "PREMIUM",
+    badge: "　✨PREMIUM",
     image: "image/kohaku2026/goods/parka.png",
     url: ""
   },
   {
     name: "【公式】AI紅白歌合戦2026オリジナルTシャツ",
     variation: "－抽象ストローク－",
-    badge: "RECOMMENDED",
+    badge: "　💡RECOMMENDED",
     image: "image/kohaku2026/goods/tshirt-stroke.png",
     url: ""
   },
   {
     name: "【公式】AI紅白歌合戦2026オリジナルTシャツ",
     variation: "－水引－",
-    badge: "RECOMMENDED",
+    badge: "　💡RECOMMENDED",
     image: "image/kohaku2026/goods/tshirt-mizuhiki.png",
     url: ""
   },
@@ -41,14 +41,14 @@ const kohakuGoods = [
   {
     name: "【公式】AI紅白歌合戦2026オリジナルペンライト",
     variation: "",
-    badge: "RECOMMENDED",
+    badge: "　💡RECOMMENDED",
     image: "image/kohaku2026/goods/penlight.png",
     url: ""
   },
   {
     name: "【公式】AI紅白歌合戦2026オリジナルバックステージパス風カード",
     variation: "アクリルカード",
-    badge: "RECOMMENDED",
+    badge: "　💡RECOMMENDED",
     image: "image/kohaku2026/goods/backstage-pass.png",
     url: ""
   },
