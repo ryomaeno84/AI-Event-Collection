@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="MAcyEP6Orc6uN_v1QCNc2k1dZ2gWkMQ4d3Z94s_k_dA">
+
+  <title>AI Event Collection</title>
+  <meta name="description" content="AI Event Collection。AI SUPERLIVEとAI紅白歌合戦の公式イベントポータル。">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="image/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="image/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="image/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="image/favicons/favicon.ico">
+
+  <link rel="stylesheet" href="css/global.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background: #080b17;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: #fff;
+      font-family: "Segoe UI", "Noto Sans JP", sans-serif;
+      background:
+        radial-gradient(ellipse at 25% 45%, rgba(0, 135, 255, .12), transparent 50%),
+        radial-gradient(ellipse at 75% 45%, rgba(255, 45, 85, .12), transparent 50%),
+        #080b17;
+    }
+
+    .portal {
+      width: min(1500px, 100%);
+      min-height: 100vh;
+      margin: auto;
+      padding: 48px 32px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portal-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .portal-header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: .09em;
+      text-shadow:
+        -2px 0 rgba(0, 190, 255, .5),
+        2px 0 rgba(255, 40, 90, .5);
+    }
+
+    .subtitle {
+      margin-top: 12px;
+      color: #aeb6d3;
+      font-size: clamp(.7rem, 1.4vw, .95rem);
+      letter-spacing: .13em;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: clamp(16px, 3vw, 40px);
+      align-items: start;
+      flex: 1;
+    }
+
+    .event-card {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 12px;
+      background: #111625;
+      text-decoration: none;
+      color: #fff;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+    }
+
+    .event-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .45s ease;
+    }
+
+    .event-card.summer {
+      box-shadow: 0 0 25px rgba(0, 150, 255, .10);
+    }
+
+    .event-card.kohaku {
+      box-shadow: 0 0 25px rgba(255, 50, 90, .10);
+    }
+
+    .event-card.summer:hover,
+    .event-card.summer:focus-visible {
+      border-color: #4fc3ff;
+      box-shadow: 0 0 35px rgba(0, 170, 255, .35);
+    }
+
+    .event-card.kohaku:hover,
+    .event-card.kohaku:focus-visible {
+      border-color: #ff6585;
+      box-shadow: 0 0 35px rgba(255, 55, 100, .35);
+    }
+
+    .event-card:hover,
+    .event-card:focus-visible {
+      transform: translateY(-6px);
+    }
+
+    .event-card:hover img {
+      transform: scale(1.025);
+    }
+
+    .event-card:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 4px;
+    }
+
+    .portal-footer {
+      text-align: center;
+      padding: 38px 0 12px;
+    }
+
+    .portal-footer a {
+      color: #b9c3dc;
+      text-decoration: none;
+      font-size: .9rem;
+      border-bottom: 1px solid rgba(185, 195, 220, .4);
+      padding-bottom: 5px;
+    }
+
+    .portal-footer a:hover,
+    .portal-footer a:focus-visible {
+      color: #fff;
+      border-color: #fff;
+    }
+
+    @media (max-width: 700px) {
+      .portal {
+        padding: 32px 16px 20px;
+      }
+
+      .portal-header {
+        margin-bottom: 28px;
+      }
+
+      .event-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .event-card {
+        max-width: 520px;
+        width: 100%;
+        margin-inline: auto;
+      }
+
+      .portal-footer {
+        padding-top: 32px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .event-card,
+      .event-card img {
+        transition: none;
+      }
+    }
+  </style>
+<style>
+  /* ポスターを約20%縮小 */
+  .event-grid {
+    width: 100%;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 36px;
+  }
+
+  /* パーティクル背景 */
+  #particle-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .portal {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* スマートフォン */
+  @media (max-width: 700px) {
+    .event-grid {
+      max-width: 440px;
+      gap: 24px;
+    }
+  }
+</style>
+<style id="light-ribbons-style">
+  #light-ribbons {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  #light-ribbons .ribbon {
+    position: absolute;
+    width: 95vw;
+    height: 45vh;
+    top: 25%;
+    opacity: .48;
+    filter: blur(35px);
+    will-change: transform, opacity;
+    mix-blend-mode: screen;
+  }
+
+  #light-ribbons .ribbon-blue {
+    left: -75vw;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0, 110, 255, .03) 20%,
+      rgba(0, 180, 255, .25) 55%,
+      rgba(80, 220, 255, .55) 75%,
+      transparent 100%
+    );
+    border-radius: 50%;
+    transform: rotate(-12deg);
+    animation: ribbonBlue 18s ease-in-out infinite alternate;
+  }
+
+  #light-ribbons .ribbon-red {
+    right: -75vw;
+    background: linear-gradient(
+      270deg,
+      transparent 0%,
+      rgba(255, 20, 65, .03) 20%,
+      rgba(255, 35, 90, .25) 55%,
+      rgba(255, 100, 135, .55) 75%,
+      transparent 100%
+    );
+    border-radius: 50%;
+    transform: rotate(12deg);
+    animation: ribbonRed 18s ease-in-out infinite alternate;
+  }
+
+  #light-ribbons .ribbon-blue-secondary {
+    top: 55%;
+    height: 18vh;
+    opacity: .35;
+    animation-delay: -7s;
+  }
+
+  #light-ribbons .ribbon-red-secondary {
+    top: 8%;
+    height: 22vh;
+    opacity: .30;
+    animation-delay: -10s;
+  }
+
+  @keyframes ribbonBlue {
+    0% {
+      transform: translateX(0) rotate(-12deg) scaleY(.6);
+      opacity: .20;
+    }
+    50% {
+      transform: translateX(52vw) rotate(5deg) scaleY(1);
+      opacity: .60;
+    }
+    100% {
+      transform: translateX(85vw) rotate(-5deg) scaleY(.8);
+      opacity: .30;
+    }
+  }
+
+  @keyframes ribbonRed {
+    0% {
+      transform: translateX(0) rotate(12deg) scaleY(.6);
+      opacity: .20;
+    }
+    50% {
+      transform: translateX(-52vw) rotate(-5deg) scaleY(1);
+      opacity: .60;
+    }
+    100% {
+      transform: translateX(-85vw) rotate(5deg) scaleY(.8);
+      opacity: .30;
+    }
+  }
+
+  /* 光の帯 → 粒子 → ポスター */
+  #light-ribbons {
+    z-index: 0;
+  }
+
+  #particle-canvas {
+    z-index: 1;
+  }
+
+  .portal {
+    position: relative;
+    z-index: 2;
+  }
+
+  @media (max-width: 700px) {
+    #light-ribbons .ribbon {
+      width: 130vw;
+      filter: blur(28px);
+      opacity: .32;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #light-ribbons .ribbon {
+      animation: none !important;
+      opacity: .20;
+    }
+  }
+</style>
+</head>
+
+<body>
+<div id="light-ribbons" aria-hidden="true">
+  <div class="ribbon ribbon-blue"></div>
+  <div class="ribbon ribbon-red"></div>
+  <div class="ribbon ribbon-blue ribbon-blue-secondary"></div>
+  <div class="ribbon ribbon-red ribbon-red-secondary"></div>
+</div><canvas id="particle-canvas" aria-hidden="true"></canvas>
+  <div class="portal">
+
+    <header class="portal-header">
+      <h1>AI Event Collection</h1>
+      <p class="subtitle">
+        Experience the next generation of entertainment
+      </p>
+    </header>
+
+    <main class="event-grid" aria-label="イベント一覧">
+
+      <!-- 左：AI SUPERLIVE -->
+      <a class="event-card summer"
+         href="summer.html"
+         aria-label="AI SUPERLIVE 公式ページへ">
+        <img
+          src="image/aisuperlive_index.png"
+          alt="AI SUPERLIVE"
+          loading="eager">
+      </a>
+
+      <!-- 右：AI紅白歌合戦 -->
+      <a class="event-card kohaku"
+         href="kohaku.html"
+         aria-label="AI紅白歌合戦 公式ページへ">
+        <img
+          src="image/aikohaku2_index.png"
+          alt="AI紅白歌合戦"
+          loading="eager">
+      </a>
+
+    </main>
+
+    <footer class="portal-footer">
+      <a href="guideline.html">
+        ガイドライン・お問い合わせ
+      </a>
+    </footer>
+
+  </div>
+<script>
+(() => {
+  const canvas = document.getElementById("particle-canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const reduceMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
+  const colors = [
+    [60, 180, 255],
+    [255, 75, 115],
+    [255, 205, 115]
+  ];
+
+  let particles = [];
+  let width = 0;
+  let height = 0;
+  let animationId = null;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    width = window.innerWidth;
+    height = window.innerHeight;
+
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.min(
+      130,
+      Math.max(25, Math.floor(width * height / 16000))
+    );
+
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      radius: 0.6 + Math.random() * 2.1,
+      speed: 0.16 + Math.random() * 0.48,
+      drift: (Math.random() - 0.5) * 0.16,
+      phase: Math.random() * Math.PI * 2,
+      color: colors[Math.floor(Math.random() * colors.length)]
+    }));
+  }
+
+  function draw(time) {
+    ctx.clearRect(0, 0, width, height);
+
+    for (const p of particles) {
+      if (!reduceMotion) {
+        p.y -= p.speed;
+        p.x += p.drift;
+
+        if (p.y < -15) {
+          p.y = height + 15;
+          p.x = Math.random() * width;
+        }
+
+        if (p.x < -15) p.x = width + 15;
+        if (p.x > width + 15) p.x = -15;
+      }
+
+      const alpha = reduceMotion
+        ? 0.4
+        : 0.25 + (Math.sin(time * 0.0007 + p.phase) + 1) * 0.18;
+
+      const [r, g, b] = p.color;
+
+      const glow = ctx.createRadialGradient(
+        p.x, p.y, 0,
+        p.x, p.y, p.radius * 5
+      );
+
+      glow.addColorStop(
+        0, `rgba(${r},${g},${b},${alpha})`
+      );
+      glow.addColorStop(
+        0.25, `rgba(${r},${g},${b},${alpha * 0.35})`
+      );
+      glow.addColorStop(
+        1, `rgba(${r},${g},${b},0)`
+      );
+
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius * 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    if (!reduceMotion) {
+      animationId = requestAnimationFrame(draw);
+    }
+  }
+
+  resize();
+  draw(0);
+
+  window.addEventListener("resize", () => {
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+    }
+    resize();
+    draw(0);
+  });
+})();
+</script>
+</body>
+</html>
