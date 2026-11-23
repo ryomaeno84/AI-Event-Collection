@@ -410,7 +410,7 @@ const kohakuArtists = [
   {
     name: "SNG (白組)",
     image: "image/kohaku2026/icon/icon66.jpg",
-    xUrl: "https://x.com/StylishNG1",
+    xUrl: "https://x.com/SNGWORLDMUSIC",
     youtubeUrl: "https://youtube.com/@stylishng?si=Q4uYRLhZTQeEfi4L"
   },
   {
